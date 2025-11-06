@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -22,7 +22,7 @@ const LangSwitcher = () => {
 
   return (
     <Select value={locale} onValueChange={handleLanguageChange}>
-      <Select.Trigger className="w-32">
+      <Select.Trigger className="max-w-20!">
         <Select.Value placeholder={t('label')} />
       </Select.Trigger>
       <Select.Content>

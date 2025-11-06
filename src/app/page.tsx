@@ -1,8 +1,8 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import BaseLayout from '../components/layout/base-layout';
-import { Button } from '../components/retroui/Button';
 import { RadioGroup } from '../components/retroui/Radio';
+import Link from 'next/link';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -10,11 +10,14 @@ export default function HomePage() {
   return (
     <BaseLayout>
       <section className="w-full  md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6  px-4">
-        <div className=" flex flex-col gap-4  ">
-          <h1 className=" text-5xl md:max-w-96 font-bold  uppercase">
+        <section className=" w-full flex-1 flex justify-center items-center">
+          <span className=" w-108 h-128 rounded-md bg-neutral-200 " />
+        </section>
+        <div className=" flex flex-2 flex-col gap-4  ">
+          <h1 className=" text-2xl md:max-w-96 font-bold  uppercase">
             {t('product.title')}
           </h1>
-          <p className="text-sm text-green-500 leading-relaxed">
+          <p className="text-sm underline text-green-600 leading-relaxed">
             {t('product.inStock')}
           </p>
           <div className="flex gap-2 items-baseline">
@@ -39,17 +42,26 @@ export default function HomePage() {
               </div>
             </RadioGroup>
           </div>
-          <p className="text-sm ">{t('product.description')}</p>
+          <p className="text-sm  -rotate-[2deg] mt-6">
+            {t('product.description')}
+          </p>
 
-          <div className="flex gap-2 mt-6">
-            <Button variant="default">{t('product.addToCart')}</Button>
-            <Button variant="link">{t('product.moreDetails')}</Button>
+          <div className="flex gap-2 justify-start items-center mt-6">
+            <input
+              className="win7-btn"
+              type="button"
+              value={t('product.addToCart')}
+            />
+
+            <div className="clear"></div>
+            <Link
+              href="/about"
+              className="text-sm bg-primary text-white underline"
+            >
+              {t('product.moreDetails')}
+            </Link>
           </div>
         </div>
-
-        <section className=" w-full flex justify-center items-center">
-          <span className=" w-108 h-128 rounded-md bg-neutral-200 " />
-        </section>
       </section>
     </BaseLayout>
   );

@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Navigation = () => {
   const t = useTranslations('Common.Header');
   return (
-    <div className="flex w-full justify-between items-center">
+    <div className="flex w-full justify-between items-end">
       <div className=" hidden md:flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +23,8 @@ const Navigation = () => {
         </svg>
       </div>
 
-      <nav className=" hidden md:flex gap-4 items-center">
-        <Link href="/" className="hover:underline">
+      <nav className=" hidden md:flex gap-20 items-center">
+        <Link href="/" className="hover:underline underline">
           {t('navLinks.home')}
         </Link>
         <Link href="7store" className="hover:underline">
@@ -40,8 +40,11 @@ const Navigation = () => {
           {t('navLinks.contact')}
         </Link>
       </nav>
-      <MobilMenu />
-      <img src="https://i.gifer.com/XqyS.gif" alt="Animated Icon" className=" h-14 md:h-20 "/>
+      <img
+        src="https://i.gifer.com/XqyS.gif"
+        alt="Animated Icon"
+        className=" h-14 md:h-20 "
+      />
     </div>
   );
 };
