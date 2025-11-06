@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import { IconMenu3 } from '@tabler/icons-react';
-import { Button } from '../retroui/Button';
 import MobilMenu from './mobil-menu';
+import Link from 'next/link';
 const Navigation = () => {
   const t = useTranslations('Common.Header');
   return (
@@ -25,21 +24,21 @@ const Navigation = () => {
       </div>
 
       <nav className=" hidden md:flex gap-4 items-center">
-        <a href="#home" className="hover:underline">
+        <Link href="/" className="hover:underline">
           {t('navLinks.home')}
-        </a>
-        <a href="#store" className="hover:underline">
+        </Link>
+        <Link href="7store" className="hover:underline">
           {t('navLinks.store')}
-        </a>
-        <a href="#distributors" className="hover:underline">
+        </Link>
+        <Link href="/distributors" className="hover:underline">
           {t('navLinks.distributors')}
-        </a>
-        <a href="#about" className="hover:underline">
+        </Link>
+        <Link href="/about" className="hover:underline">
           {t('navLinks.about')}
-        </a>
-        <a href="#contact" className="hover:underline">
+        </Link>
+        <Link href="/contact" className="hover:underline">
           {t('navLinks.contact')}
-        </a>
+        </Link>
       </nav>
       <MobilMenu />
       <img src="https://i.gifer.com/XqyS.gif" alt="Animated Icon" className=" h-14 md:h-20 "/>

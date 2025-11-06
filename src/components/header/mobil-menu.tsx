@@ -1,7 +1,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -9,6 +8,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { Button } from '../retroui/Button';
 import { IconMenu3 } from '@tabler/icons-react';
+import Link from 'next/link';
 
 const MobilMenu = () => {
   const t = useTranslations('Common.Header');
@@ -42,21 +42,21 @@ const MobilMenu = () => {
           </svg>
         </div>
         <nav className="flex flex-col gap-4  px-4 text-start mt-6">
-          <a href="#home" className="hover:underline">
+          <Link href="/" className="hover:underline">
             {t('navLinks.home')}
-          </a>
-          <a href="#store" className="hover:underline">
+          </Link>
+          <a href="/store" className="hover:underline">
             {t('navLinks.store')}
           </a>
-          <a href="#distributors" className="hover:underline">
+          <Link href="/distributors" className="hover:underline">
             {t('navLinks.distributors')}
-          </a>
-          <a href="#about" className="hover:underline">
+          </Link>
+          <Link href="/about" className="hover:underline">
             {t('navLinks.about')}
-          </a>
-          <a href="#contact" className="hover:underline">
+          </Link>
+          <Link href="/contact" className="hover:underline">
             {t('navLinks.contact')}
-          </a>
+          </Link>
         </nav>
       </SheetContent>
     </Sheet>

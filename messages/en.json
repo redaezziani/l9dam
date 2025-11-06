@@ -13,7 +13,41 @@
         "about": "About Laqaddam",
         "contact": "Contact Laqaddam"
       }
+    },
+    "Footer": {
+      "language": {
+        "title": "Language",
+        "english": "English",
+        "arabic": "Arabic"
+      },
+      "company": {
+        "title": "Contact",
+        "contact": "Contact Lqdam"
+      },
+      "legal": {
+        "title": "Legal",
+        "privacy": "Privacy Policy",
+        "terms": "Terms & Conditions",
+        "shipping": "Shipping & Returns"
+      },
+      "social": {
+        "follow": "Follow us:"
+      },
+      "copyright": {
+        "company": "Lqdam",
+        "rights": "All rights reserved."
+      }
     }
   },
-  "HomePage": {}
+  "HomePage": {
+    "product": {
+      "title": "La9odam Modern Sports Shoe",
+      "description": "Experience comfort and style with La9odam — a sleek, lightweight, and durable design built to keep you moving forward. Perfect for everyday wear and athletic performance.",
+      "inStock": "In stock",
+      "price": "Price",
+      "unit": "AED",
+      "addToCart": "Add to cart",
+      "moreDetails": "More details"
+    }
+  }
 }

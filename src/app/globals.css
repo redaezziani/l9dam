@@ -32,7 +32,7 @@
 }
 
 :root {
-  --radius: 0;
+  --radius: 0.3rem;
   --background: #fff;
   --foreground: #000;
   --card: #fff;
@@ -71,13 +71,11 @@
   --border: #3a3a3a;
 }
 
-
 .bg-header {
   background-image: url('/images/header.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
 }
 
 body {

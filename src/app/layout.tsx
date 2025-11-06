@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import './globals.css';
-import Header from '../components/header/header';
+import Header from '../components/layout/header';
+import Footer from '../components/layout/footer';
 import { getLocale } from '../i18n/request';
 
 type Props = {
@@ -15,12 +16,13 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang={locale} dir={dir}>
       <body
-        className="flex flex-col relative min-h-screen justify-start items-center gap-4"
+        className="flex flex-col relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
         <NextIntlClientProvider>
           <Header />
-          {children}
+          <main className="flex-1 w-full">{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
