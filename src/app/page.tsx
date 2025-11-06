@@ -54,10 +54,7 @@ export default function HomePage() {
             />
 
             <div className="clear"></div>
-            <Link
-              href="/about"
-              className="text-sm bg-primary text-white underline"
-            >
+            <Link href="/about" className="text-sm  text-white underline">
               {t('product.moreDetails')}
             </Link>
           </div>
