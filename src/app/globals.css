@@ -71,6 +71,15 @@
   --border: #3a3a3a;
 }
 
+
+.bg-header {
+  background-image: url('/images/header.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
 body {
   font-family: 'Cairo', sans-serif;
 }

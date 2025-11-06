@@ -22,7 +22,7 @@ const LangSwitcher = () => {
 
   return (
     <Select value={locale} onValueChange={handleLanguageChange}>
-      <Select.Trigger className="w-60">
+      <Select.Trigger className="w-32">
         <Select.Value placeholder={t('label')} />
       </Select.Trigger>
       <Select.Content>
