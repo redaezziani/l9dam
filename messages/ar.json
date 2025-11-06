@@ -1,6 +1,19 @@
 {
-  "HomePage": {
-    "title": "لقدام",
-    "description": "موقع الأستاذ مجدي"
-  }
+  "Common": {
+    "Header": {
+      "langSwitcher": {
+        "label": "اللغة",
+        "en": "الإنجليزية",
+        "ar": "العربية"
+      },
+      "navLinks": {
+        "home": "الصفحة الرئيسية",
+        "store": "المتجر",
+        "distributors": "الموزّعون",
+        "about": "عن لقدّام",
+        "contact": "تواصل مع لقدّام"
+      }
+    }
+  },
+  "HomePage": {}
 }

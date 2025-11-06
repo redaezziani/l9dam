@@ -1,8 +1,19 @@
 {
-
-  
-  "HomePage": {
-    "title": "Welcome to our website!",
-    "description": "This is the homepage description of our website."
-  }
+  "Common": {
+    "Header": {
+      "langSwitcher": {
+        "label": "Language",
+        "en": "English",
+        "ar": "Arabic"
+      },
+      "navLinks": {
+        "home": "Home",
+        "store": "Store",
+        "distributors": "Distributors",
+        "about": "About Laqaddam",
+        "contact": "Contact Laqaddam"
+      }
+    }
+  },
+  "HomePage": {}
 }
