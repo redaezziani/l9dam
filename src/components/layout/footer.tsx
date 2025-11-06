@@ -73,57 +73,50 @@ const Footer = () => {
 
         {/* Mobile Navigation - 90s Messi Style */}
         <div className="mt-8 pt-6 border-t border-neutral-300 md:hidden">
-         
-
           <nav className="grid grid-cols-2 gap-4 mb-6">
             <Link
               href="/"
-              className="group relative bg-primary text-white font-bold py-3 px-4 rounded-lg border-2 border-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
             >
-              <span className="relative z-10 text-sm uppercase tracking-wider">
+              <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.home')}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
             <Link
               href="/store"
-              className="group relative bg-primary text-white font-bold py-3 px-4 rounded-lg border-2 border-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
             >
-              <span className="relative z-10 text-sm uppercase tracking-wider">
+              <span className="relative z-10 text-primary   text-sm uppercase">
                 {tHeader('navLinks.store')}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
             <Link
               href="/distributors"
-              className="group relative bg-primary text-white font-bold py-3 px-4 rounded-lg border-2 border-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
             >
-              <span className="relative z-10 text-sm uppercase tracking-wider">
+              <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.distributors')}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
             <Link
               href="/about"
-              className="group relative bg-primary text-white font-bold py-3 px-4 rounded-lg border-2 border-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl text-center"
+              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
             >
-              <span className="relative z-10 text-sm uppercase tracking-wider">
+              <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.about')}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
             <Link
               href="/contact"
-              className="group relative bg-primary text-white font-bold py-3 px-4 rounded-lg border-2 border-white shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl text-center col-span-2"
+              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white  col-span-2"
             >
-              <span className="relative z-10 text-sm uppercase tracking-wider">
+              <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.contact')}
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
           </nav>
         </div>
