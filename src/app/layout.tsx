@@ -19,6 +19,7 @@ export default async function RootLayout({ children }: Props) {
         className="flex flex-col relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
+        {/* <span className="bg-cloth opacity-10 w-full h-screen fixed " /> */}
         <NextIntlClientProvider>
           <Header />
           <main className="flex-1 w-full">{children}</main>

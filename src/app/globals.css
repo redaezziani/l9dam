@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -161,5 +161,9 @@ a:active {
   height: 10px;
 }
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Noto Sans Arabic', sans-serif;
+}
+
+.bg-cloth {
+  background-image: url('https://www.transparenttextures.com/patterns/classy-fabric.png');
 }
