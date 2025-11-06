@@ -13,7 +13,8 @@
         "about": "من نحن",
         "contact": "اتصل بنا"
       },
-      "brandName": "لقدّام"
+      "fontbrandName": "لقدّام",
+      "backbrandName": "الأصلي"
     },
     "Footer": {
       "language": {
@@ -40,6 +41,7 @@
       }
     }
   },
+
   "HomePage": {
     "product": {
       "title": "حذاء لقدام الرياضي العصري",

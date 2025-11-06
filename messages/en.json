@@ -13,7 +13,8 @@
         "about": "About Laqaddam",
         "contact": "Contact Laqaddam"
       },
-      "brandName": "Lqdam"
+      "fontbrandName": "Lqdam",
+      "backbrandName": "original"
     },
     "Footer": {
       "language": {

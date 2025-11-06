@@ -1,16 +1,12 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
-import MobilMenu from './mobil-menu';
 import Link from 'next/link';
+import BrandFlip from './brand-flip';
 const Navigation = () => {
   const t = useTranslations('Common.Header');
   return (
     <div className="flex w-full justify-between items-end">
-      <span className=" flex w-28 h-28 rounded-full p-1 bg-red-700 text-white justify-center items-center font-bold text-2xl md:text-3xl">
-        <span className=" flex justify-center items-center border border-white/80 rounded-full w-full h-full">
-          <p className=" font-bold">{t('brandName')}</p>
-        </span>
-      </span>
+      <BrandFlip t={t} />
 
       <nav className=" hidden md:flex gap-20 items-center">
         <Link href="/" className="hover:underline underline">
