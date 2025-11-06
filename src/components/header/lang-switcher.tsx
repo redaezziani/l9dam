@@ -14,7 +14,6 @@ const LangSwitcher = () => {
     // Set cookie with new locale
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
 
-    // Refresh the page to apply new locale
     startTransition(() => {
       router.refresh();
     });
