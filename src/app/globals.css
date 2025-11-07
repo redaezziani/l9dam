@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -69,14 +69,6 @@
   --destructive: #e63946;
   --destructive-foreground: #fff;
   --border: #3a3a3a;
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-  text-decoration: none;
-  color: #555;
 }
 
 .win7-btn {
@@ -161,7 +153,7 @@ a:active {
   height: 10px;
 }
 body {
-  font-family: 'Noto Sans Arabic', sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 .bg-cloth {
