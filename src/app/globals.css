@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap'); */
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'tahoma';
+  src: url('/fonts/tahoma.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 @theme {
   --font-head: var(--font-head);
   --font-sans: var(--font-sans);
@@ -153,15 +159,13 @@
   height: 10px;
 }
 
-
 .pixelated {
   image-rendering: pixelated;
   filter: grayscale(18%) contrast(1.1) blur(0.3px);
 }
 
-
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'tahoma', sans-serif;
 }
 
 .bg-cloth {
