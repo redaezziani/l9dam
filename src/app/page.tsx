@@ -46,20 +46,16 @@ export default function HomePage() {
             {t('product.description')}
           </p>
 
-          <div className="flex gap-2 justify-start items-center mt-6">
-            <button
-              className="win7-btn h-6"
-              type="button"
-            >
+          <div className="flex gap-2 justify-start  items-center mt-6">
+            <button className="win7-btn h-6 text-stone-600" type="button">
               {t('product.addToCart')}
             </button>
 
             <div className="clear"></div>
-            <Link href="/about" className="text-sm  text-white underline">
+            <Link href="/about" className="text-sm text-stone-400   underline">
               {t('product.moreDetails')}
             </Link>
           </div>
-
         </div>
       </section>
     </BaseLayout>
