@@ -16,7 +16,7 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang={locale} dir={dir}>
       <body
-        className="flex flex-col relative min-h-screen justify-start items-center"
+        className="flex flex-col bg-[#b1aea117] relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
         {/* <span className="bg-cloth opacity-10 w-full h-screen fixed " /> */}

@@ -6,10 +6,14 @@ const Navigation = () => {
   const t = useTranslations('Common.Header');
   return (
     <div className="flex w-full px-4 justify-between items-end">
-      <div className="flex w-full flex-col gap-1">
-        <img src="/images/logo.jpg" alt="Animated Icon" className=" w-28 " />
+      <div className="flex max-w-[70%] md:max-w-[90%] w-full flex-col gap-1">
+        <img
+          src="/images/app-logo.png"
+          alt="Animated Icon"
+          className=" w-28 "
+        />
 
-        <nav className="  border-t py-2 border-neutral-400 font-medium text-neutral-400  text-sm w-full md:flex gap-2 md:gap-20 items-center">
+        <nav className="  border-t py-2 border-[#b1aea1] font-semibold text-[#b1aea1]  text-sm w-full flex gap-2 md:gap-20 items-center">
           <Link href="/" className="hover:underline underline">
             {t('navLinks.home')}
           </Link>
@@ -22,9 +26,7 @@ const Navigation = () => {
           <Link href="/about" className="hover:underline">
             {t('navLinks.about')}
           </Link>
-          <Link href="/contact" className="hover:underline">
-            {t('navLinks.contact')}
-          </Link>
+
         </nav>
       </div>
       <BrandFlip t={t} />

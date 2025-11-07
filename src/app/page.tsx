@@ -42,22 +42,24 @@ export default function HomePage() {
               </div>
             </RadioGroup>
           </div>
-          <p className="text-sm  -rotate-[2deg] mt-6">
+          <p className="text-sm text-[#b1aea1]  -rotate-[2deg] mt-6">
             {t('product.description')}
           </p>
 
           <div className="flex gap-2 justify-start items-center mt-6">
-            <input
-              className="win7-btn"
+            <button
+              className="win7-btn h-6"
               type="button"
-              value={t('product.addToCart')}
-            />
+            >
+              {t('product.addToCart')}
+            </button>
 
             <div className="clear"></div>
             <Link href="/about" className="text-sm  text-white underline">
               {t('product.moreDetails')}
             </Link>
           </div>
+
         </div>
       </section>
     </BaseLayout>

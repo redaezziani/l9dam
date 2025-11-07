@@ -8,12 +8,12 @@ const Footer = () => {
   const tHeader = useTranslations('Common.Header');
 
   return (
-    <footer className="w-full border-t border-neutral-300  bg-background/80 backdrop-blur-sm">
+    <footer className="w-full border-t border-[#b1aea1] bg-[#f9f8f517] backdrop-blur-sm">
       <div className="max-w-360 mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground">
-              {t('language.title')}
+              {/* {t('language.title')} */}
             </h3>
             <div className="space-y-2">
               <Link
@@ -33,7 +33,7 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground">
-              {t('company.title')}
+              {/* {t('company.title')} */}
             </h3>
             <div className="space-y-2">
               <Link
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           <div className="space-y-4">
             <h3 className="font-semibold text-foreground">
-              {t('legal.title')}
+              {/* {t('legal.title')} */}
             </h3>
             <div className="space-y-2">
               <Link
@@ -76,7 +76,7 @@ const Footer = () => {
           <nav className="grid grid-cols-2 gap-4 mb-6">
             <Link
               href="/"
-              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
+              className="group relative  text-primary   py-3 px-4  border border-[#b1aea1] "
             >
               <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.home')}
@@ -85,7 +85,7 @@ const Footer = () => {
 
             <Link
               href="/store"
-              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
+              className="group relative  text-primary   py-3 px-4  border border-[#b1aea1] "
             >
               <span className="relative z-10 text-primary   text-sm uppercase">
                 {tHeader('navLinks.store')}
@@ -94,7 +94,7 @@ const Footer = () => {
 
             <Link
               href="/distributors"
-              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
+              className="group relative  text-primary   py-3 px-4  border border-[#b1aea1] "
             >
               <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.distributors')}
@@ -103,7 +103,7 @@ const Footer = () => {
 
             <Link
               href="/about"
-              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white "
+              className="group relative  text-primary   py-3 px-4  border border-[#b1aea1] "
             >
               <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.about')}
@@ -112,7 +112,7 @@ const Footer = () => {
 
             <Link
               href="/contact"
-              className="group relative  text-primary   py-3 px-4 rounded-lg border-2 border-white  col-span-2"
+              className="group relative  text-primary   py-3 px-4  border border-[#b1aea1]  col-span-2"
             >
               <span className="relative z-10 text-primary  text-sm uppercase">
                 {tHeader('navLinks.contact')}
