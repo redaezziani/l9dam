@@ -10,7 +10,7 @@ const Navigation = () => {
         <img
           src="/images/app-logo.png"
           alt="Animated Icon"
-          className=" w-28 "
+          className=" w-28 pixelated "
         />
 
         <nav className="  border-t py-2 border-[#b1aea1] font-semibold text-[#b1aea1]  text-sm w-full flex gap-2 md:gap-20 items-center">

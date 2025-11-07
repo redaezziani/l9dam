@@ -33,7 +33,10 @@
         "shipping": "Shipping & Returns"
       },
       "social": {
-        "follow": "Follow us:"
+        "follow": "Follow us:",
+        "instagram": "Instagram",
+        "whatsapp": "WhatsApp",
+        "tiktok": "TikTok"
       },
       "copyright": {
         "company": "Lqdam",

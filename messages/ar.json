@@ -33,7 +33,10 @@
         "shipping": "الشحن والإرجاع"
       },
       "social": {
-        "follow": "تابعنا على:"
+        "follow": "تابعنا على:",
+        "instagram": "انستغرام",
+        "whatsapp": "واتساب",
+        "tiktok": "تيك توك"
       },
       "copyright": {
         "company": "لقدّام",

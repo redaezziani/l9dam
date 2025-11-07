@@ -1,7 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { Instagram, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const t = useTranslations('Common.Footer');
@@ -123,26 +122,52 @@ const Footer = () => {
 
         <div className="mt-8 pt-6  border-t border-neutral-300 ">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-red-500">{t('social.follow')}</span>
-              <div className="flex gap-3">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <span className="text-sm text-red-500 font-bold uppercase">
+                {t('social.follow')}
+              </span>
+              <div className="flex flex-wrap gap-2">
                 <a
                   href="https://instagram.com/lqdam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-blue-600 hover:bg-muted/80 transition-colors"
-                  aria-label="Instagram"
+                  className="flex items-center gap-1 px-2 py-1  "
+                  aria-label={t('social.instagram')}
                 >
-                  <Instagram className="w-4 h-4 text-red-500 hover:text-foreground" />
+                  <img
+                    className="w-8"
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+                    alt="Instagram"
+                  />
+                  <span>{t('social.instagram')}</span>
                 </a>
                 <a
                   href="https://wa.me/your-whatsapp-number"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-blue-600 hover:bg-muted/80 transition-colors"
-                  aria-label="WhatsApp"
+                  className="flex items-center gap-1 px-2 py-1  "
+                  aria-label={t('social.whatsapp')}
                 >
-                  <MessageCircle className="w-4 h-4 text-red-500 hover:text-foreground" />
+                  <img
+                    className="w-8"
+                    src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/logo-whatsapp-png-image-2.png"
+                    alt="WhatsApp"
+                  />
+                  <span>{t('social.whatsapp')}</span>
+                </a>
+                <a
+                  href="https://tiktok.com/@lqdam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 px-2 py-1  "
+                  aria-label={t('social.tiktok')}
+                >
+                  <img
+                    className="w-12"
+                    src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"
+                    alt="TikTok"
+                  />
+                  <span>{t('social.tiktok')}</span>
                 </a>
               </div>
             </div>

@@ -9,7 +9,7 @@ export default function BrandFlip({ t }: { t: (key: string) => string }) {
   }, []);
 
   return (
-    <div className="relative w-20 h-20 [perspective:1000px]">
+    <div className="relative pixelated w-20 h-20 [perspective:1000px]">
       <div
         className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
           flipped ? '[transform:rotateY(180deg)]' : ''
