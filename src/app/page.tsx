@@ -7,11 +7,20 @@ import Link from 'next/link';
 export default function HomePage() {
   const t = useTranslations('HomePage');
 
+  const images = ['/images/img1.jpg', '/images/img2.jpg', '/images/img3.jpg'];
+
   return (
     <BaseLayout>
       <section className="w-full  md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6  px-4">
-        <section className=" w-full flex-1 flex justify-center items-center">
-          <span className=" w-108 h-128 rounded-md bg-neutral-200 " />
+        <section className="w-full max-h-[30rem] old-scrollbar bg-[[#b1aea1]] border-[#b1aea1] border  overflow-y-scroll flex flex-col items-center gap-4 old-scrollbar p-2">
+          {images.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt={`Product Image ${index + 1}`}
+              className="max-w-full"
+            />
+          ))}
         </section>
         <div className=" flex flex-2 flex-col gap-4  ">
           <h1 className=" text-2xl md:max-w-96 font-bold  uppercase">

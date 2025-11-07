@@ -9,10 +9,9 @@ const LangSwitcher = () => {
   const locale = useLocale();
   const router = useRouter();
 
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newLocale = e.target.value;
+  const handleLanguageChange = () => {
+    const newLocale = locale === 'ar' ? 'en' : 'ar';
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
-
     startTransition(() => {
       router.refresh();
     });
@@ -20,7 +19,7 @@ const LangSwitcher = () => {
 
   return (
     <select
-      value={locale}
+      value={locale === 'ar' ? 'en' : 'ar'}
       onChange={handleLanguageChange}
       style={{
         backgroundColor: '#f0f0f0',
