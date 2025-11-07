@@ -11,9 +11,7 @@ const Footer = () => {
       <div className="max-w-360 mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">
-              {/* {t('language.title')} */}
-            </h3>
+            <h3 className="font-semibold text-foreground"></h3>
             <div className="space-y-2">
               <Link
                 href="?locale=en"
@@ -31,9 +29,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">
-              {/* {t('company.title')} */}
-            </h3>
+            <h3 className="font-semibold text-foreground"></h3>
             <div className="space-y-2">
               <Link
                 href="/contact"
@@ -44,9 +40,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="space-y-4">
-            <h3 className="font-semibold text-foreground">
-              {/* {t('legal.title')} */}
-            </h3>
+            <h3 className="font-semibold text-foreground"></h3>
             <div className="space-y-2">
               <Link
                 href="/privacy-policy"
@@ -70,7 +64,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation - 90s Messi Style */}
         <div className="mt-8 pt-6 border-t border-neutral-300 md:hidden">
           <nav className="grid grid-cols-2 gap-4 mb-6">
             <Link
@@ -135,7 +128,7 @@ const Footer = () => {
                   aria-label={t('social.instagram')}
                 >
                   <img
-                    className="w-8"
+                    className="w-8 pixelated"
                     src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
                     alt="Instagram"
                   />
@@ -149,7 +142,7 @@ const Footer = () => {
                   aria-label={t('social.whatsapp')}
                 >
                   <img
-                    className="w-8"
+                    className="w-8 pixelated"
                     src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/logo-whatsapp-png-image-2.png"
                     alt="WhatsApp"
                   />
@@ -163,7 +156,7 @@ const Footer = () => {
                   aria-label={t('social.tiktok')}
                 >
                   <img
-                    className="w-12"
+                    className="w-12 pixelated"
                     src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"
                     alt="TikTok"
                   />
