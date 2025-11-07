@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <BaseLayout>
       <section className="w-full  md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6  px-4">
-        <section className="w-full max-h-[30rem] old-scrollbar bg-[[#b1aea1]] border-[#b1aea1] border  overflow-y-scroll flex flex-col items-center gap-4 old-scrollbar p-2">
+        <section className=" max-w-96 max-h-[30rem] old-scrollbar bg-[[#b1aea1]] border-[#b1aea1] border  overflow-y-scroll flex flex-col items-center gap-4 old-scrollbar p-2">
           {images.map((src, index) => (
             <img
               key={index}
