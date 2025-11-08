@@ -23,8 +23,9 @@
         "arabic": "Arabic"
       },
       "company": {
-        "title": "Contact",
-        "contact": "Contact Lqdam"
+        "title": "Company",
+        "contact": "Contact Lqdam",
+        "about": "About Us"
       },
       "legal": {
         "title": "Legal",
@@ -40,8 +41,24 @@
       },
       "copyright": {
         "company": "Lqdam",
-        "rights": "All rights reserved."
+        "rights": "All rights reserved.",
+        "year": "2024"
       }
+    },
+    "buttons": {
+      "readMore": "Read More",
+      "goBack": "Go Back",
+      "close": "Close",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "navigation": {
+      "previous": "Previous",
+      "next": "Next",
+      "loading": "Loading...",
+      "error": "Error",
+      "notFound": "Page not found"
     }
   },
   "HomePage": {
@@ -54,5 +71,57 @@
       "addToCart": "Add to cart",
       "moreDetails": "More details"
     }
+  },
+  "AboutPage": {
+    "title": "About Lqdam",
+    "story": {
+      "title": "Our Story",
+      "content1": "Founded with a passion for quality and innovation, Lqdam represents the perfect blend of traditional craftsmanship and modern design.",
+      "content2": "We believe in creating products that stand the test of time, bringing you authentic experiences in a digital world."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "To deliver exceptional products that combine nostalgic charm with contemporary functionality, serving our customers with dedication and authenticity."
+    },
+    "quickFacts": {
+      "title": "Quick Facts",
+      "established": "Established: 2024",
+      "focus": "Focus: Quality Products",
+      "style": "Style: Retro-Modern",
+      "commitment": "Commitment: Customer First"
+    },
+    "contact": {
+      "title": "Contact Info",
+      "email": "Email: info@lqdam.com",
+      "support": "Support: support@lqdam.com"
+    },
+    "getInTouch": {
+      "title": "Get In Touch",
+      "description": "Have questions? We'd love to hear from you.",
+      "contactButton": "Contact Us",
+      "productsButton": "View Products"
+    },
+    "contactForm": {
+      "title": "Contact Form",
+      "description": "Fill out the form below and we'll get back to you as soon as possible.",
+      "name": "Your Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email",
+      "subject": "Subject",
+      "subjectPlaceholder": "Select a subject",
+      "subjects": {
+        "productInquiry": "Product Inquiry",
+        "support": "Technical Support",
+        "partnership": "Partnership",
+        "feedback": "Feedback",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send Message",
+      "clear": "Clear Form"
+    },
+    "motto": "Bringing back the classics, one product at a time"
   }
 }
