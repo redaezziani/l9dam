@@ -24,7 +24,6 @@ const LangSwitcher = () => {
         gap: '8px',
         alignItems: 'center',
         justifyContent: 'center',
-        fontFamily: 'Tahoma, Verdana, sans-serif',
         fontSize: '12px',
         color: '#b1aea1',
         cursor: 'pointer',

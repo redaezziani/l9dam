@@ -60,7 +60,12 @@ const HeroSection = () => {
 };
 
 const ImageSlider = () => {
-  const images = ['/images/img1.jpg', '/images/img2.jpg', '/images/img3.jpg'];
+  const images = [
+    '/images/img1.jpg',
+    '/images/img2.jpg',
+    '/images/img3.jpg',
+    '/images/img4.jpg',
+  ];
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -80,7 +85,7 @@ const ImageSlider = () => {
         ref={scrollRef}
         className="overflow-x-scroll old-scrollbar flex gap-4 w w-full snap-x snap-mandatory"
       >
-        {images.map((src, index) => (
+        {images.reverse().map((src, index) => (
           <img
             key={index}
             src={src}

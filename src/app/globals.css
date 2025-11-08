@@ -1,13 +1,25 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap'); */
-@import 'tailwindcss';
 
 @font-face {
   font-family: 'tahoma';
   src: url('/fonts/tahoma.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: 'PixelAE';
+  src: url('/fonts/font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@import 'tailwindcss';
+
 @theme {
+  --font-pixelae: var(--font-pixelae);
   --font-head: var(--font-head);
   --font-sans: var(--font-sans);
   --radius: var(--radius);
@@ -38,6 +50,7 @@
 }
 
 :root {
+  --font-pixelae: 'PixelAE', monospace;
   --radius: 0.3rem;
   --background: #fff;
   --foreground: #000;
@@ -182,11 +195,4 @@
 
 .old-scrollbar::-webkit-scrollbar-track {
   background-color: #f0f0f0; /* track */
-}
-body {
-  font-family: 'tahoma', sans-serif;
-}
-
-.bg-cloth {
-  background-image: url('https://www.transparenttextures.com/patterns/classy-fabric.png');
 }
