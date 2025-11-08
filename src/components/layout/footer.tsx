@@ -72,7 +72,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.instagram')}
                 >
-                  <InstagramAnimation />
+                  <img className="w-20" src={'/images/footer/insta.gif'} />
                 </a>
                 <a
                   href="https://wa.me/your-whatsapp-number"
@@ -81,7 +81,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.whatsapp')}
                 >
-                  <img className="w-32" src={'/images/whatsapp.gif'} />
+                  <img className="w-32" src={'/images/footer/whatsapp.gif'} />
                 </a>
                 <a
                   href="https://tiktok.com/@lqdam"
@@ -90,7 +90,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.tiktok')}
                 >
-                  <TiktokAnimation />
+                  <img className="w-20" src={'/images/footer/tiktok.gif'} />
                 </a>
               </div>
             </div>

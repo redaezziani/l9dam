@@ -26,9 +26,7 @@ const AboutUsPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-    // You can add actual form submission logic here
   };
 
   return (
@@ -42,7 +40,6 @@ const AboutUsPage = () => {
           <div className="h-1 bg-gray-400"></div>
         </div>
 
-        {/* Main Content */}
         <div className="flex flex-col md:flex-row gap-6">
           {/* Left Column - Main Info */}
           <div className="flex-2 space-y-6">
@@ -68,7 +65,6 @@ const AboutUsPage = () => {
             </div>
           </div>
 
-          {/* Right Column - Quick Info */}
           <div className="flex-1 space-y-4">
             <div className="border border-gray-400 bg-gray-50 p-4">
               <h3 className="text-md font-semibold mb-3 text-gray-700 uppercase">
@@ -94,7 +90,6 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        {/* Contact Form Section */}
         <div className="mt-8 border border-gray-400 bg-white p-6">
           <div className="border-b border-gray-300 pb-4 mb-6">
             <h3 className="text-xl font-semibold text-gray-700 uppercase">
@@ -127,7 +122,6 @@ const AboutUsPage = () => {
                 />
               </div>
 
-              {/* Email Field */}
               <div>
                 <label
                   htmlFor="email"
@@ -148,7 +142,6 @@ const AboutUsPage = () => {
               </div>
             </div>
 
-            {/* Subject Field */}
             <div>
               <label
                 htmlFor="subject"
@@ -181,7 +174,6 @@ const AboutUsPage = () => {
               </select>
             </div>
 
-            {/* Message Field */}
             <div>
               <label
                 htmlFor="message"
@@ -201,7 +193,6 @@ const AboutUsPage = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <div className="flex justify-start pt-4">
               <button
                 type="submit"
@@ -222,7 +213,6 @@ const AboutUsPage = () => {
           </form>
         </div>
 
-        {/* Bottom Section */}
         <div className="mt-8 border border-gray-400 bg-white p-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
@@ -244,7 +234,6 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        {/* Retro Footer Element */}
         <div className="mt-6 text-center">
           <div className="inline-block border border-gray-400 bg-gray-200 px-4 py-2">
             <p className="text-xs text-gray-500 -rotate-1">"{t('motto')}"</p>
