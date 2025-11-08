@@ -11,7 +11,7 @@ const HeroSection = () => {
     <section className="w-full md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6 px-4">
       <ImageSlider />
       <div className="flex flex-2 flex-col gap-4">
-        <h1 className="text-2xl md:max-w-96 font-bold uppercase">
+        <h1 className="text-2xl md:max-w-96 font-sans  uppercase">
           {t('product.title')}
         </h1>
         <p className="text-sm underline text-green-600 leading-relaxed">
@@ -43,7 +43,10 @@ const HeroSection = () => {
           {t('product.description')}
         </p>
         <div className="flex gap-2 justify-start items-center mt-6">
-          <button className="win7-btn h-6 text-stone-600" type="button">
+          <button
+            className="win7-btn rounded-none! h-6 text-stone-600"
+            type="button"
+          >
             {t('product.addToCart')}
           </button>
           <div className="clear"></div>
@@ -72,7 +75,7 @@ const ImageSlider = () => {
     }
   };
   return (
-    <section className="relative max-w-96  border">
+    <section className="relative max-w-96">
       <div
         ref={scrollRef}
         className="overflow-x-scroll old-scrollbar flex gap-4 w w-full snap-x snap-mandatory"
@@ -88,40 +91,32 @@ const ImageSlider = () => {
       </div>
       <button
         onClick={scrollLeft}
-        className="absolute left-1 top-1/2 win7-btn -translate-y-1/2 bg-[#b1aea1] border border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
+        className="absolute left-1 h-10 top-1/2 win7-btn -translate-y-1/2 border! rounded-none! bg-[#b1aea1]  border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
         type="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="#908e85"
         >
-          <path d="M15 18l-6-6 6-6" />
+          <path d="M10.5 3L9.5 2 3.5 8l6 6 1-1-5-5z" />
         </svg>
       </button>
       <button
         onClick={scrollRight}
-        className="absolute right-1 win7-btn top-1/2 -translate-y-1/2 bg-[#b1aea1] border border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
+        className="absolute right-1 h-10! win7-btn top-1/2 -translate-y-1/2 bg-[#b1aea1] border! rounded-none! border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
         type="button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="#908e85"
         >
-          <path d="M9 18l6-6-6-6" />
+          <path d="M5.5 13l1 1 6-6-6-6-1 1 5 5z" />
         </svg>
       </button>
     </section>

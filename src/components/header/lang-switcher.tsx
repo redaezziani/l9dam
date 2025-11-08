@@ -9,8 +9,8 @@ const LangSwitcher = () => {
   const locale = useLocale();
   const router = useRouter();
 
-  const handleLanguageChange = () => {
-    const newLocale = locale === 'ar' ? 'en' : 'ar';
+  const handleLanguageChange = (newLocale: string) => {
+    if (newLocale === locale) return;
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
     startTransition(() => {
       router.refresh();
@@ -18,24 +18,35 @@ const LangSwitcher = () => {
   };
 
   return (
-    <select
-      value={locale === 'ar' ? 'en' : 'ar'}
-      onChange={handleLanguageChange}
+    <div
       style={{
-        backgroundColor: '#f0f0f0',
-        border: '2px solid #808080',
-        borderRadius: '0',
-        padding: '4px',
+        display: 'flex',
+        gap: '8px',
+        alignItems: 'center',
+        justifyContent: 'center',
         fontFamily: 'Tahoma, Verdana, sans-serif',
         fontSize: '12px',
-        color: '#000',
-        boxShadow: 'inset 1px 1px #fff, inset -1px -1px #404040',
+        color: '#b1aea1',
         cursor: 'pointer',
       }}
     >
-      <option value="ar">{t('ar')}</option>
-      <option value="en">{t('en')}</option>
-    </select>
+      <p
+        onClick={() => handleLanguageChange('en')}
+        style={{
+          textDecoration: locale === 'en' ? 'underline' : 'none',
+        }}
+      >
+        {t('en')}
+      </p>
+      <p
+        onClick={() => handleLanguageChange('ar')}
+        style={{
+          textDecoration: locale === 'ar' ? 'underline' : 'none',
+        }}
+      >
+        {t('ar')}
+      </p>
+    </div>
   );
 };
 

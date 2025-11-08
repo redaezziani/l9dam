@@ -3,18 +3,13 @@ import Link from 'next/link';
 const Navigation = () => {
   const t = useTranslations('Common.Header');
   return (
-    <div className="flex w-full px-4 justify-between items-end">
+    <div className="flex w-full px-4 justify-between items-center">
       <div className="flex max-w-[70%] md:max-w-[90%] w-full flex-col gap-1">
         <div className="flex w-full justify-between">
           <img
-            src="/images/app-logo.png"
-            alt="Animated Icon"
-            className=" w-28 pixelated "
-          />
-          <img
-            src="/images/shoes-fire.gif"
+            src="/images/header-img.gif"
             alt="Brand Name"
-            className=" w-32 "
+            className=" w-60 "
           />
         </div>
 
@@ -37,7 +32,7 @@ const Navigation = () => {
       <img
         src="/images/flip.gif"
         alt="Brand Flip Icon"
-        className=" w-16 pixelated "
+        className=" w-24 pixelated "
       />
     </div>
   );
