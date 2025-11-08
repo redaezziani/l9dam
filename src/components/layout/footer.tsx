@@ -1,6 +1,9 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import InstagramAnimation from '../footer/instagram-animation';
+import WhatsappAnimation from '../footer/whatsapp-animation';
+import TiktokAnimation from '../footer/tiktok-animation';
 
 const Footer = () => {
   const t = useTranslations('Common.Footer');
@@ -69,11 +72,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.instagram')}
                 >
-                  <img
-                    className="w-8 pixelated"
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-                    alt="Instagram"
-                  />
+                  <InstagramAnimation />
                 </a>
                 <a
                   href="https://wa.me/your-whatsapp-number"
@@ -82,11 +81,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.whatsapp')}
                 >
-                  <img
-                    className="w-8 pixelated"
-                    src="https://www.freeiconspng.com/thumbs/logo-whatsapp-png/logo-whatsapp-png-image-2.png"
-                    alt="WhatsApp"
-                  />
+                  <WhatsappAnimation />
                 </a>
                 <a
                   href="https://tiktok.com/@lqdam"
@@ -95,11 +90,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.tiktok')}
                 >
-                  <img
-                    className="w-12 pixelated"
-                    src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg"
-                    alt="TikTok"
-                  />
+                  <TiktokAnimation />
                 </a>
               </div>
             </div>

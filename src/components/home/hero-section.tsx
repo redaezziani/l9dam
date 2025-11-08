@@ -39,7 +39,7 @@ const HeroSection = () => {
             </div>
           </RadioGroup>
         </div>
-        <p className="text-sm text-[#b1aea1] -rotate-[2deg] mt-6">
+        <p className="text-sm text-[#b1aea1] -rotate-2 mt-6">
           {t('product.description')}
         </p>
         <div className="flex gap-2 justify-start items-center mt-6">
