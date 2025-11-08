@@ -11,34 +11,6 @@ const HeroSection = () => {
     <section className="w-full md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6 px-4">
       <ImageSlider />
       <div className="flex flex-2 flex-col gap-4">
-        <h1 className="text-2xl md:max-w-96 font-sans  uppercase">
-          {t('product.title')}
-        </h1>
-        <p className="text-sm underline text-green-600 leading-relaxed">
-          {t('product.inStock')}
-        </p>
-        <div className="flex gap-2 items-baseline">
-          <span className="text-lg font-semibold">
-            {t('product.price')}: 299
-          </span>
-          <span className="text-sm font-medium">{t('product.unit')}</span>
-        </div>
-        <div className="flex">
-          <RadioGroup>
-            <div className="flex items-center space-x-2">
-              <RadioGroup.Item
-                value="black"
-                className="bg-black"
-                variant="default"
-              />
-              <RadioGroup.Item
-                value="white"
-                className="bg-white"
-                variant="default"
-              />
-            </div>
-          </RadioGroup>
-        </div>
         <p className="text-sm text-[#b1aea1] -rotate-2 mt-6">
           {t('product.description')}
         </p>

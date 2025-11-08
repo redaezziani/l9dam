@@ -61,7 +61,7 @@ const Footer = () => {
           </nav>
         </div>
 
-        <div className="mt-8 pt-6  border-t border-neutral-300 ">
+        <div className="mt-8 pt-6 w-full  border-t border-neutral-300 ">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-col md:flex-row md:items-center gap-4">
               <div className="flex flex-wrap gap-2">
@@ -72,7 +72,10 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.instagram')}
                 >
-                  <img className="w-20" src={'/images/footer/insta.gif'} />
+                  <img
+                    className="w-20 pixelated"
+                    src={'/images/footer/insta.gif'}
+                  />
                 </a>
                 <a
                   href="https://wa.me/your-whatsapp-number"
@@ -81,7 +84,10 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.whatsapp')}
                 >
-                  <img className="w-20" src={'/images/footer/whatsapp.gif'} />
+                  <img
+                    className="w-20 pixelated"
+                    src={'/images/footer/whatsapp.gif'}
+                  />
                 </a>
                 <a
                   href="https://tiktok.com/@lqdam"
@@ -90,14 +96,17 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.tiktok')}
                 >
-                  <img className="w-32" src={'/images/footer/tiktok.gif'} />
+                  <img
+                    className="w-32 pixelated"
+                    src={'/images/footer/tiktok.gif'}
+                  />
                 </a>
               </div>
             </div>
 
-            <div className="text-sm text-[#b1aea1] underline  text-center md:text-right">
+            <div className="text-sm w-full text-[#b1aea1] underline  text-start md:text-right">
               <p>
-                © {new Date().getFullYear()} {t('copyright.company')}.{' '}
+                {new Date().getFullYear()} {t('copyright.company')}.{' '}
                 {t('copyright.rights')}
               </p>
             </div>

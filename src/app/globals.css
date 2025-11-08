@@ -174,7 +174,7 @@
 
 .pixelated {
   image-rendering: pixelated;
-  filter: grayscale(18%) contrast(1.1) blur(0.3px);
+  filter: grayscale(18%) contrast(1.2) blur(0.6px);
 }
 /* Old-school vertical scrollbar */
 .old-scrollbar {
