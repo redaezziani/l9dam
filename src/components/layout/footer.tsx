@@ -81,7 +81,7 @@ const Footer = () => {
                   className="flex items-center gap-1 px-2 py-1  "
                   aria-label={t('social.whatsapp')}
                 >
-                  <WhatsappAnimation />
+                  <img className="w-32" src={'/images/whatsapp.gif'} />
                 </a>
                 <a
                   href="https://tiktok.com/@lqdam"

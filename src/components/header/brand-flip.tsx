@@ -4,7 +4,7 @@ export default function BrandFlip({ t }: { t: (key: string) => string }) {
   const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => setFlipped((prev) => !prev), 8000);
+    const interval = setInterval(() => setFlipped((prev) => !prev), 5000);
     return () => clearInterval(interval);
   }, []);
 
