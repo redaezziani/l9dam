@@ -32,7 +32,11 @@ const AboutUsPage = () => {
   return (
     <BaseLayout>
       <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-8">
-        {/* Header */}
+        <img
+          alt="preview"
+          src="/images/slider/image-1.png"
+          className="w-full mb-6"
+        />
         <div className="  p-4 mb-6">
           <h1 className="text-xl font-bold uppercase text-gray-800 mb-2">
             {t('title')}
