@@ -30,7 +30,7 @@ const Navigation = () => {
       </div>
 
       <img
-        src="/images/flip.gif"
+        src="/images/flip-logo.gif"
         alt="Brand Flip Icon"
         className=" w-24 pixelated "
       />

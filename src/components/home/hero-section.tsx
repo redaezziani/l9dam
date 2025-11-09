@@ -1,9 +1,6 @@
-'use client';
-import React from 'react';
 import { useTranslations } from 'next-intl';
-import { useRef } from 'react';
 import Link from 'next/link';
-import { RadioGroup } from '../retroui/Radio';
+import ImageSlider from './image-slider';
 const HeroSection = () => {
   const t = useTranslations('HomePage');
 
@@ -11,17 +8,15 @@ const HeroSection = () => {
     <section className="w-full md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6 px-4">
       <ImageSlider />
       <div className="flex flex-2 flex-col gap-4">
-        <p className="text-sm text-[#b1aea1] -rotate-2 mt-6">
-          {t('product.description')}
-        </p>
-        <div className="flex gap-2 justify-start items-center mt-6">
-          <button
-            className="win7-btn rounded-none! h-6 text-stone-600"
-            type="button"
+        <p className="text-sm text-[#b1aea1] ">{t('product.description')}</p>
+        <div className=" flex gap-3 justify-start items-center mt-6">
+          <Link
+            href=""
+            className="text-sm text-stone-600 hover:text-primary underline"
           >
             {t('product.addToCart')}
-          </button>
-          <div className="clear"></div>
+          </Link>
+
           <Link href="/about" className="text-sm text-stone-400 underline">
             {t('product.moreDetails')}
           </Link>
@@ -31,72 +26,4 @@ const HeroSection = () => {
   );
 };
 
-const ImageSlider = () => {
-  const images = [
-    '/images/img1.jpg',
-    '/images/img2.jpg',
-    '/images/img3.jpg',
-    '/images/img4.jpg',
-  ];
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
-    }
-  };
-  return (
-    <section className="relative max-w-96">
-      <div
-        ref={scrollRef}
-        className="overflow-x-scroll old-scrollbar flex gap-4 w w-full snap-x snap-mandatory"
-      >
-        {images.reverse().map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Product Image ${index + 1}`}
-            className="w-full shrink-0 snap-center"
-          />
-        ))}
-      </div>
-      <button
-        onClick={scrollLeft}
-        className="absolute left-1 h-10 top-1/2 win7-btn -translate-y-1/2 border! rounded-none! bg-[#b1aea1]  border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
-        type="button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="#908e85"
-        >
-          <path d="M10.5 3L9.5 2 3.5 8l6 6 1-1-5-5z" />
-        </svg>
-      </button>
-      <button
-        onClick={scrollRight}
-        className="absolute right-1 h-10! win7-btn top-1/2 -translate-y-1/2 bg-[#b1aea1] border! rounded-none! border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
-        type="button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="#908e85"
-        >
-          <path d="M5.5 13l1 1 6-6-6-6-1 1 5 5z" />
-        </svg>
-      </button>
-    </section>
-  );
-};
 export default HeroSection;
