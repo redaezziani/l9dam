@@ -196,3 +196,11 @@
 .old-scrollbar::-webkit-scrollbar-track {
   background-color: #f0f0f0; /* track */
 }
+
+img {
+  mix-blend-mode: multiply;
+}
+
+.noise > div {
+  filter: url(#noise);
+}
