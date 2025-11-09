@@ -16,7 +16,7 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang={locale} dir={dir}>
       <body
-        className="flex flex-col font-pixelae  relative min-h-screen justify-start items-center"
+        className="flex flex-col   relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
         <svg width="0" height="0">

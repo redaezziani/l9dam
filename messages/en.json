@@ -25,7 +25,8 @@
       "company": {
         "title": "Company",
         "contact": "Contact Lqdam",
-        "about": "About Us"
+        "about": "About Us",
+        "cart": "Cart"
       },
       "legal": {
         "title": "Legal",

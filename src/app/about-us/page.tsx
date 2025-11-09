@@ -31,19 +31,18 @@ const AboutUsPage = () => {
 
   return (
     <BaseLayout>
-      <section className="w-full max-w-4xl mx-auto px-4 py-8">
+      <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="border-2 border-gray-400 bg-gray-100 p-4 mb-6">
-          <h1 className="text-2xl font-bold uppercase text-gray-800 mb-2">
+        <div className="  p-4 mb-6">
+          <h1 className="text-xl font-bold uppercase text-gray-800 mb-2">
             {t('title')}
           </h1>
-          <div className="h-1 bg-gray-400"></div>
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Left Column - Main Info */}
           <div className="flex-2 space-y-6">
-            <div className="border border-gray-400 bg-white p-4">
+            <div className="  p-4">
               <h2 className="text-lg font-semibold mb-3 text-gray-700 uppercase">
                 {t('story.title')}
               </h2>
@@ -55,7 +54,7 @@ const AboutUsPage = () => {
               </p>
             </div>
 
-            <div className="border border-gray-400 bg-white p-4">
+            <div className="  p-4">
               <h2 className="text-lg font-semibold mb-3 text-gray-700 uppercase">
                 {t('mission.title')}
               </h2>
@@ -66,7 +65,7 @@ const AboutUsPage = () => {
           </div>
 
           <div className="flex-1 space-y-4">
-            <div className="border border-gray-400 bg-gray-50 p-4">
+            <div className="   p-4">
               <h3 className="text-md font-semibold mb-3 text-gray-700 uppercase">
                 {t('quickFacts.title')}
               </h3>
@@ -78,7 +77,7 @@ const AboutUsPage = () => {
               </ul>
             </div>
 
-            <div className="border border-gray-400 bg-gray-50 p-4">
+            <div className="   p-4">
               <h3 className="text-md font-semibold mb-3 text-gray-700 uppercase">
                 {t('contact.title')}
               </h3>
@@ -90,7 +89,7 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        <div className="mt-8 border border-gray-400 bg-white p-6">
+        <div className="mt-8   p-6">
           <div className="border-b border-gray-300 pb-4 mb-6">
             <h3 className="text-xl font-semibold text-gray-700 uppercase">
               {t('contactForm.title')}
@@ -117,7 +116,7 @@ const AboutUsPage = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-2 border-2 border-gray-400 bg-white text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                  className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
                   placeholder={t('contactForm.namePlaceholder')}
                 />
               </div>
@@ -136,7 +135,7 @@ const AboutUsPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-2 border-2 border-gray-400 bg-white text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                  className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
                   placeholder={t('contactForm.emailPlaceholder')}
                 />
               </div>
@@ -155,7 +154,7 @@ const AboutUsPage = () => {
                 value={formData.subject}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2 border-2 border-gray-400 bg-white text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
               >
                 <option value="">{t('contactForm.subjectPlaceholder')}</option>
                 <option value="product-inquiry">
@@ -188,7 +187,7 @@ const AboutUsPage = () => {
                 onChange={handleInputChange}
                 required
                 rows={5}
-                className="w-full p-2 border-2 border-gray-400 bg-white text-gray-700 text-sm focus:border-gray-600 focus:outline-none resize-none"
+                className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none resize-none"
                 placeholder={t('contactForm.messagePlaceholder')}
               />
             </div>
@@ -213,7 +212,7 @@ const AboutUsPage = () => {
           </form>
         </div>
 
-        <div className="mt-8 border border-gray-400 bg-white p-4">
+        <div className="mt-8   p-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
               <h3 className="text-lg font-semibold text-gray-700 uppercase mb-2">
@@ -235,7 +234,7 @@ const AboutUsPage = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <div className="inline-block border border-gray-400 bg-gray-200 px-4 py-2">
+          <div className="inline-block  bg-gray-200 px-4 py-2">
             <p className="text-xs text-gray-500 -rotate-1">"{t('motto')}"</p>
           </div>
         </div>

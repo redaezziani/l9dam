@@ -23,8 +23,12 @@ const Navigation = () => {
           <Link href="/distributors" className="hover:underline">
             {t('navLinks.distributors')}
           </Link>
-          <Link href="/about" className="hover:underline">
+          <Link href="/about-us" className="hover:underline">
             {t('navLinks.about')}
+          </Link>
+
+          <Link href="/cart" className="hover:underline">
+            {t('navLinks.cart')}
           </Link>
         </nav>
       </div>
