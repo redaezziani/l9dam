@@ -1,16 +1,13 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import InstagramAnimation from '../footer/instagram-animation';
-import WhatsappAnimation from '../footer/whatsapp-animation';
-import TiktokAnimation from '../footer/tiktok-animation';
 
 const Footer = () => {
   const t = useTranslations('Common.Footer');
   const tHeader = useTranslations('Common.Header');
 
   return (
-    <footer className="w-full relative z-9999 border-t border-[#b1aea1] bg-[#f9f8f517] backdrop-blur-sm">
+    <footer className="w-full relative z-9999 border-t border-[#b1aea1]  backdrop-blur-sm">
       <div className="max-w-360 mx-auto px-4 py-8">
         <div className="mt-8  md:hidden">
           <nav className="grid grid-cols-2 gap-4 mb-6">
