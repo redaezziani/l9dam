@@ -6,9 +6,13 @@ const HeroSection = () => {
 
   return (
     <section className="w-full md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6 px-4">
-      <ImageSlider />
+      <span className=" relative max-w-96">
+        <img src={'/images/slider/image-2.png'} alt="product-preview" />
+      </span>
       <div className="flex flex-2 flex-col gap-4">
-        <p className="text-sm text-[#b1aea1] ">{t('product.description')}</p>
+        <p className="text-sm text-[#b1aea1] font-semibold leading-relaxed ">
+          {t('product.description')}
+        </p>
         <div className=" flex gap-3 justify-start items-center mt-6">
           <Link
             href=""
