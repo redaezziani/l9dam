@@ -7,7 +7,7 @@ const Footer = () => {
   const tHeader = useTranslations('Common.Header');
 
   return (
-    <footer className="w-full relative z-9999 border-t border-[#b1aea1]  backdrop-blur-sm">
+    <footer className="w-full relative z-9999  border-t border-[#b1aea1]  ">
       <div className="max-w-360 mx-auto px-4 py-8">
         <div className="mt-8  md:hidden">
           <nav className="grid grid-cols-2 gap-4 mb-6">
