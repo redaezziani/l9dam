@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BaseLayout from '../../components/layout/base-layout';
 import AnimatedBtn from '@/src/components/retroui/animated-btn';
+import Image from 'next/image';
 
 const AboutUsPage = () => {
   const t = useTranslations('AboutPage');
@@ -33,10 +34,14 @@ const AboutUsPage = () => {
   return (
     <BaseLayout>
       <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-2">
-        <img
+        <Image
           alt="preview"
           src="/images/slider/image-1.webp"
           className="w-full mb-6"
+          width={800}
+          height={400}
+          placeholder="blur"
+          blurDataURL="/images/slider/image-1-blur.webp"
         />
         <div className="  p-2 mb-4">
           <h1 className="text-xl font-bold uppercase text-gray-800 mb-2">
