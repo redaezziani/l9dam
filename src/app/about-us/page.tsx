@@ -121,7 +121,7 @@ const AboutUsPage = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                  className="w-full p-2 border    text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
                   placeholder={t('contactForm.namePlaceholder')}
                 />
               </div>
@@ -140,7 +140,7 @@ const AboutUsPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                  className="w-full p-2 border    text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
                   placeholder={t('contactForm.emailPlaceholder')}
                 />
               </div>
@@ -159,7 +159,7 @@ const AboutUsPage = () => {
                 value={formData.subject}
                 onChange={handleInputChange}
                 required
-                className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
+                className="w-full p-2 border    text-gray-700 text-sm focus:border-gray-600 focus:outline-none"
               >
                 <option value="">{t('contactForm.subjectPlaceholder')}</option>
                 <option value="product-inquiry">
@@ -192,7 +192,7 @@ const AboutUsPage = () => {
                 onChange={handleInputChange}
                 required
                 rows={5}
-                className="w-full p-2   text-gray-700 text-sm focus:border-gray-600 focus:outline-none resize-none"
+                className="w-full p-2 border   text-gray-700 text-sm focus:border-gray-600 focus:outline-none resize-none"
                 placeholder={t('contactForm.messagePlaceholder')}
               />
             </div>
@@ -200,7 +200,7 @@ const AboutUsPage = () => {
             <div className="flex justify-start pt-4">
               <button
                 type="submit"
-                className="win7-btn bg-primary text-white px-4 py-2 mr-4"
+                className="win7-btn text-stone-600 px-4 py-2 mr-4"
               >
                 {t('contactForm.submit')}
               </button>
