@@ -1,4 +1,3 @@
-'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import AnimatedBtn from '../retroui/animated-btn';

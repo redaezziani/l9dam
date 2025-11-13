@@ -32,7 +32,7 @@ const AboutUsPage = () => {
 
   return (
     <BaseLayout>
-      <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-8">
+      <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-2">
         <img
           alt="preview"
           src="/images/slider/image-1.webp"
@@ -215,33 +215,6 @@ const AboutUsPage = () => {
               </button>
             </div>
           </form>
-        </div>
-
-        <div className="mt-8   p-4">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-700 uppercase mb-2">
-                {t('getInTouch.title')}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {t('getInTouch.description')}
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <button className="win7-btn text-stone-600" type="button">
-                {t('getInTouch.contactButton')}
-              </button>
-              <button className="win7-btn text-stone-600" type="button">
-                {t('getInTouch.productsButton')}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-6 text-center">
-          <div className="inline-block  bg-gray-200 px-4 py-2">
-            <p className="text-xs text-gray-500 -rotate-1">"{t('motto')}"</p>
-          </div>
         </div>
       </section>
     </BaseLayout>
