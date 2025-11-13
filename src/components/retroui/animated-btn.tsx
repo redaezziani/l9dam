@@ -12,12 +12,12 @@ const AnimatedBtn = ({
 }: AnimatedBtnProps) => {
   return (
     <Link
-      className=" relative"
+      className=" relative z-10"
       href={href}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <button className="relative z-9999999 block w-[170px] rounded-[20px] bg-primary text-white text-base font-bold leading-10 text-center no-underline pl-5 transition-transform duration-200 ease-in-out hover:scale-105 ">
+      <button className=" z-9999999  w-[170px] rounded-[20px] bg-primary text-white   leading-10 text-center no-underline pl-5 transition-transform duration-200 ease-in-out hover:scale-105 ">
         {children}
       </button>
       <img
