@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import BaseLayout from '../../components/layout/base-layout';
+import AnimatedBtn from '@/src/components/retroui/animated-btn';
 
 const AboutUsPage = () => {
   const t = useTranslations('AboutPage');
@@ -199,7 +200,7 @@ const AboutUsPage = () => {
             <div className="flex justify-start pt-4">
               <button
                 type="submit"
-                className="win7-btn text-stone-600 px-6 py-2"
+                className="win7-btn bg-primary text-white px-4 py-2 mr-4"
               >
                 {t('contactForm.submit')}
               </button>

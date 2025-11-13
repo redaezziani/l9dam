@@ -205,6 +205,45 @@ img {
   filter: url(#noise);
 }
 
+/*
+btn style 
+*/
+
+/* .diiWrA {
+  position: fixed;
+  align-self: center;
+  bottom: 25px;
+  display: flex;
+  justify-content: center;
+  left: 0px;
+  right: 0px;
+}
+
+.lbETzY {
+  background: rgb(97, 87, 255);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.33) 0px 2px 14px;
+  color: rgb(255, 255, 255);
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 40px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  width: 170px;
+  z-index: 2147483645;
+}
+
+.lbETzY::before {
+  background: url('https://media.giphy.com/media/l41K1gfrUz1HDohvG/100.gif') center center / contain no-repeat;
+  content: '';
+  height: 40px;
+  left: 0px;
+  position: absolute;
+  top: -8px;
+  width: 40px;
+} */
 body {
   font-family: 'Cairo', sans-serif;
 }

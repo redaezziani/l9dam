@@ -1,6 +1,8 @@
+'use client';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import ImageSlider from './image-slider';
+import AnimatedBtn from '../retroui/animated-btn';
 const HeroSection = () => {
   const t = useTranslations('HomePage');
 
@@ -14,12 +16,7 @@ const HeroSection = () => {
           {t('product.description')}
         </p>
         <div className=" flex gap-3 justify-start items-center mt-6">
-          <Link
-            href=""
-            className="text-sm text-stone-600 hover:text-primary underline"
-          >
-            {t('product.addToCart')}
-          </Link>
+          <AnimatedBtn>{t('product.addToCart')}</AnimatedBtn>
 
           <Link href="/about" className="text-sm text-stone-400 underline">
             {t('product.moreDetails')}
