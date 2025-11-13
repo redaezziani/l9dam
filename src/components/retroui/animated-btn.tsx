@@ -6,10 +6,7 @@ interface AnimatedBtnProps {
   href?: string;
 }
 
-const AnimatedBtn = ({
-  children,
-  href = 'https://giphy.page.link/home',
-}: AnimatedBtnProps) => {
+const AnimatedBtn = ({ children, href = '/' }: AnimatedBtnProps) => {
   return (
     <Link
       className=" relative z-10"
