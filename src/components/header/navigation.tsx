@@ -22,7 +22,7 @@ const Navigation = () => {
           <img src="/images/header-img.gif" alt="Brand Name" className="w-60" />
         </div>
 
-        <nav className="border-t py-2 border-[#b1aea1] font-semibold text-[#b1aea1] text-sm w-full flex gap-2 md:gap-20 items-center">
+        <nav className="border-t py-2 border-[#4a403a55] font-semibold text-[#4a403a] text-sm w-full flex gap-2 md:gap-20 items-center">
           {links.map(({ href, label }) => (
             <Link
               key={href}

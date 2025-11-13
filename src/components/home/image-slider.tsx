@@ -37,7 +37,7 @@ const ImageSlider = () => {
       </div>
       <button
         onClick={scrollLeft}
-        className="absolute z-9999 left-1 h-10 top-1/2  -translate-y-1/2 border! rounded-none! bg-[#b1aea1]  border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
+        className="absolute z-9999 left-1 h-10 top-1/2  -translate-y-1/2 border! rounded-none! bg-[#4a403a]  border-[#4a403a] p-2 hover:bg-[#4a403a]"
         type="button"
       >
         <svg
@@ -54,7 +54,7 @@ const ImageSlider = () => {
       </button>
       <button
         onClick={scrollRight}
-        className="absolute z-9999 right-1 h-10!  top-1/2 -translate-y-1/2 bg-[#b1aea1] border! rounded-none! border-[#b1aea1] p-2 hover:bg-[#b1aea1]"
+        className="absolute z-9999 right-1 h-10!  top-1/2 -translate-y-1/2 bg-[#4a403a] border! rounded-none! border-[#4a403a] p-2 hover:bg-[#4a403a]"
         type="button"
       >
         <svg

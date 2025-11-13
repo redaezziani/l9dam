@@ -16,24 +16,13 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang={locale} dir={dir}>
       <body
-        className="flex flex-col   relative min-h-screen justify-start items-center"
+        className="flex flex-col  bg-[#fdfce5a4]  relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
-        <svg width="0" height="0">
-          <filter id="noise">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency=".4"
-              numOctaves="3"
-              result="noise"
-            />
-            <feBlend in="SourceGraphic" in2="noise" mode="multiply" />
-          </filter>
-        </svg>
-        <span className="  z-999 bg-[#ff715115] w-full h-screen fixed " />
+        {/* <span className="  z-999 bg-[#ff715115] w-full h-screen fixed " /> */}
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1 w-full">{children}</main>
+          <main className="flex-1  w-full">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

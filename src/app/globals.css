@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;500;600;700&display=swap');
 @font-face {
   font-family: 'tahoma';
   src: url('/fonts/tahoma.ttf') format('truetype');
@@ -241,5 +240,6 @@ btn style
   width: 40px;
 } */
 body {
-  font-family: 'Cairo', sans-serif;
+  font-family: 'Scheherazade New', serif;
+  background-color: #fdfce5;
 }

@@ -7,13 +7,13 @@ const Footer = () => {
   const tHeader = useTranslations('Common.Header');
 
   return (
-    <footer className="w-full relative z-9999  border-t border-[#b1aea1]  ">
+    <footer className="w-full relative z-9999  border-t border-[#4a403a55]  ">
       <div className="max-w-360 mx-auto px-4 py-8">
         <div className="mt-8  md:hidden">
           <nav className="grid grid-cols-2 gap-4 mb-6">
             <Link
               href="/"
-              className="group relative  text-[#b1aea1]   py-3 px-4  "
+              className="group relative  text-[#4a403a]   py-3 px-4  "
             >
               <span className="relative   text-sm uppercase">
                 {tHeader('navLinks.home')}
@@ -22,7 +22,7 @@ const Footer = () => {
 
             <Link
               href="/store"
-              className="group relative  text-[#b1aea1]   py-3 px-4  "
+              className="group relative  text-[#4a403a]   py-3 px-4  "
             >
               <span className="relative    text-sm uppercase">
                 {tHeader('navLinks.store')}
@@ -31,7 +31,7 @@ const Footer = () => {
 
             <Link
               href="/distributors"
-              className="group relative  text-[#b1aea1]   py-3 px-4  "
+              className="group relative  text-[#4a403a]   py-3 px-4  "
             >
               <span className="relative   text-sm uppercase">
                 {tHeader('navLinks.distributors')}
@@ -40,7 +40,7 @@ const Footer = () => {
 
             <Link
               href="/about"
-              className="group relative  text-[#b1aea1]   py-3 px-4  "
+              className="group relative  text-[#4a403a]   py-3 px-4  "
             >
               <span className="relative   text-sm uppercase">
                 {tHeader('navLinks.about')}
@@ -49,7 +49,7 @@ const Footer = () => {
 
             <Link
               href="/contact"
-              className="group relative  text-[#b1aea1]   py-3 px-4   col-span-2"
+              className="group relative  text-[#4a403a]   py-3 px-4   col-span-2"
             >
               <span className="relative   text-sm uppercase">
                 {tHeader('navLinks.contact')}
@@ -101,7 +101,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="text-sm w-full text-[#b1aea1] underline  text-start md:text-right">
+            <div className="text-sm w-full text-[#4a403a] underline  text-start md:text-right">
               <p>
                 {new Date().getFullYear()} {t('copyright.company')}.{' '}
                 {t('copyright.rights')}
@@ -116,13 +116,13 @@ const Footer = () => {
             <div className="space-y-2">
               <Link
                 href="?locale=en"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('language.english')}
               </Link>
               <Link
                 href="?locale=ar"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('language.arabic')}
               </Link>
@@ -134,7 +134,7 @@ const Footer = () => {
             <div className="space-y-2">
               <Link
                 href="/contact"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('company.contact')}
               </Link>
@@ -145,19 +145,19 @@ const Footer = () => {
             <div className="space-y-2">
               <Link
                 href="/privacy-policy"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('legal.privacy')}
               </Link>
               <Link
                 href="/terms-conditions"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('legal.terms')}
               </Link>
               <Link
                 href="/shipping-returns"
-                className="block text-[#b1aea1] underline  hover:text-foreground transition-colors"
+                className="block text-[#4a403a] underline  hover:text-foreground transition-colors"
               >
                 {t('legal.shipping')}
               </Link>

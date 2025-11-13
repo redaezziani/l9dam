@@ -25,7 +25,7 @@ const LangSwitcher = () => {
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: '12px',
-        color: '#b1aea1',
+        color: '#4a403a',
         cursor: 'pointer',
       }}
     >
