@@ -38,7 +38,7 @@ const AboutUsPage = () => {
           src="/images/slider/image-1.webp"
           className="w-full mb-6"
         />
-        <div className="  p-4 mb-6">
+        <div className="  p-2 mb-4">
           <h1 className="text-xl font-bold uppercase text-gray-800 mb-2">
             {t('title')}
           </h1>
@@ -46,8 +46,8 @@ const AboutUsPage = () => {
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Left Column - Main Info */}
-          <div className="flex-2 space-y-6">
-            <div className="  p-4">
+          <div className="flex-2 space-y-4">
+            <div className="  p-2">
               <h2 className="text-lg font-semibold mb-3 text-gray-700 uppercase">
                 {t('story.title')}
               </h2>
@@ -59,7 +59,7 @@ const AboutUsPage = () => {
               </p>
             </div>
 
-            <div className="  p-4">
+            <div className="  p-2">
               <h2 className="text-lg font-semibold mb-3 text-gray-700 uppercase">
                 {t('mission.title')}
               </h2>
@@ -94,7 +94,7 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        <div className="mt-8   p-6">
+        <div className="mt-8 px-2">
           <div className="border-b border-gray-300 pb-4 mb-6">
             <h3 className="text-xl font-semibold text-gray-700 uppercase">
               {t('contactForm.title')}
@@ -106,7 +106,6 @@ const AboutUsPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Name Field */}
               <div>
                 <label
                   htmlFor="name"
