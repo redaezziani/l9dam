@@ -176,9 +176,6 @@
   filter: grayscale(18%) contrast(1.2) blur(0.6px);
 }
 
-
-
 body {
   font-family: 'Scheherazade New', serif;
-  background-color: #fdfce5;
 }

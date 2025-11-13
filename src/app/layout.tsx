@@ -16,10 +16,10 @@ export default async function RootLayout({ children }: Props) {
   return (
     <html lang={locale} dir={dir}>
       <body
-        className="flex flex-col  bg-[#fdefe532]  relative min-h-screen justify-start items-center"
+        className="flex flex-col  bg-[#fdefe5a8]  relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
-        <span className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Paper_126S.jpg')] bg-repeat bg-top bg-size-[800px_800px] opacity-20 mix-blend-multiply animate-paperMove"></span>
+        <span className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Paper_126S.jpg')] bg-repeat bg-top bg-size-[900px_900px] opacity-15 mix-blend-multiply animate-paperMove"></span>
 
         {/* <span className="  z-999 bg-[#ff715115] w-full h-screen fixed " /> */}
         <NextIntlClientProvider>
