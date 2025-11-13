@@ -35,7 +35,7 @@ const AboutUsPage = () => {
       <section className="w-full relative z-9999 max-w-4xl mx-auto px-4 py-8">
         <img
           alt="preview"
-          src="/images/slider/image-1.png"
+          src="/images/slider/image-1.webp"
           className="w-full mb-6"
         />
         <div className="  p-4 mb-6">

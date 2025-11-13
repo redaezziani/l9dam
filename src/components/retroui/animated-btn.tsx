@@ -14,7 +14,7 @@ const AnimatedBtn = ({ children, href = '/' }: AnimatedBtnProps) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <button className=" z-9999999  w-[170px] rounded-[20px] bg-primary text-white   leading-10 text-center no-underline pl-5 transition-transform duration-200 ease-in-out hover:scale-105 ">
+      <button className=" z-9999999  w-[170px]  bg-primary text-white   leading-10 text-center no-underline pl-5 transition-transform duration-200 ease-in-out hover:scale-105 ">
         {children}
       </button>
       <img

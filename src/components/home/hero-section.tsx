@@ -14,7 +14,7 @@ const HeroSection = () => {
         <p className="text-sm text-[#b1aea1] font-semibold leading-relaxed ">
           {t('product.description')}
         </p>
-        <div className=" flex gap-3 justify-start items-center mt-6">
+        <div className=" flex gap-3 justify-start z-99999 items-center mt-6">
           <AnimatedBtn>{t('product.addToCart')}</AnimatedBtn>
           <Link href="/about-us" className="text-sm text-stone-400 underline">
             {t('product.moreDetails')}
