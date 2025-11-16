@@ -2,6 +2,7 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import LangSwitcher from './lang-switcher';
 
 const Navigation = () => {
   const t = useTranslations('Common.Header');
@@ -9,20 +10,13 @@ const Navigation = () => {
 
   const links = [
     { href: '/', label: t('navLinks.home') },
-    { href: '/store', label: t('navLinks.store') },
-    { href: '/distributors', label: t('navLinks.distributors') },
     { href: '/about-us', label: t('navLinks.about') },
-    { href: '/cart', label: t('navLinks.cart') },
   ];
 
   return (
-    <div className="flex w-full px-4 justify-between items-center">
-      <div className="flex max-w-[70%] md:max-w-[90%] w-full flex-col gap-1">
-        <div className="flex w-full justify-between">
-          <img src="/images/header-img.gif" alt="Brand Name" className="w-60" />
-        </div>
-
-        <nav className="border-t py-2 border-[#4a403a55] font-semibold text-[#4a403a] text-sm w-full flex gap-2 md:gap-20 items-center">
+    <div className="flex border-[#4a403a55] border-b w-full   justify-between items-center">
+      <div className="flex  w-52 flex-col gap-1">
+        <nav className=" py-2  font-semibold text-[#4a403a] text-sm w-full flex gap-2 md:gap-20 items-center">
           {links.map(({ href, label }) => (
             <Link
               key={href}
@@ -36,12 +30,11 @@ const Navigation = () => {
           ))}
         </nav>
       </div>
-
-      <img
-        src="/images/flip-logo.gif"
-        alt="Brand Flip Icon"
-        className="w-24 pixelated"
-      />
+      <span className=" flex gap-2 items-center">
+        <Link href="/cart"> {t('navLinks.cart')} </Link>
+         {'/'}
+        <LangSwitcher />
+      </span>
     </div>
   );
 };

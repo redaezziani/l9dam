@@ -9,9 +9,10 @@ const LangSwitcher = () => {
   const locale = useLocale();
   const router = useRouter();
 
-  const handleLanguageChange = (newLocale: string) => {
-    if (newLocale === locale) return;
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
+  const targetLocale = locale === 'en' ? 'ar' : 'en';
+
+  const handleLanguageChange = () => {
+    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000`;
     startTransition(() => {
       router.refresh();
     });
@@ -19,32 +20,15 @@ const LangSwitcher = () => {
 
   return (
     <div
+      onClick={handleLanguageChange}
       style={{
-        display: 'flex',
-        gap: '8px',
-        alignItems: 'center',
-        justifyContent: 'center',
         fontSize: '12px',
         color: '#4a403a',
         cursor: 'pointer',
+        textDecoration: 'underline',
       }}
     >
-      <p
-        onClick={() => handleLanguageChange('en')}
-        style={{
-          textDecoration: locale === 'en' ? 'underline' : 'none',
-        }}
-      >
-        {t('en')}
-      </p>
-      <p
-        onClick={() => handleLanguageChange('ar')}
-        style={{
-          textDecoration: locale === 'ar' ? 'underline' : 'none',
-        }}
-      >
-        {t('ar')}
-      </p>
+      {t(targetLocale)}
     </div>
   );
 };

@@ -5,8 +5,13 @@ const HeroSection = () => {
 
   return (
     <section className="w-full md:max-w-360 md:justify-between flex flex-col md:flex-row gap-6 px-4">
-      <span className=" relative max-w-96">
+      <span className=" relative flex justify-center items-center  max-w-96">
         <img src={'/images/slider/image-2.png'} alt="product-preview" />
+        <img
+          src={'/images/flip-logo.gif'}
+          alt="shadow"
+          className=" absolute bottom-0  w-32"
+        />
       </span>
       <div className="flex flex-2 flex-col gap-4">
         <p className="text-sm text-[#4a403a] font-semibold leading-relaxed ">
