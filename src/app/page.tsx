@@ -10,9 +10,9 @@ export default function HomePage() {
     <BaseLayout>
       <Link href={'/store'} className=" fixed bottom-2 z-99999999">
         <img
-          src={'/images/flip-animation.gif'}
+          src={'/images/flip-anima.gif'}
           alt="flip-bu"
-          className="w-28 h-28"
+          className="w-28 pixelated h-28"
         />
       </Link>
       <HeroSection />
