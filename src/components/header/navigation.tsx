@@ -16,7 +16,7 @@ const Navigation = () => {
   return (
     <div className="flex border-[#4a403a55] border-b w-full   justify-between items-center">
       <div className="flex  w-52 flex-col gap-1">
-        <nav className=" py-2  font-semibold text-[#4a403a] text-sm w-full flex gap-2 md:gap-20 items-center">
+        <nav className=" py-2  font-semibold text-[#4a403a] text-sm w-full flex gap-6 md:gap-20 items-center">
           {links.map(({ href, label }) => (
             <Link
               key={href}
@@ -32,7 +32,7 @@ const Navigation = () => {
       </div>
       <span className=" flex gap-2 items-center">
         <Link href="/cart"> {t('navLinks.cart')} </Link>
-         {'/'}
+        {'/'}
         <LangSwitcher />
       </span>
     </div>
