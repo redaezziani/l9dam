@@ -24,7 +24,7 @@ const HeroSection = () => {
 
       <div className="flex flex-col md:flex-row gap-6 md:justify-between">
         <span className="relative flex justify-center items-center max-w-96">
-          <img src={'/images/slider/image-2.png'} alt="product-preview" />
+          <img src={'/images/home-page.png'} alt="product-preview" />
         </span>
       </div>
 
