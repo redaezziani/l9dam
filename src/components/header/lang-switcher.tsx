@@ -27,6 +27,7 @@ const LangSwitcher = () => {
         cursor: 'pointer',
         textDecoration: 'underline',
       }}
+      className=" select-none"
     >
       {t(targetLocale)}
     </div>
