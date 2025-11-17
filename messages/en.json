@@ -63,15 +63,32 @@
       "notFound": "Page not found"
     }
   },
+
   "HomePage": {
     "product": {
       "title": "La9odam Modern Sports Shoe",
-      "description": "Experience comfort and style with La9odam — a sleek, lightweight, and durable design built to keep you moving forward. Perfect for everyday wear and athletic performance.",
+      "description": "Experience comfort and style with La9odam – a sleek, lightweight, and durable design built to keep you moving forward. Perfect for everyday wear and athletic performance.",
       "inStock": "In stock",
       "price": "Price",
       "unit": "AED",
       "addToCart": "Add to cart",
       "moreDetails": "More details"
+    },
+    "hero": {
+      "story": {
+        "intro": "We revived a design that has proven itself for over a century.",
+        "collaboration": "And in collaboration with the original manufacturer, the Dafu Rubber Factory in Shanghai, we built Lqdam: a shoe made from natural canvas fabric and a rubber sole.",
+        "qualities": "Lqdam… light, comfortable, and durable, designed to provide lasting comfort, simply, without complexity, and at a fair price.",
+        "message": "Lqdam is a message and a voice we want everyone to hear. A message that says the right must return to its rightful owners, and that you should be bold and unafraid… always moving forward.",
+        "learnMore": "Learn more about our story here."
+      },
+      "philosophy": {
+        "intro": "In a time full of noise and complexity, we decided to search for authenticity and justice… for simplicity, and for the spirit that empowers everyone to express themselves without fear.",
+        "design": "We brought back the design that has always been a symbol of Shaolin strength; the shoe worn by Kung Fu masters, which was called the  \"National Shoe\" in China, worn by celebrities, and appeared in championships and Olympic games.",
+        "simplicity": "A timeless classic design… made from simple materials proven to be comfortable, lightweight, and durable. A simplicity that shows how things without pretense are the ones that last.",
+        "collaboration": "And we worked with the original factory, the factory that lost its right to sell its products due to an unjust legal battle, and we decided to return to them the right that was taken from them.",
+        "learnMore": "Learn more about Lqdam… and about Dafu, the factory that started the story."
+      }
     }
   },
   "AboutPage": {
