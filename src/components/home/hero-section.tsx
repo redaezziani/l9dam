@@ -8,7 +8,7 @@ const HeroSection = () => {
     <section className="w-full md:max-w-360  pb-4 flex flex-col gap-6 px-4">
       <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
 
-      <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-4">
+      <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-2">
         <p>{t('hero.story.title')}</p>
         <p>{t('hero.story.intro')}</p>
         <p>{t('hero.story.collaboration')}</p>
@@ -28,10 +28,10 @@ const HeroSection = () => {
         </span>
       </div>
 
-      <div className="text-sm text-[#4a403a] leading-relaxed space-y-4">
+      <div className="text-sm text-[#4a403a] leading-relaxed space-y-2">
         <p>{t('hero.philosophy.intro')}</p>
 
-        <p className="text-sm text-[#4a403a] leading-relaxed space-y-4">
+        <p className="text-sm text-[#4a403a] leading-relaxed space-y-2">
           {t('hero.philosophy.design')}
         </p>
 
