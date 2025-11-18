@@ -6,7 +6,9 @@ const HeroSection = () => {
 
   return (
     <section className="w-full md:max-w-360  pb-4 flex flex-col gap-6 px-4">
-      <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
+      <div className="flex w-full justify-center items-center ">
+        <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
+      </div>
 
       <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-2">
         <p>{t('hero.story.intro')}</p>
