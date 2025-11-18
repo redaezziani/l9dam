@@ -10,9 +10,9 @@ const HeroSection = () => {
 
       <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-2">
         <p>{t('hero.story.intro')}</p>
-        <p>{t('hero.story.collaboration')}</p>
-        <p>{t('hero.story.history')}</p>
+        <p>{t('hero.story.origins')}</p>
         <p>{t('hero.story.qualities')}</p>
+        <p>{t('hero.story.collaboration')}</p>
         <Link
           href="/about-us"
           className="text-sm text-[#4a403aca] underline inline-block"
