@@ -29,12 +29,18 @@ const AboutUsPage = () => {
         </div>
 
         <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
-          <h2 className="text-lg font-semibold mt-2">{t('inspirationTitle')}</h2>
+          <h2 className="text-lg font-semibold mt-2">
+            {t('inspirationTitle')}
+          </h2>
           <p className="mt-2">{t('inspiration')}</p>
         </div>
 
         <div className="w-full mt-2">
-          <img src={t('heroImage')} alt="hero" className="w-full object-cover" />
+          <img
+            src={t('heroImage')}
+            alt="hero"
+            className="w-full object-cover"
+          />
         </div>
 
         <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
