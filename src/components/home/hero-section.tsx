@@ -33,8 +33,12 @@ const HeroSection = () => {
         <p className="text-sm text-[#4a403a] leading-relaxed space-y-2">
           {t('hero.philosophy.design')}
         </p>
-
         <p>{t('hero.philosophy.simplicity')}</p>
+
+        <p className="text-sm text-[#4a403a] leading-relaxed space-y-2">
+          {t('hero.philosophy.message')}
+        </p>
+
         <Link
           href="/about-us"
           className="text-sm text-[#4a403aca] underline inline-block"
