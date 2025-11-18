@@ -143,4 +143,19 @@
     },
     "motto": "Bringing back the classics, one product at a time"
   }
+
+  ,
+  "AboutFull": {
+    "title": "Lqdam — Our Story",
+    "intro": "In a world full of noise — notifications, trends that last minutes, designs that try too hard, and marketing that manipulates more than it inspires — Lqdam began with the courage to simplify.\nA movement built on the belief that real progress starts with honesty, not hype; with roots, not noise.\nLqdam means “Leap Forward” in Arabic.\nWe believed that in order to leap forward, we must first look back.\nLqdam returns to the past not out of nostalgia, but out of clarity.\nWe looked back so we can move forward with intention and purpose — with meaning, clarity, and a sense of who we are.\nLqdam is born from the Arab spirit — from a generation of young people whose voices, talents, and ideas deserve to be seen and heard, and whose culture lives in everything they do: in the way they walk, dress, move, create, and carry their stories forward.\nThis movement exists to empower and include.\nTo stand with the underrepresented.\nTo give space to stories that rarely appear in glossy campaigns.\nTo celebrate our humor, our roots, our identity, and the shared culture that connects us across borders.",
+
+    "inspirationTitle": "Where Our Inspiration Began",
+    "inspiration": "To understand Lqdam, you have to step into Shanghai — into its narrow alleyways, old martial arts schools, and the workshops of Dafu Rubber Company.\nFor decades, they crafted the Shanghai kung-fu shoe — a simple canvas shoe worn by Shaolin monks, kung-fu masters, students, workers, and everyday people who just needed something honest and reliable.\nThat shoe travelled through time not because of trends or marketing, but because it worked.\nIt became a cultural symbol, carried across generations and borders, shaped by the people who lived in it.\nIts journey wasn’t always simple — ownership shifted, stories changed, the world got louder — but the spirit never faded.\nA humble design, built with sincerity, earned its place in history.\nThat spirit is what inspired us.",
+
+    "whyTitle": "Why Lqdam Exists",
+    "why": "We chose to work directly with the original makers in Shanghai to revive the essence of the Shanghai kung-fu shoe — not as a replica of the past, but as a foundation for movement, meaning, and modern purpose.\nLqdam is here to remind us that simplicity is strength.\nThat heritage is not a burden, but a compass.\nAnd that a real leap forward happens when you understand where you came from and where you want to go.\nThis is a shoe made for movement — physical, cultural, and personal.\nMade for the young voices shaping tomorrow.\nMade for the storytellers, the fighters, the creators, the overlooked, the bold.\nA shoe made to inspire you to move —\nclearly, honestly, confidently —\nalways forward… لقدّام.",
+
+    "videoUrl": "https://www.youtube.com/embed/EslrDVTja48",
+    "heroImage": "/images/home-page.png"
+  }
 }
