@@ -28,7 +28,10 @@ const AboutUsPage = () => {
               />
 
               {/* Overlay layers: scanlines + subtle flicker noise + occasional color-shift strip */}
-              <div className="pointer-events-none absolute inset-0" style={{ zIndex: 9999 }}>
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ zIndex: 9999 }}
+              >
                 <div className="absolute inset-0 glitch-scanlines" />
                 <div className="absolute inset-0 glitch-noise" />
                 <div className="absolute inset-0 glitch-strip" />
