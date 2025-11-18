@@ -15,6 +15,16 @@
   font-display: swap;
 }
 
+/* Ethereal font: used for English locale */
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/ethereal.woff2') format('woff2'),
+    url('/fonts/ethereal.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import 'tailwindcss';
 
 @theme {
@@ -50,6 +60,8 @@
 
 :root {
   --font-pixelae: 'PixelAE', monospace;
+  --font-ethereal: 'Ethereal', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
   --radius: 0.3rem;
   --background: #fff;
   --foreground: #000;
@@ -178,4 +190,9 @@
 
 body {
   font-family: 'Scheherazade New', serif;
+}
+
+/* When page language is English, use Ethereal as the primary font */
+html:lang(en) body {
+  font-family: var(--font-ethereal);
 }
