@@ -76,19 +76,18 @@
     },
     "hero": {
       "story": {
-        "title": "In a world crowded with overdesigned footwear and loud marketing that tries too hard, we chose to go back in time.",
-        "intro": "Back to authenticity, fairness, and the kind of simplicity that speaks for itself.",
-        "collaboration": "We brought back a design that has always been a symbol of Shaolin strength — the shoe worn by kung fu masters, seen in Shaolin temples, on global stages, and at the Olympics.",
-        "qualities": "A timeless design that never ages… made from simple materials that proved to be comfortable, light, and durable. A reminder that the things made without show-off are the ones that truly last.",
-        "message": "And we worked with the original factory — the one that lost the rights to its own creation because of an unfair legal battle — and decided to help return what was taken from them. Because fairness matters, and craft deserves to stay with the hands that built it.",
-        "learnMore": "Learn more about Lqdam… and about Dafu, the factory that started the story"
+        "intro": "In a world crowded with overdesigned footwear and loud marketing that tries too hard, we chose to go back in time—back to authenticity, fairness, and simplicity that speaks for itself.",
+        "origins": "We revived a design that has always been a symbol of Shaolin strength and discipline: the shoe worn by kung fu masters, seen in Henan Tempels, on global stages, and at the Olympics.",
+        "qualities": "It's a timeless design that doesn’t age, crafted from simple materials proven to be comfortable, light, and durable. This shoe is a reminder that the things made without show-off or noise are the ones that truly last.",
+        "collaboration": "We partnered with the original factory—the one that lost the rights to its own creation after an unfair legal battle. We chose to help return what was taken from them. Because fairness matters. Because craft should remain in the hands that built it.",
+        "learnMore": "Learn more about Lqdam and about DAFU Rubber Company, the factory that started the story."
       },
       "philosophy": {
-        "intro": "From the streets of Shanghai and the Shaolin Temples in Henan, China, our inspiration began. We revived a design that has proven itself for over a century.",
-        "design": "And in collaboration with the original manufacturer, the Dafu Rubber Company in Shanghai, we built Lqdam: a shoe made with a natural canvas upper and a rubber sole.",
-        "simplicity": "Every pair carries the same spirit as the original — flexible, steady, and made for movement. Lqdam is light, comfortable, and built to last, designed to provide lasting comfort, simply, without complexity, and at a fair price.",
-        "collaboration": "Lqdam, which means Leap Forward in Arabic, is a movement and a voice we want everyone to hear. A message that says: what’s right should return to its people, and you should stand bold, stay unafraid… always moving forward.",
-        "learnMore": "Learn more about our story here"
+        "intro": "From the streets of Shanghai and the Shaolin temples of Henan, China, our inspiration began. We revived a design that has proven itself for over a century.",
+        "design": "In collaboration with the original manufacturer, the Dafu Rubber Company in Shanghai, we built Lqdam—a shoe made with a natural cotton canvas upper and a durable rubber sole.",
+        "simplicity": "Every pair carries the same spirit as the original: flexible, steady, and made for movement. Lqdam is light, comfortable, and built to last—designed to offer lasting comfort, simply, without complexity, and at a fair price.",
+        "message": "Lqdam, which means \"Leap Forward\" in Arabic, is a movement and a voice we want everyone to hear. It's a message that says: what was taken should be returned to its rightful owners, and that you should stand bold, stay unafraid, and always move forward.",
+        "learnMore": "Learn more about our story here."
       }
     }
   },

@@ -1,14 +1,32 @@
 'use client';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { startTransition } from 'react';
 import Link from 'next/link';
 
 const Footer = () => {
   const t = useTranslations('Common.Footer');
   const tHeader = useTranslations('Common.Header');
+  const tLang = useTranslations('Common.Header.langSwitcher');
+
+  const locale = useLocale();
+  const router = useRouter();
+
+  const targetLocale = locale === 'en' ? 'ar' : 'en';
+  const displayLangText = tLang(targetLocale);
+
+  const handleLanguageChange = () => {
+    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000`;
+    startTransition(() => {
+      router.refresh();
+    });
+  };
 
   return (
-    <footer className="w-full relative z-9999 border-t-2 border-[#4a403a]/20">
+    <footer className="w-full pb-24 relative z-9999 border-t-2 border-[#4a403a]/20">
       <div className="max-w-360 mx-auto px-4 py-6">
+        {/* Navigation Links (No change) */}
         <nav className="flex flex-wrap justify-center gap-4 mb-6">
           <Link
             href="/"
@@ -46,7 +64,7 @@ const Footer = () => {
           </Link>
         </nav>
 
-        {/* Social Media */}
+        {/* Social Media (No change) */}
         <div className="flex justify-center gap-2 mb-6">
           <a
             href="https://instagram.com/lqdam"
@@ -86,7 +104,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Legal & Language Links */}
+        {/* Legal & Language Links - MODIFIED */}
         <div className="flex flex-wrap justify-center gap-3 text-xs mb-4">
           <Link
             href="/privacy-policy"
@@ -109,22 +127,17 @@ const Footer = () => {
             {t('legal.shipping')}
           </Link>
           <span className="text-[#4a403a]">•</span>
-          <Link
-            href="?locale=en"
-            className="text-[#4a403a] hover:underline uppercase"
+
+          {/* Single Language Switcher (replicated from LangSwitcher.js logic) */}
+          <div
+            onClick={handleLanguageChange}
+            className="text-[#4a403a] hover:underline cursor-pointer select-none uppercase"
           >
-            EN
-          </Link>
-          <span className="text-[#4a403a]">•</span>
-          <Link
-            href="?locale=ar"
-            className="text-[#4a403a] hover:underline uppercase"
-          >
-            AR
-          </Link>
+            {displayLangText}
+          </div>
         </div>
 
-        {/* Copyright */}
+        {/* Copyright (No change) */}
         <div className="text-center text-xs text-[#4a403a] border-t border-[#4a403a55] pt-4">
           <p>
             © {new Date().getFullYear()} {t('copyright.company')} -{' '}

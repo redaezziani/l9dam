@@ -9,11 +9,10 @@ const HeroSection = () => {
       <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
 
       <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-2">
-        <p>{t('hero.story.title')}</p>
         <p>{t('hero.story.intro')}</p>
         <p>{t('hero.story.collaboration')}</p>
+        <p>{t('hero.story.history')}</p>
         <p>{t('hero.story.qualities')}</p>
-        <p>{t('hero.story.message')}</p>
         <Link
           href="/about-us"
           className="text-sm text-[#4a403aca] underline inline-block"
@@ -36,7 +35,6 @@ const HeroSection = () => {
         </p>
 
         <p>{t('hero.philosophy.simplicity')}</p>
-        <p>{t('hero.philosophy.collaboration')}</p>
         <Link
           href="/about-us"
           className="text-sm text-[#4a403aca] underline inline-block"
