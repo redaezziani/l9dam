@@ -5,7 +5,7 @@ const HeroSection = () => {
   const t = useTranslations('HomePage');
 
   return (
-    <section className="w-full md:max-w-360  pb-4 flex flex-col gap-6 px-4">
+    <section className="w-full text-center md:max-w-360  pb-4 flex flex-col gap-6 px-4">
       <div className="flex w-full justify-center items-center ">
         <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
       </div>
