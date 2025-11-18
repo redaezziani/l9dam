@@ -7,7 +7,7 @@ const Header = () => {
   const t = useTranslations('Common.Header');
 
   return (
-    <section className="   z-9999 relative    top-0  w-full flex justify-center items-center">
+    <section className="   z-9999  backdrop-blur-3xl sticky    top-0  w-full flex justify-center items-center">
       <header className="flex   flex-col pt-4 py-1  gap-6 w-full px-4 md:px-0 md:max-w-360 justify-start items-start">
         <Navigation />
         <div className="flex justify-between w-full">
