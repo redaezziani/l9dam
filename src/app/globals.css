@@ -15,12 +15,67 @@
   font-display: swap;
 }
 
-/* Ethereal font: used for English locale */
+/* Ethereal (local demos in /public/fonts) - map available weights to files in the repo */
 @font-face {
   font-family: 'Ethereal';
-  src: url('/fonts/ethereal.woff2') format('woff2'),
-    url('/fonts/ethereal.ttf') format('truetype');
-  font-weight: 100 900;
+  src: url('/fonts/EtherealDemo-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ethereal';
+  src: url('/fonts/EtherealDemo-Black.otf') format('opentype');
+  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
@@ -192,7 +247,6 @@ body {
   font-family: 'Scheherazade New', serif;
 }
 
-/* When page language is English, use Ethereal as the primary font */
 html:lang(en) body {
   font-family: var(--font-ethereal);
 }

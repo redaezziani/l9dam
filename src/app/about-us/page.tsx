@@ -16,17 +16,12 @@ const AboutUsPage = () => {
         </div>
 
         <div className="w-full mt-4">
-          <div className="aspect-video w-full bg-black/5">
-            <div className="relative w-full h-full">
-              <iframe
-                src={t('videoUrl')}
-                title="Lqdam Video"
-                className="w-full h-full relative z-0"
-                frameBorder={0}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
+          <div className="w-full mt-2">
+            <img
+              src={t('heroImage')}
+              alt="hero"
+              className="w-full object-cover"
+            />
           </div>
         </div>
 
