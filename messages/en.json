@@ -156,5 +156,24 @@
 
     "videoUrl": "https://www.youtube.com/embed/EslrDVTja48",
     "heroImage": "/images/home-page.png"
+  },
+  "CartPage": {
+    "title": "Cart",
+    "emptyCart": "Your cart is empty.",
+    "noImage": "No image available",
+    "quantity": "Quantity",
+    "remove": "Remove",
+    "total": "Total:"
+  },
+  "StorePage": {
+    "title": "Store",
+    "productsCount": "Products",
+    "color": "Color",
+    "selectColor": "Select color",
+    "size": "Size",
+    "selectSize": "Select size",
+    "quantity": "Quantity",
+    "addToCart": "Add to cart",
+    "moreDetails": "More details"
   }
 }

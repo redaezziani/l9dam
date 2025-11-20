@@ -1,72 +1,83 @@
 import { create } from 'zustand';
 import { api } from '../lib/utils';
 
-// TypeScript types
-interface ImageFormat {
-  name: string;
-  hash: string;
-  ext: string;
-  mime: string;
-  width: number;
-  height: number;
-  size: number;
+export interface Image {
+  id: number;
   url: string;
+  [key: string]: any;
 }
 
-interface Image {
-  id: number;
-  name: string;
-  alternativeText?: string;
-  caption?: string;
-  width: number;
-  height: number;
-  formats: {
-    thumbnail?: ImageFormat;
-    small?: ImageFormat;
-    medium?: ImageFormat;
-    large?: ImageFormat;
-  };
-  url: string;
-}
-
-interface Size {
-  id: number;
-  value: string;
-}
-
-interface Color {
-  id: number;
-  name: string;
-  hex: string;
-}
-
-interface Product {
+export interface ProductBasic {
   id: number;
   documentId: string;
   name: string;
   slug: string;
   description: string;
+  isFeatured: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+}
+
+export interface Color {
+  id: number;
+  documentId: string;
+  label: string;
+  hex: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+}
+
+export interface Size {
+  id: number;
+  documentId: string;
+  label: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+}
+
+export interface Variant {
+  id: number;
+  documentId: string;
+  sku: string;
   price: number;
   stock: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  product: ProductBasic;
+  color: Color;
+  size: Size;
+}
+
+export interface Product {
+  id: number;
+  documentId: string;
+  name: string;
+  slug: string;
+  description: string;
   isFeatured: boolean;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
   images: Image[];
-  sizes: Size[];
-  colors: Color[];
-  localizations?: Product[];
+  variants: Variant[];
 }
 
-interface Pagination {
+export interface Pagination {
   page: number;
   pageSize: number;
   pageCount: number;
   total: number;
 }
 
-interface ProductsState {
+export interface ProductsState {
   products: Product[];
   locale: string;
   pagination: Pagination | null;
@@ -76,7 +87,7 @@ interface ProductsState {
 
 export const useProductsStore = create<ProductsState>((set) => ({
   products: [],
-  locale: 'ar-AE',
+  locale: 'en',
   pagination: null,
 
   setLocale: (locale: string) => set({ locale }),
@@ -86,14 +97,15 @@ export const useProductsStore = create<ProductsState>((set) => ({
       const store = useProductsStore.getState();
       const res = await api.get('/api/products', {
         params: {
-          populate: '*',
           locale: store.locale,
           'pagination[page]': page,
           'pagination[pageSize]': pageSize,
+          'populate[variants][populate]': '*',
+          populate: 'images',
         },
       });
 
-      const productsWithImages: Product[] = res.data.data.map((p: any) => ({
+      const products: Product[] = res.data.data.map((p: any) => ({
         ...p,
         images: (p.images || []).map((img: any) => ({
           ...img,
@@ -104,7 +116,7 @@ export const useProductsStore = create<ProductsState>((set) => ({
       }));
 
       set({
-        products: productsWithImages,
+        products,
         pagination: res.data.meta?.pagination || null,
       });
     } catch (error) {

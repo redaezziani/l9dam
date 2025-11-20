@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import LangSwitcher from './lang-switcher';
+import { useCartStore } from '@/src/store/cart-store';
 
 const Navigation = () => {
   const t = useTranslations('Common.Header');
@@ -12,6 +13,10 @@ const Navigation = () => {
     { href: '/', label: t('navLinks.home') },
     { href: '/about-us', label: t('navLinks.about') },
   ];
+
+  const cartCount = useCartStore((s) =>
+    s.items.reduce((acc, it) => acc + it.quantity, 0),
+  );
 
   return (
     <div className="flex border-[#4a403a55] border-b w-full   justify-between items-center">
@@ -32,7 +37,14 @@ const Navigation = () => {
       </div>
       <span className=" flex gap-2 items-center">
         <Link href="/cart">
-          <img src={'/images/cart.png'} alt="cart" className="w-5 h-5" />
+          <div className="relative inline-block">
+            <img src={'/images/cart.png'} alt="cart" className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-3 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </div>
         </Link>
         {'/'}
         <LangSwitcher />

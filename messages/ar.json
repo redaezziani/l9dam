@@ -156,5 +156,26 @@
 
     "videoUrl": "https://www.youtube.com/embed/EslrDVTja48",
     "heroImage": "/images/home-page.png"
+  },
+  "CartPage": {
+    "title": "السلة",
+    "emptyCart": "سلتك فارغة.",
+    "noImage": "لا توجد صورة",
+    "quantity": "الكمية",
+    "remove": "إزالة",
+    "total": "المجموع:"
+  },
+  "StorePage": {
+    "title": "المتجر",
+    "productsCount": "منتجات",
+    "color": "اللون",
+    "selectColor": "اختر اللون",
+    "size": "المقاس",
+    "selectSize": "اختر المقاس",
+    "quantity": "الكمية",
+    "addToCart": "أضف إلى السلة",
+    "moreDetails": "المزيد من التفاصيل",
+    "prev": "السابق",
+    "next": "التالي"
   }
 }
