@@ -198,7 +198,8 @@
       "buyNow": "Buy Now",
       "productImages": "Product Images",
       "loading": "Loading product details...",
-      "backToStore": "Back to Store"
+      "backToStore": "Back to Store",
+      "sizeGuide": "Size Guide"
     }
   }
 }

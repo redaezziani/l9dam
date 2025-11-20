@@ -141,16 +141,26 @@ const ProductPage = () => {
               />
             </div>
           </div>
-
-          {selectedVariant && (
-            <p
-              className={`text-sm font-semibold ${
-                inStock ? 'text-green-600' : 'text-red-600'
-              }`}
+          <div className="flex gap-4 items-center mb-2 flex-wrap">
+            <Link
+              href={'/size-guide'}
+              className="text-xs underline underline-offset-4 text-gray-600"
             >
-              {inStock ? t('DetailsPage.inStock') : t('DetailsPage.outOfStock')}
-            </p>
-          )}
+              {t('DetailsPage.sizeGuide')}
+            </Link>
+
+            {selectedVariant && (
+              <p
+                className={`text-sm font-semibold ${
+                  inStock ? 'text-green-600' : 'text-red-600'
+                }`}
+              >
+                {inStock
+                  ? t('DetailsPage.inStock')
+                  : t('DetailsPage.outOfStock')}
+              </p>
+            )}
+          </div>
 
           <div className="flex items-center gap-4">
             <span className="text-blue-600 text-lg font-bold">
