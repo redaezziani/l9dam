@@ -2,7 +2,6 @@
 import { useLocale, useTranslations } from 'next-intl';
 import HeroSection from '../components/ui/hero-section';
 import BaseLayout from '../components/layout/base-layout';
-import AnimatedBtn from '../components/retroui/animated-btn';
 import Link from 'next/link';
 
 export default function HomePage() {
