@@ -25,7 +25,6 @@ const LangSwitcher = () => {
         fontSize: '12px',
         color: '#4a403a',
         cursor: 'pointer',
-        textDecoration: 'underline',
       }}
       className=" select-none"
     >

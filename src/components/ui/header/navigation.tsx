@@ -36,18 +36,18 @@ const Navigation = () => {
           ))}
         </nav>
       </div>
-      <span className=" flex gap-2 items-center">
+      <span className=" flex gap-4 justify-end  items-end">
         <Link href="/cart">
-          <div className="relative inline-block">
+          <div className="relative">
             <img src={'/images/cart.png'} alt="cart" className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-3 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-3 bg-primary text-white  text-xs w-4 h-4 flex items-center justify-center">
                 {cartCount}
               </span>
             )}
           </div>
         </Link>
-        {'/'}
+        <p className="text-gray-400">|</p>
         <LangSwitcher />
       </span>
     </div>

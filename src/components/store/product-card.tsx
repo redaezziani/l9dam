@@ -110,7 +110,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               currency: 'AED',
             }).format(minPrice)}
           </span>
-          <p className="text-xs select-none cursor-pointer" onClick={handleAdd}>
+          <p
+            className="text-xs underline underline-offset-2 select-none cursor-pointer"
+            onClick={handleAdd}
+          >
             {t('addToCart')}
           </p>
         </div>
