@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import './globals.css';
-import Header from '../components/layout/header';
-import Footer from '../components/layout/footer';
+import Header from '../components/ui/header';
+import Footer from '../components/ui/footer';
 import { getLocale } from '../i18n/request';
 
 type Props = {

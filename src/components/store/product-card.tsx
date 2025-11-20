@@ -15,8 +15,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const t = useTranslations('StorePage');
   const addItem = useCartStore((s) => s.addItem);
 
-  const colors: Color[] = Array.from(new Map(product.variants.map((v) => [v.color.id, v.color])).values());
-  const sizes: Size[] = Array.from(new Map(product.variants.map((v) => [v.size.id, v.size])).values());
+  const colors: Color[] = Array.from(
+    new Map(product.variants.map((v) => [v.color.id, v.color])).values(),
+  );
+  const sizes: Size[] = Array.from(
+    new Map(product.variants.map((v) => [v.size.id, v.size])).values(),
+  );
 
   const [sizeId, setSizeId] = useState<number | null>(sizes[0]?.id ?? null);
   const [colorId, setColorId] = useState<number | null>(colors[0]?.id ?? null);
@@ -26,7 +30,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const minPrice = Math.min(...product.variants.map((v) => v.price));
 
   const handleAdd = () => {
-    const variant = product.variants.find((v) => v.color.id === colorId && v.size.id === sizeId);
+    const variant = product.variants.find(
+      (v) => v.color.id === colorId && v.size.id === sizeId,
+    );
     const selectedSize = sizes.find((s) => s.id === sizeId) ?? null;
     const selectedColor = colors.find((c) => c.id === colorId) ?? null;
 
@@ -46,22 +52,45 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="flex w-full md:flex-row gap-4 items-start">
       <div className="flex bg-muted min-w-20 aspect-[3/4] items-center justify-center">
-        {selectedImage && <img src={selectedImage} alt={product.name} className="w-44 border border-gray-300 object-cover" />}
+        {selectedImage && (
+          <img
+            src={selectedImage}
+            alt={product.name}
+            className="w-44 border border-gray-300 object-cover"
+          />
+        )}
       </div>
 
       <div className="flex-1">
         <span className="flex justify-start items-center gap-2">
           <h2 className="font-semibold text-lg">{product.name}</h2>
-          <Link className="text-blue-600 underline block text-xs" href={`/store/${product.slug}`}>
+          <Link
+            className="text-blue-600 underline block text-xs"
+            href={`/store/${product.documentId}`}
+          >
             {t('moreDetails')}
           </Link>
         </span>
 
-        <p className="text-gray-600 text-xs line-clamp-2 mb-2">{product.description}</p>
+        <p className="text-gray-600 text-xs line-clamp-2 mb-2">
+          {product.description}
+        </p>
 
         <div className="flex gap-4 items-center mb-2">
-          <Select label={t('color')} value={colorId} onChange={setColorId} options={colors} placeholder={t('selectColor')} />
-          <Select label={t('size')} value={sizeId} onChange={setSizeId} options={sizes} placeholder={t('selectSize')} />
+          <Select
+            label={t('color')}
+            value={colorId}
+            onChange={setColorId}
+            options={colors}
+            placeholder={t('selectColor')}
+          />
+          <Select
+            label={t('size')}
+            value={sizeId}
+            onChange={setSizeId}
+            options={sizes}
+            placeholder={t('selectSize')}
+          />
           <div className="flex flex-col gap-2">
             <label className="block text-sm font-medium">{t('quantity')}</label>
             <input
@@ -76,7 +105,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className="flex items-center gap-2">
           <span className="text-blue-600 text-xs font-bold">
-            {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', { style: 'currency', currency: 'AED' }).format(minPrice)}
+            {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+              style: 'currency',
+              currency: 'AED',
+            }).format(minPrice)}
           </span>
           <p className="text-xs select-none cursor-pointer" onClick={handleAdd}>
             {t('addToCart')}
@@ -95,10 +127,20 @@ interface SelectProps {
   placeholder: string;
 }
 
-const Select: React.FC<SelectProps> = ({ label, value, onChange, options, placeholder }) => (
+const Select: React.FC<SelectProps> = ({
+  label,
+  value,
+  onChange,
+  options,
+  placeholder,
+}) => (
   <div className="flex flex-col gap-2">
     <label className="block text-sm font-medium">{label}</label>
-    <select value={value ?? ''} onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)} className="border px-2">
+    <select
+      value={value ?? ''}
+      onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}
+      className="border px-2"
+    >
       <option value="">{placeholder}</option>
       {options.map((o) => (
         <option key={o.id} value={o.id}>

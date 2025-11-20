@@ -163,7 +163,8 @@
     "noImage": "لا توجد صورة",
     "quantity": "الكمية",
     "remove": "إزالة",
-    "total": "المجموع:"
+    "total": "المجموع:",
+    "checkout": "إتمام الشراء"
   },
   "StorePage": {
     "title": "المتجر",
@@ -176,6 +177,29 @@
     "addToCart": "أضف إلى السلة",
     "moreDetails": "المزيد من التفاصيل",
     "prev": "السابق",
-    "next": "التالي"
+    "next": "التالي",
+    "loading": "جاري التحميل...",
+    "searchPlaceholder": "ابحث عن منتج...",
+    "searchLabel": "بحث عن منتج",
+    "sortByLabel": "ترتيب حسب",
+    "sortNameAsc": "الاسم (أ-ي)",
+    "sortNameDesc": "الاسم (ي-أ)",
+    "sortPriceAsc": "السعر (الأقل أولاً)",
+    "sortPriceDesc": "السعر (الأعلى أولاً)",
+    "sortDateAsc": "الأقدم أولاً",
+    "sortDateDesc": "الأحدث أولاً",
+    "DetailsPage": {
+      "title": "تفاصيل المنتج",
+      "description": "الوصف",
+      "inStock": "متوفر",
+      "notInStock": "غير متوفر",
+      "price": "السعر",
+      "unit": "د.إ",
+      "addToCart": "أضف إلى السلة",
+      "buyNow": "اشترِ الآن",
+      "productImages": "صور المنتج",
+      "loading": "جاري تحميل تفاصيل المنتج...",
+      "backToStore": "العودة إلى المتجر"
+    }
   }
 }

@@ -8,7 +8,7 @@ const AboutUsPage = () => {
 
   return (
     <BaseLayout>
-      <section className="w-full text-center relative max-w-4xl mx-auto px-4 py-8 space-y-8">
+      <section className="w-full text-center relative max-w-7xl mx-auto px-4  space-y-8">
         <h1 className="text-2xl font-bold text-gray-800">{t('title')}</h1>
 
         <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">

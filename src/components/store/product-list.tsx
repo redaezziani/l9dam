@@ -9,7 +9,7 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => (
-  <section className="col-span-4 flex flex-col gap-4">
+  <section className="col-span-4 flex flex-col gap-6">
     {products.map((product) => (
       <ProductCard key={product.id} product={product} />
     ))}

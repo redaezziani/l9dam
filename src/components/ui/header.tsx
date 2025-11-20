@@ -1,7 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import LangSwitcher from '../header/lang-switcher';
-import Navigation from '../header/navigation';
+import Navigation from './header/navigation';
 
 const Header = () => {
   const t = useTranslations('Common.Header');

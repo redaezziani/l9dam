@@ -26,7 +26,6 @@ const Footer = () => {
   return (
     <footer className="w-full pb-24 relative z-9999 border-t-2 border-[#4a403a]/20">
       <div className="max-w-360 mx-auto px-4 py-6">
-        {/* Navigation Links (No change) */}
         <nav className="flex flex-wrap justify-center gap-4 mb-6">
           <Link
             href="/"
@@ -104,7 +103,6 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Legal & Language Links - MODIFIED */}
         <div className="flex flex-wrap justify-center gap-3 text-xs mb-4">
           <Link
             href="/privacy-policy"
@@ -128,7 +126,6 @@ const Footer = () => {
           </Link>
           <span className="text-[#4a403a]">•</span>
 
-          {/* Single Language Switcher (replicated from LangSwitcher.js logic) */}
           <div
             onClick={handleLanguageChange}
             className="text-[#4a403a] hover:underline cursor-pointer select-none uppercase"
@@ -137,7 +134,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright (No change) */}
         <div className="text-center text-xs text-[#4a403a] border-t border-[#4a403a55] pt-4">
           <p>
             © {new Date().getFullYear()} {t('copyright.company')} -{' '}
