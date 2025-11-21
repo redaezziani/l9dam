@@ -75,6 +75,7 @@ const ProductPage = () => {
     addItem(
       {
         productId: product.id,
+        variantId: selectedVariant ? selectedVariant.id : 0,
         name: product.name,
         price: selectedVariant?.price ?? minPrice,
         image: selectedImage,
@@ -195,7 +196,7 @@ const ProductPage = () => {
         </div>
 
         <p className="text-lg font-semibold mb-2">
-          {t('DetailsPage.productImages')}
+          {t('DetailsPage.productImages')} ({product.images.length})
         </p>
 
         <section aria-label="product-images" className="grid grid-cols-2 gap-4">

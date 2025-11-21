@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import BaseLayout from '@/src/components/layout/base-layout';
 import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
@@ -53,14 +52,13 @@ const CartPage = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center ">
+                  <div className="flex items-center">
                     <button
                       onClick={() =>
                         updateQuantity(
                           item.productId,
+                          item.variantId,
                           item.quantity - 1,
-                          item.size?.id || null,
-                          item.color?.id || null,
                         )
                       }
                       className="px-3 h-9 py-1 border border-gray-800"
@@ -72,32 +70,25 @@ const CartPage = () => {
                       type="text"
                       value={item.quantity}
                       readOnly
-                      className="w-10 text-center border border-gray-800 px-1 "
+                      className="w-10 text-center border border-gray-800 px-1"
                     />
 
                     <button
                       onClick={() =>
                         updateQuantity(
                           item.productId,
+                          item.variantId,
                           item.quantity + 1,
-                          item.size?.id || null,
-                          item.color?.id || null,
                         )
                       }
-                      className="px-3 h-9  py-1 border border-gray-800"
+                      className="px-3 h-9 py-1 border border-gray-800"
                     >
                       +
                     </button>
 
                     <button
-                      onClick={() =>
-                        removeItem(
-                          item.productId,
-                          item.size?.id || null,
-                          item.color?.id || null,
-                        )
-                      }
-                      className="px-3 h-9  mr-2 py-1 border border-gray-800 text-red-600"
+                      onClick={() => removeItem(item.productId, item.variantId)}
+                      className="px-3 h-9 mr-2 py-1 border border-gray-800 text-red-600"
                     >
                       {t('remove')}
                     </button>

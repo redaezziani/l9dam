@@ -202,5 +202,24 @@
       "backToStore": "العودة إلى المتجر",
       "sizeGuide": "دليل المقاسات"
     }
+  },
+  "CheckoutPage": {
+    "title": "إتمام الطلب",
+    "email": "البريد الإلكتروني",
+    "shippingDetails": "معلومات الشحن",
+    "fullName": "الاسم الكامل",
+    "street": "الشارع",
+    "city": "المدينة",
+    "country": "البلد",
+    "phone": "رقم الهاتف",
+    "paymentMethod": "طريقة الدفع",
+    "stripe": "سترايب",
+    "orderSummary": "ملخص الطلب",
+    "quantity": "الكمية",
+    "total": "المجموع",
+    "placeOrder": "إتمام الطلب",
+    "placingOrder": "جاري معالجة الطلب...",
+    "success": "تم تقديم الطلب بنجاح!",
+    "backToStore": "العودة إلى المتجر"
   }
 }

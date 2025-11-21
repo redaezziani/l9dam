@@ -3,6 +3,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 interface CartItem {
   productId: number;
+  variantId: number;
   name: string;
   price: number;
   image?: string;
@@ -14,16 +15,11 @@ interface CartItem {
 interface CartState {
   items: CartItem[];
   addItem: (item: Omit<CartItem, 'quantity'>, quantity?: number) => void;
-  removeItem: (
-    productId: number,
-    sizeId?: number | null,
-    colorId?: number | null,
-  ) => void;
+  removeItem: (productId: number, variantId: number) => void;
   updateQuantity: (
     productId: number,
+    variantId: number,
     quantity: number,
-    sizeId?: number | null,
-    colorId?: number | null,
   ) => void;
   clear: () => void;
   itemCount: () => number;
@@ -40,10 +36,7 @@ export const useCartStore = create<CartState>()(
           const index = state.items.findIndex(
             (it) =>
               it.productId === item.productId &&
-              ((it.size && item.size && it.size.id === item.size.id) ||
-                (!it.size && !item.size)) &&
-              ((it.color && item.color && it.color.id === item.color.id) ||
-                (!it.color && !item.color)),
+              it.variantId === item.variantId,
           );
 
           if (index > -1) {
@@ -59,35 +52,21 @@ export const useCartStore = create<CartState>()(
         });
       },
 
-      removeItem: (productId, sizeId = null, colorId = null) =>
+      removeItem: (productId, variantId) =>
         set((state) => ({
           items: state.items.filter(
-            (it) =>
-              !(
-                it.productId === productId &&
-                ((it.size && sizeId && it.size.id === sizeId) ||
-                  (!it.size && !sizeId)) &&
-                ((it.color && colorId && it.color.id === colorId) ||
-                  (!it.color && !colorId))
-              ),
+            (it) => !(it.productId === productId && it.variantId === variantId),
           ),
         })),
 
-      updateQuantity: (productId, quantity, sizeId = null, colorId = null) =>
+      updateQuantity: (productId, variantId, quantity) =>
         set((state) => ({
           items: state.items
-            .map((it) => {
-              if (
-                it.productId === productId &&
-                ((it.size && sizeId && it.size.id === sizeId) ||
-                  (!it.size && !sizeId)) &&
-                ((it.color && colorId && it.color.id === colorId) ||
-                  (!it.color && !colorId))
-              ) {
-                return { ...it, quantity: Math.max(0, quantity) };
-              }
-              return it;
-            })
+            .map((it) =>
+              it.productId === productId && it.variantId === variantId
+                ? { ...it, quantity: Math.max(0, quantity) }
+                : it,
+            )
             .filter((it) => it.quantity > 0),
         })),
 

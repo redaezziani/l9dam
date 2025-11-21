@@ -201,5 +201,26 @@
       "backToStore": "Back to Store",
       "sizeGuide": "Size Guide"
     }
+  },
+  "CheckoutPage": {
+    "title": "Checkout",
+    "email": "Email",
+    "shippingDetails": "Shipping Details",
+    "fullName": "Full Name",
+    "street": "Street",
+    "city": "City",
+    "country": "Country",
+    "phone": "Phone Number",
+
+    "paymentMethod": "Payment Method",
+    "stripe": "Stripe",
+
+    "orderSummary": "Order Summary",
+    "quantity": "Quantity",
+    "total": "Total",
+    "placeOrder": "Place Order",
+    "placingOrder": "Placing Order...",
+    "success": "Order placed successfully!",
+    "backToStore": "Back to Store"
   }
 }
