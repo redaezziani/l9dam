@@ -51,9 +51,11 @@
 }
 
 :root {
-  --font-pixelae: 'PixelAE', monospace;
-  --font-ethereal: 'Ethereal', system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  --font-arabic-head: 'Amiri', 'Markazi Text', serif;
+  --font-arabic-body: 'Scheherazade New', 'primary-arabic', serif;
+
+  --font-english-head: 'Playfair Display', 'primary-english', serif;
+  --font-english-body: 'Libre Baskerville', 'primary-english', serif;
   --radius: 0.3rem;
   --background: #fff;
   --foreground: #000;
@@ -180,14 +182,28 @@
   filter: grayscale(18%) contrast(1.2) blur(0.6px);
 }
 
-body {
-  font-family: 'Scheherazade New', serif;
+html:lang(ar) body {
+  font-family: var(--font-arabic-body);
+}
+
+html:lang(ar) h1,
+html:lang(ar) h2,
+html:lang(ar) h3,
+html:lang(ar) h4,
+html:lang(ar) h5,
+html:lang(ar) h6 {
+  font-family: var(--font-arabic-head);
 }
 
 html:lang(en) body {
-  font-family: 'primary-english';
+  font-family: var(--font-english-body);
 }
 
-html:lang(ar) body {
-  font-family: 'primary-arabic', 'Scheherazade New', serif;
+html:lang(en) h1,
+html:lang(en) h2,
+html:lang(en) h3,
+html:lang(en) h4,
+html:lang(en) h5,
+html:lang(en) h6 {
+  font-family: var(--font-english-head);
 }
