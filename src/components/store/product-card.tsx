@@ -39,6 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     addItem(
       {
         productId: product.id,
+        variantId: variant ? variant.id : 0,
         name: product.name,
         price: variant?.price ?? minPrice,
         image: selectedImage,
