@@ -8,6 +8,11 @@ type Props = {
   children: React.ReactNode;
 };
 
+export const metadata = {
+  title: 'My Awesome Page',
+  description: 'A concise and engaging description of my awesome page content.',
+};
+
 export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const dir = locale === 'ar' ? 'rtl' : 'ltr';

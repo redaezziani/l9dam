@@ -33,11 +33,23 @@ const CheckoutPage = () => {
     });
   };
 
+  // for now lets make a useeffcet to fill dummy data
+  React.useEffect(() => {
+    setEmail('test@test.com');
+    setAddress({
+      fullName: 'John Doe',
+      street: '123 Main St',
+      city: 'Casablanca',
+      country: 'Morocco',
+      phone: '+212600000000',
+    });
+  }, []);
+
   return (
     <BaseLayout>
       <section className="w-full relative max-w-7xl px-4 space-y-8">
         <main className="w-full md:max-w-360 pb-4 grid grid-cols-1 gap-6">
-          <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
+          <p className="text-2xl font-bold text-gray-900">{t('title')}</p>
 
           <>
             <div className="flex flex-col gap-2">
@@ -53,9 +65,9 @@ const CheckoutPage = () => {
             </div>
 
             <div className="border border-gray-800 p-4 space-y-3">
-              <h3 className="text-lg font-bold text-gray-900">
+              <p className="text-lg font-bold text-gray-900">
                 {t('shippingDetails')}
-              </h3>
+              </p>
               {['fullName', 'street', 'city', 'country', 'phone'].map(
                 (field) => (
                   <div key={field} className="flex flex-col gap-1">
@@ -75,9 +87,9 @@ const CheckoutPage = () => {
             </div>
 
             <div className="space-y-4 border-t border-gray-800 pt-4">
-              <h3 className="text-lg font-bold text-gray-900">
+              <p className="text-lg font-bold text-gray-900">
                 {t('orderSummary')}
-              </h3>
+              </p>
               {cart.items.map((item, idx) => (
                 <div
                   key={idx}

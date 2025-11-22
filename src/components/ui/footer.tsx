@@ -71,12 +71,17 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label={t('social.instagram')}
           >
-            <img
+            <video
               className="w-16 pixelated hover:opacity-80 transition-opacity"
-              src="/images/footer/instagram.gif"
-              alt="Instagram"
-            />
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/images/footer/instagram.webm" type="video/webm" />
+            </video>
           </a>
+
           <a
             href="https://wa.me/your-whatsapp-number"
             target="_blank"
@@ -85,7 +90,7 @@ const Footer = () => {
           >
             <img
               className="w-16 pixelated hover:opacity-80 transition-opacity"
-              src="/images/footer/whats.gif"
+              src="/images/footer/whats.webp"
               alt="WhatsApp"
             />
           </a>
@@ -95,11 +100,15 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label={t('social.tiktok')}
           >
-            <img
+            <video
               className="w-24 pixelated hover:opacity-80 transition-opacity"
-              src="/images/footer/tik.gif"
-              alt="TikTok"
-            />
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/images/footer/tik.webm" type="video/webm" />
+            </video>
           </a>
         </div>
 

@@ -72,11 +72,6 @@ const Page = () => {
                   placeholder={t('searchPlaceholder')}
                   className="w-full px-4  border border-gray-300  focus:outline-none focus:ring-2 "
                 />
-                {isLoading && (
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm">
-                    {t('loading')}
-                  </span>
-                )}
               </div>
             </div>
             <div className="flex flex-col justify-start  items-start gap-2">
@@ -99,7 +94,7 @@ const Page = () => {
             </div>
           </section>
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-800">{t('title')}</h1>
+            <p className="text-2xl font-bold text-gray-800">{t('title')}</p>
             <p className="ml-2 text-gray-600">
               ({sortedProducts.length} {t('productsCount')})
             </p>

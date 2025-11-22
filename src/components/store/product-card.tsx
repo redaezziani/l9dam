@@ -64,7 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       <div className="flex-1">
         <span className="flex justify-start items-center gap-2">
-          <h2 className="font-semibold text-lg">{product.name}</h2>
+          <p className="font-semibold text-lg">{product.name}</p>
           <Link
             className="text-blue-600 underline block text-xs"
             href={`/store/${product.documentId}`}

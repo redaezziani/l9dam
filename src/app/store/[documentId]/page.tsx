@@ -89,13 +89,13 @@ const ProductPage = () => {
   return (
     <BaseLayout>
       <section className="max-w-7xl mx-auto px-4  flex flex-col gap-6">
-        <h3 className=" flex gap-1">
+        <p className=" flex gap-1">
           <Link href="/store" className="text-blue-600 ">
             {t('DetailsPage.backToStore')}
           </Link>
           <span> / </span>
           {t('DetailsPage.title')}
-        </h3>
+        </p>
         <div className="grid w-full  gap-2">
           <div
             key={product.images[0].url}
@@ -110,7 +110,7 @@ const ProductPage = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-bold">{product.name}</h1>
+          <p className="text-2xl font-bold">{product.name}</p>
           <p className="text-gray-600">{product.description}</p>
 
           <div className="flex gap-4 items-center mb-2 flex-wrap">

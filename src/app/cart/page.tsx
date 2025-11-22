@@ -14,7 +14,7 @@ const CartPage = () => {
       <section className="w-full relative max-w-7xl px-4 space-y-8">
         <main className="w-full md:max-w-360 pb-4 grid grid-cols-1 gap-6">
           <div className="flex items-center ">
-            <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
+            <p className="text-2xl font-bold text-gray-900">{t('title')}</p>
             <p className="ml-2 text-gray-700">({items.length})</p>
           </div>
 
