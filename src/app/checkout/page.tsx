@@ -1,16 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BaseLayout from '@/src/components/layout/base-layout';
 import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import { useOrderStore } from '@/src/store/order-store';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 const CheckoutPage = () => {
   const t = useTranslations('CheckoutPage');
   const cart = useCartStore();
   const order = useOrderStore();
+  const searchParams = useSearchParams();
+
+  const status = searchParams.get('status');
 
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState({
@@ -33,8 +37,7 @@ const CheckoutPage = () => {
     });
   };
 
-  // for now lets make a useeffcet to fill dummy data
-  React.useEffect(() => {
+  useEffect(() => {
     setEmail('test@test.com');
     setAddress({
       fullName: 'John Doe',
@@ -44,6 +47,52 @@ const CheckoutPage = () => {
       phone: '+212600000000',
     });
   }, []);
+
+  if (status === 'success') {
+    return (
+      <BaseLayout>
+        <section className="max-w-4xl mx-auto px-4 py-10">
+          <p className="text-3xl font-bold text-green-600 mb-4">
+            {t('orderSuccess.title')}
+          </p>
+
+          <p className="text-gray-700 text-lg mb-6">
+            {t('orderSuccess.message')}
+          </p>
+
+          <Link
+            href="/store"
+            className="px-4 py-2 bg-black text-white font-semibold"
+          >
+            {t('backToStore')}
+          </Link>
+        </section>
+      </BaseLayout>
+    );
+  }
+
+  if (status === 'cancel') {
+    return (
+      <BaseLayout>
+        <section className="max-w-4xl mx-auto px-4 py-10">
+          <p className="text-3xl font-bold text-red-600 mb-4">
+            {t('orderError.title')}
+          </p>
+
+          <p className="text-gray-700 text-lg mb-6">
+            {t('orderError.message')}
+          </p>
+
+          <Link
+            href="/store"
+            className="px-4 py-2 bg-black text-white font-semibold"
+          >
+            {t('backToStore')}
+          </Link>
+        </section>
+      </BaseLayout>
+    );
+  }
 
   return (
     <BaseLayout>

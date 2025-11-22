@@ -56,7 +56,7 @@ const Footer = () => {
           </Link>
           <span className="text-[#4a403a]">•</span>
           <Link
-            href="/contact"
+            href="/about-us"
             className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
           >
             {tHeader('navLinks.contact')}
