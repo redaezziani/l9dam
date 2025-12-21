@@ -1,7 +1,14 @@
 # Build stage
 FROM node:22-alpine AS builder
-
 WORKDIR /app
+
+# Accept build arguments
+ARG NEXT_PUBLIC_STRAPI_URL
+ARG NEXT_PUBLIC_STRAPI_API_KEY
+
+# Set them as environment variables for the build
+ENV NEXT_PUBLIC_STRAPI_URL=$NEXT_PUBLIC_STRAPI_URL
+ENV NEXT_PUBLIC_STRAPI_API_KEY=$NEXT_PUBLIC_STRAPI_API_KEY
 
 # Copy package files
 COPY package*.json ./
@@ -17,7 +24,6 @@ RUN npm run build
 
 # Production stage
 FROM node:22-alpine AS runner
-
 WORKDIR /app
 
 # Set to production environment
@@ -39,7 +45,6 @@ RUN chown -R nextjs:nodejs /app
 USER nextjs
 
 EXPOSE 3000
-
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
