@@ -14,6 +14,7 @@ export interface ProductBasic {
   slug: string;
   description: string;
   isFeatured: boolean;
+  orderIndex: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -62,6 +63,7 @@ export interface Product {
   slug: string;
   description: string;
   isFeatured: boolean;
+  orderIndex: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -157,11 +159,10 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
 
   setSortOption: (option: SortOption) => set({ sortOption: option }),
 
-  fetchProducts: async (page = 1, pageSize = 25, search?: string) => {
+  fetchProducts: async (page = 1, pageSize = 25) => {
     try {
       set({ isLoading: true });
       const store = get();
-      const searchTerm = search !== undefined ? search : store.searchQuery;
 
       const params: Record<string, any> = {
         locale: store.locale,
@@ -169,12 +170,8 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
         'pagination[pageSize]': pageSize,
         'populate[variants][populate]': '*',
         populate: 'images',
+        'sort[0]': 'orderIndex:asc',
       };
-
-      if (searchTerm && searchTerm.trim() !== '') {
-        params['filters[$or][0][name][$containsi]'] = searchTerm;
-        params['filters[$or][1][description][$containsi]'] = searchTerm;
-      }
 
       const res = await api.get('/api/products', { params });
 

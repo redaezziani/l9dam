@@ -1,8 +1,58 @@
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+'use client';
+import { useLocale } from 'next-intl';
+import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { api } from '../../lib/utils';
+
+interface HomepageData {
+  id: number;
+  documentId: string;
+  title: string;
+  metaDescription: string;
+  content: string;
+  locale: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 
 const HeroSection = () => {
-  const t = useTranslations('HomePage');
+  const locale = useLocale();
+  const [content, setContent] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchHomepageData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await api.get('/api/homepage', {
+          params: {
+            locale: locale,
+          },
+        });
+
+        const homepageData: HomepageData = res.data.data;
+        setContent(homepageData.content || '');
+      } catch (error) {
+        console.error('Error fetching homepage data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchHomepageData();
+  }, [locale]);
+
+  if (isLoading) {
+    return (
+      <section className="w-full text-center md:max-w-360  pb-4 flex flex-col gap-6 px-4">
+        <div className="flex w-full justify-center items-center ">
+          <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
+        </div>
+        <div className="text-sm text-[#4a403a] pt-4">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section className="w-full text-center md:max-w-360  pb-4 flex flex-col gap-6 px-4">
@@ -10,43 +60,8 @@ const HeroSection = () => {
         <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
       </div>
 
-      <div className="text-sm text-[#4a403a] pt-4 leading-relaxed space-y-2">
-        <p>{t('hero.story.intro')}</p>
-        <p>{t('hero.story.origins')}</p>
-        <p>{t('hero.story.qualities')}</p>
-        <p>{t('hero.story.collaboration')}</p>
-        <Link
-          href="/about-us"
-          className="text-sm text-[#4a403aca] underline inline-block"
-        >
-          {t('hero.story.learnMore')}
-        </Link>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-6 md:justify-between">
-        <span className="relative flex justify-center items-center max-w-96">
-          <img src={'/images/home-page.png'} alt="product-preview" />
-        </span>
-      </div>
-
-      <div className="text-sm text-[#4a403a] leading-relaxed space-y-2">
-        <p>{t('hero.philosophy.intro')}</p>
-
-        <p className="text-sm text-[#4a403a] leading-relaxed space-y-2">
-          {t('hero.philosophy.design')}
-        </p>
-        <p>{t('hero.philosophy.simplicity')}</p>
-
-        <p className="text-sm text-[#4a403a] leading-relaxed space-y-2">
-          {t('hero.philosophy.message')}
-        </p>
-
-        <Link
-          href="/about-us"
-          className="text-sm text-[#4a403aca] underline inline-block"
-        >
-          {t('hero.philosophy.learnMore')}
-        </Link>
+      <div className="prose prose-sm max-w-none text-[#4a403a] pt-4">
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </section>
   );

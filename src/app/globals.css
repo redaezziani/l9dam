@@ -18,6 +18,7 @@
 }
 
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
   --font-pixelae: var(--font-pixelae);
@@ -206,4 +207,57 @@ html:lang(en) h4,
 html:lang(en) h5,
 html:lang(en) h6 {
   font-family: var(--font-english-head);
+}
+
+/* Custom Typography Styles - Centered Content */
+.prose {
+  text-align: center;
+}
+
+.prose p {
+  text-align: center;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  text-align: center;
+}
+
+.prose ul,
+.prose ol {
+  display: inline-block;
+  text-align: start;
+}
+
+.prose img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.prose blockquote {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose a {
+  text-align: center;
+}
+
+.prose pre {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose table {
+  margin-left: auto;
+  margin-right: auto;
 }
