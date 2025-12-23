@@ -1,12 +1,11 @@
 version: '3.8'
-
 services:
   app:
-    image: ghcr.io/${GITHUB_REPOSITORY:-vanhelsing/client-test}:latest
-    container_name: client-test
+    image: ghcr.io/${GITHUB_REPOSITORY:-redaezziani/l9dam}:latest
+    container_name: l9dam
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - '3000:3000'
     env_file:
       - .env
     environment:
