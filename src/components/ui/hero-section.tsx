@@ -11,7 +11,7 @@ const HeroSection = ({ content }: HeroSectionProps) => {
         <img src={'/images/app-logo-black.png'} alt="logo" className="w-32" />
       </div>
 
-      <div className="prose prose-sm max-w-none text-[#4a403a] pt-4">
+      <div className="prose prose-sm max-w-none text-[#4a403a] pt-4 prose-img:rounded-none">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     </section>
