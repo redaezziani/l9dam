@@ -63,7 +63,7 @@ const Footer = () => {
           </Link>
         </nav>
 
-        {/* Social Media (No change) */}
+        {/* Social Media */}
         <div className="flex justify-center gap-2 mb-6">
           <a
             href="https://instagram.com/lqdam"
@@ -71,15 +71,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label={t('social.instagram')}
           >
-            <video
+            <img
               className="w-16 pixelated hover:opacity-80 transition-opacity"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/images/footer/instagram.webm" type="video/webm" />
-            </video>
+              src="/images/footer/new-images/i.png"
+              alt="Instagram"
+            />
           </a>
 
           <a
@@ -90,7 +86,7 @@ const Footer = () => {
           >
             <img
               className="w-16 pixelated hover:opacity-80 transition-opacity"
-              src="/images/footer/whats.webp"
+              src="/images/footer/new-images/w.png"
               alt="WhatsApp"
             />
           </a>
@@ -100,15 +96,11 @@ const Footer = () => {
             rel="noopener noreferrer"
             aria-label={t('social.tiktok')}
           >
-            <video
-              className="w-24 pixelated hover:opacity-80 transition-opacity"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/images/footer/tik.webm" type="video/webm" />
-            </video>
+            <img
+              className="w-16 pixelated hover:opacity-80 transition-opacity"
+              src="/images/footer/new-images/t.png"
+              alt="TikTok"
+            />
           </a>
         </div>
 
