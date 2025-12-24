@@ -12,6 +12,7 @@ import { useCartStore } from '@/src/store/cart-store';
 import { useTranslations, useLocale } from 'next-intl';
 import BaseLayout from '@/src/components/layout/base-layout';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProductPage = () => {
   const { documentId } = useParams();
@@ -23,6 +24,7 @@ const ProductPage = () => {
   const fetchProductByDocumentId = useProductsStore(
     (s) => s.fetchProductByDocumentId,
   );
+  const setLocale = useProductsStore((s) => s.setLocale);
   const product = useProductsStore((s) => s.currentProduct);
   const addItem = useCartStore((s) => s.addItem);
 
@@ -31,8 +33,11 @@ const ProductPage = () => {
   const [qty, setQty] = useState<number>(1);
 
   useEffect(() => {
-    if (docId) fetchProductByDocumentId(docId);
-  }, [docId, fetchProductByDocumentId]);
+    if (docId) {
+      setLocale(locale);
+      fetchProductByDocumentId(docId);
+    }
+  }, [locale, docId, setLocale, fetchProductByDocumentId]);
 
   useEffect(() => {
     if (product) {
@@ -89,7 +94,7 @@ const ProductPage = () => {
   return (
     <BaseLayout>
       <section className="max-w-7xl mx-auto px-4  flex flex-col gap-6">
-        <p className=" flex gap-1">
+        <p className=" flex text-sm gap-1">
           <Link href="/store" className="text-blue-600 ">
             {t('DetailsPage.backToStore')}
           </Link>
@@ -99,19 +104,21 @@ const ProductPage = () => {
         <div className="grid w-full  gap-2">
           <div
             key={product.images[0].url}
-            className="w-full aspect-[3/4] bg-muted flex items-center justify-center"
+            className="w-full aspect-3/4 bg-muted flex items-center justify-center relative"
           >
-            <img
+            <Image
               src={product.images[0].url}
               alt={product.name}
-              className="w-full h-full object-cover border border-gray-300"
+              fill
+              className="object-cover border border-gray-300"
+              priority
             />
           </div>
         </div>
 
         <div className="flex flex-col gap-4">
           <p className="text-2xl font-bold">{product.name}</p>
-          <p className="text-gray-600">{product.description}</p>
+          <p className="text-gray-700 text-sm">{product.description}</p>
 
           <div className="flex gap-4 items-center mb-2 flex-wrap">
             <Select
@@ -130,7 +137,7 @@ const ProductPage = () => {
             />
 
             <div className="flex flex-col gap-2">
-              <label className="block text-sm font-medium">
+              <label className="block text-gray-800 text-sm font-medium">
                 {t('quantity')}
               </label>
               <input
@@ -138,7 +145,7 @@ const ProductPage = () => {
                 min={1}
                 value={qty}
                 onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
-                className="w-14 border px-2"
+                className="w-14 h-8! border px-2"
               />
             </div>
           </div>
@@ -152,8 +159,8 @@ const ProductPage = () => {
 
             {selectedVariant && (
               <p
-                className={`text-sm font-semibold ${
-                  inStock ? 'text-green-600' : 'text-red-600'
+                className={`text-sm  ${
+                  inStock ? 'text-green-700' : 'text-red-600'
                 }`}
               >
                 {inStock
@@ -161,10 +168,8 @@ const ProductPage = () => {
                   : t('DetailsPage.outOfStock')}
               </p>
             )}
-          </div>
-
-          <div className="flex items-center gap-4">
-            <span className="text-blue-600 text-lg font-bold">
+            {`-`}
+            <span className=" text-sm ">
               {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
                 style: 'currency',
                 currency: 'AED',
@@ -172,12 +177,12 @@ const ProductPage = () => {
             </span>
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex  gap-4">
             <button
               onClick={handleAdd}
               disabled={!inStock}
-              className={`w-full text-white px-4 py-2.5 text-sm ${
-                inStock ? 'bg-blue-600' : 'bg-gray-400 cursor-not-allowed'
+              className={` underline   py-2.5 text-sm ${
+                inStock ? 'text-blue-600' : 'text-gray-400 cursor-not-allowed'
               }`}
             >
               {t('DetailsPage.addToCart')}
@@ -186,8 +191,8 @@ const ProductPage = () => {
             <button
               onClick={handleAdd}
               disabled={!inStock}
-              className={`w-full text-white px-4 py-2.5 text-sm ${
-                inStock ? 'bg-black' : 'bg-gray-400 cursor-not-allowed'
+              className={` underline  py-2.5 text-sm ${
+                inStock ? 'text-black' : 'text-gray-400 cursor-not-allowed'
               }`}
             >
               {t('DetailsPage.buyNow')}
@@ -200,15 +205,17 @@ const ProductPage = () => {
         </p>
 
         <section aria-label="product-images" className="grid grid-cols-2 gap-4">
-          {product.images.map((image) => (
+          {product.images.map((image, index) => (
             <div
               key={image.url}
-              className="w-full aspect-[3/4] bg-muted flex items-center justify-center"
+              className="w-full aspect-[3/4] bg-muted flex items-center justify-center relative"
             >
-              <img
+              <Image
                 src={image.url}
                 alt={product.name}
-                className="w-full h-full object-cover border border-gray-300"
+                fill
+                className="object-cover border border-gray-300"
+                priority={index === 0}
               />
             </div>
           ))}
@@ -234,11 +241,11 @@ const Select: React.FC<SelectProps> = ({
   placeholder,
 }) => (
   <div className="flex flex-col gap-2">
-    <label className="block text-sm font-medium">{label}</label>
+    <label className="block text-sm text-gray-800 font-medium">{label}</label>
     <select
       value={value ?? ''}
       onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}
-      className="border px-2"
+      className="border h-8! px-2"
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (

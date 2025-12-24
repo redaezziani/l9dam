@@ -15,14 +15,14 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const t = useTranslations('StorePage');
 
-  if (!pageCount) return null;
+  if (!pageCount || pageCount <= 1) return null;
 
   return (
-    <div className="flex justify-start w-full items-center gap-2 mt-4">
+    <div className="flex justify-start w-full items-center gap-4 mt-4 text-sm">
       <button
         onClick={() => onChange(page - 1)}
         disabled={page === 1}
-        className="px-3 py-1 border bg-white text-gray-800 disabled:opacity-50"
+        className="underline text-gray-800 disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
       >
         {t('prev')}
       </button>
@@ -31,10 +31,10 @@ const Pagination: React.FC<PaginationProps> = ({
         <button
           key={p}
           onClick={() => onChange(p)}
-          className={`px-3 py-1 border ${
+          className={`${
             page === p
-              ? 'bg-blue-600 text-white border-blue-600'
-              : 'bg-white text-gray-800'
+              ? 'font-bold underline text-gray-900'
+              : 'text-gray-600 hover:underline'
           }`}
         >
           {p}
@@ -44,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={() => onChange(page + 1)}
         disabled={page === pageCount}
-        className="px-3 py-1 border bg-white text-gray-800 disabled:opacity-50"
+        className="underline text-gray-800 disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
       >
         {t('next')}
       </button>

@@ -5,6 +5,7 @@ import { Product, Variant, Color, Size } from '@/src/store/prodcuts-store';
 import { useCartStore } from '@/src/store/cart-store';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductCardProps {
   product: Product;
@@ -25,9 +26,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [sizeId, setSizeId] = useState<number | null>(sizes[0]?.id ?? null);
   const [colorId, setColorId] = useState<number | null>(colors[0]?.id ?? null);
   const [qty, setQty] = useState<number>(1);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-  const selectedImage = product.images?.[0]?.url || '';
+  const images = product.images || [];
+  const selectedImage = images[currentImageIndex]?.url || '';
   const minPrice = Math.min(...product.variants.map((v) => v.price));
+
+  const handlePrevImage = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
 
   const handleAdd = () => {
     const variant = product.variants.find(
@@ -52,19 +63,68 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="flex w-full md:flex-row gap-4 items-start">
-      <div className="flex bg-muted min-w-20 aspect-[3/4] items-center justify-center">
+      <div className="relative flex bg-muted min-w-20 aspect-[3/4] items-center justify-center group">
         {selectedImage && (
-          <img
+          <Image
             src={selectedImage}
             alt={product.name}
+            width={176}
+            height={235}
             className="w-44 border border-gray-300 object-cover"
+            priority={currentImageIndex === 0}
           />
+        )}
+
+        {images.length > 1 && (
+          <div className="absolute top-2 left-2 flex gap-1 z-10">
+            <button
+              onClick={handlePrevImage}
+              className="text-gray-900 hover:text-gray-600"
+              aria-label="Previous image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-2.5 h-2.5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5L8.25 12l7.5-7.5"
+                />
+              </svg>
+            </button>
+
+            <button
+              onClick={handleNextImage}
+              className="text-gray-900 hover:text-gray-600"
+              aria-label="Next image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-2.5 h-2.5"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </button>
+          </div>
         )}
       </div>
 
       <div className="flex-1">
         <span className="flex justify-start items-center gap-2">
-          <p className="font-semibold text-lg">{product.name}</p>
+          <p className="font-semibold ">{product.name}</p>
           <Link
             className="text-blue-600 underline block text-xs"
             href={`/store/${product.documentId}`}
@@ -73,7 +133,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </Link>
         </span>
 
-        <p className="text-gray-600 text-xs line-clamp-2 mb-2">
+        <p className="text-gray-600 mt-2 text-xs line-clamp-2 mb-2">
           {product.description}
         </p>
 
@@ -99,7 +159,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               min={1}
               value={qty}
               onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
-              className="w-14 border px-2"
+              className="w-14 h-8! border px-2"
             />
           </div>
         </div>
@@ -143,7 +203,7 @@ const Select: React.FC<SelectProps> = ({
     <select
       value={value ?? ''}
       onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}
-      className="border px-2"
+      className="border w-16! h-8! px-2"
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (

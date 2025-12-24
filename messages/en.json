@@ -167,7 +167,8 @@
     "noImage": "No image available",
     "quantity": "Quantity",
     "remove": "Remove",
-    "total": "Total:"
+    "total": "Total:",
+    "checkout": "Proceed to Checkout"
   },
   "StorePage": {
     "title": "Store",

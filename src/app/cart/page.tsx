@@ -4,6 +4,7 @@ import BaseLayout from '@/src/components/layout/base-layout';
 import { useTranslations } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const CartPage = () => {
   const t = useTranslations('CartPage');
@@ -28,11 +29,14 @@ const CartPage = () => {
                   className="flex items-center justify-between border border-gray-800 p-4"
                 >
                   <div className="flex items-center space-x-4">
-                    <img
-                      src={item.image || '/placeholder.png'}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover border border-gray-800"
-                    />
+                    <div className="relative w-20 h-20">
+                      <Image
+                        src={item.image || '/placeholder.png'}
+                        alt={item.name}
+                        fill
+                        className="object-cover border border-gray-800"
+                      />
+                    </div>
 
                     <div className="space-y-1">
                       <p className="font-bold text-gray-900">{item.name}</p>
