@@ -1,13 +1,14 @@
 'use client';
 
 import BaseLayout from '@/src/components/layout/base-layout';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const CartPage = () => {
   const t = useTranslations('CartPage');
+  const locale = useLocale();
   const { items, removeItem, updateQuantity, total } = useCartStore();
 
   return (
@@ -40,7 +41,12 @@ const CartPage = () => {
 
                     <div className="space-y-1">
                       <p className="font-bold text-gray-900">{item.name}</p>
-                      <p className="text-sm text-gray-700">{item.price} MAD</p>
+                      <p className="text-sm text-gray-700">
+                        {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                          style: 'currency',
+                          currency: 'AED',
+                        }).format(item.price)}
+                      </p>
 
                       {item.size && (
                         <p className="text-sm text-gray-700">
@@ -102,7 +108,12 @@ const CartPage = () => {
 
               <div className="flex justify-between pt-4 border-t border-gray-800">
                 <p className="text-lg font-bold">{t('total')}</p>
-                <p className="text-lg font-bold">{total()} MAD</p>
+                <p className="text-lg font-bold">
+                  {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                    style: 'currency',
+                    currency: 'AED',
+                  }).format(total())}
+                </p>
               </div>
 
               <Link

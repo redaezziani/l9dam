@@ -26,6 +26,7 @@ const ProductPage = () => {
   );
   const setLocale = useProductsStore((s) => s.setLocale);
   const product = useProductsStore((s) => s.currentProduct);
+  const isLoading = useProductsStore((s) => s.isLoading);
   const addItem = useCartStore((s) => s.addItem);
 
   const [sizeId, setSizeId] = useState<number | null>(null);
@@ -53,7 +54,34 @@ const ProductPage = () => {
     }
   }, [product]);
 
-  if (!product) return <BaseLayout>{t('DetailsPage.loading')}...</BaseLayout>;
+  if (isLoading) {
+    return <BaseLayout>{t('DetailsPage.loading')}...</BaseLayout>;
+  }
+
+  if (!product) {
+    return (
+      <BaseLayout>
+        <section className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center gap-6 min-h-[60vh]">
+          <div className="text-center space-y-4 max-w-md">
+            <h2 className="text-2xl font-bold text-gray-900">
+              {t('DetailsPage.notAvailable')}
+            </h2>
+            <p className="text-gray-600 text-sm">
+              {t('DetailsPage.notAvailableMessage')}
+            </p>
+            <div className="flex gap-3 justify-center pt-4">
+              <Link
+                href="/store"
+                className="px-4 py-2 text-sm underline text-blue-600"
+              >
+                {t('DetailsPage.browseOtherProducts')}
+              </Link>
+            </div>
+          </div>
+        </section>
+      </BaseLayout>
+    );
+  }
 
   const colors: Color[] = Array.from(
     new Map(product.variants.map((v) => [v.color.id, v.color])).values(),

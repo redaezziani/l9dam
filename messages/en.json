@@ -197,6 +197,7 @@
       "description": "Description",
       "inStock": "In Stock",
       "notInStock": "Out of Stock",
+      "outOfStock": "Out of Stock",
       "price": "Price",
       "unit": "AED",
       "addToCart": "Add to Cart",
@@ -204,7 +205,11 @@
       "productImages": "Product Images",
       "loading": "Loading product details...",
       "backToStore": "Back to Store",
-      "sizeGuide": "Size Guide"
+      "sizeGuide": "Size Guide",
+      "notAvailable": "Product Not Available",
+      "notAvailableMessage": "This product is not available in English yet. Please check back later or switch to another language.",
+      "switchLanguage": "Switch Language",
+      "browseOtherProducts": "Browse Other Products"
     }
   },
   "CheckoutPage": {
@@ -242,5 +247,11 @@
     "us": "US Size",
     "footLength": "Foot Length",
     "note": "Note: Sizing may slightly vary depending on the shoe model."
+  },
+  "PartnersPage": {
+    "title": "Partners",
+    "country": "Country",
+    "cities": "Cities",
+    "visitWebsite": "Visit Website"
   }
 }

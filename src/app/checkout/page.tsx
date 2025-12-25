@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import BaseLayout from '@/src/components/layout/base-layout';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import { useOrderStore } from '@/src/store/order-store';
 import Link from 'next/link';
@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 
 const CheckoutPage = () => {
   const t = useTranslations('CheckoutPage');
+  const locale = useLocale();
   const cart = useCartStore();
   const order = useOrderStore();
   const searchParams = useSearchParams();
@@ -146,14 +147,23 @@ const CheckoutPage = () => {
                 >
                   <p className="font-bold">{item.name}</p>
                   <p>
-                    {item.quantity} × {item.price} MAD
+                    {item.quantity} ×{' '}
+                    {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                      style: 'currency',
+                      currency: 'AED',
+                    }).format(item.price)}
                   </p>
                 </div>
               ))}
 
               <div className="flex justify-between border-t border-gray-800 pt-3">
                 <p className="text-lg font-bold">{t('total')}</p>
-                <p className="text-lg font-bold">{cart.total()} MAD</p>
+                <p className="text-lg font-bold">
+                  {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                    style: 'currency',
+                    currency: 'AED',
+                  }).format(cart.total())}
+                </p>
               </div>
             </div>
 
