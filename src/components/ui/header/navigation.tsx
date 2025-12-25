@@ -13,6 +13,7 @@ const Navigation = () => {
     { href: '/', label: t('navLinks.home') },
     { href: '/about-us', label: t('navLinks.about') },
     { href: '/store', label: t('navLinks.store') },
+    { href: '/partners', label: t('navLinks.partners') },
   ];
 
   const cartCount = useCartStore((s) =>

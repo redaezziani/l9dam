@@ -10,7 +10,9 @@
         "home": "Home",
         "store": "Store",
         "distributors": "Distributors",
-        "about": "About Us",
+        "about": "Story",
+        "partners": "Partners",
+        "sizeGuide": "Size Guide",
         "contact": "Contact Us",
         "cart": "Cart"
       },
