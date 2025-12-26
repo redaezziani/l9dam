@@ -164,6 +164,7 @@
     "contactSend": "Send"
   },
   "CartPage": {
+    
     "title": "Cart",
     "emptyCart": "Your cart is empty.",
     "noImage": "No image available",
