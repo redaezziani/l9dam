@@ -3,6 +3,7 @@ name: Deploy Next.js to VPS
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -25,7 +26,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -42,37 +43,44 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy to VPS
     steps:
-      - name: Deploy to VPS via SSH
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
           script: |
             cd ~/l9dam
 
-            # Créer le fichier .env avec les secrets
-            cat > .env << EOF
-            NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
-            NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}
-            NODE_ENV=production
-            EOF
+            # Create .env file
+            cat > .env <<'EOF'
+NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
+NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}
+NODE_ENV=production
+EOF
 
+            # Login to GHCR and pull latest image
             echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker pull ghcr.io/${{ github.repository }}:latest
+
+            # Restart container
             docker compose down
             docker compose up -d app
+
+            # Wait for container to initialize
             sleep 15
+
             if docker ps | grep l9dam | grep -q "Up"; then
-              echo "Deployment successful"
+              echo "✅ Deployment successful"
               docker image prune -f
             else
-              echo "Deployment failed"
+              echo "❌ Deployment failed"
               docker compose logs app --tail=50
               exit 1
             fi
 
-      - name: Notify deployment success
+      - name: Notify success
         if: success()
         uses: appleboy/telegram-action@master
         with:
@@ -84,7 +92,7 @@ jobs:
             Commit: ${{ github.event.head_commit.message }}
             Author: ${{ github.event.head_commit.author.name }}
 
-      - name: Notify deployment failure
+      - name: Notify failure
         if: failure()
         uses: appleboy/telegram-action@master
         with:
@@ -95,4 +103,3 @@ jobs:
             Repository: ${{ github.repository }}
             Commit: ${{ github.event.head_commit.message }}
             Check logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
