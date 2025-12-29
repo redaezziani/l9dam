@@ -54,11 +54,9 @@ jobs:
             cd ~/l9dam
 
             # Create .env file
-            cat > .env <<'EOF'
-NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
-NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}
-NODE_ENV=production
-EOF
+            echo "NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}" > .env
+            echo "NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}" >> .env
+            echo "NODE_ENV=production" >> .env
 
             # Login to GHCR and pull latest image
             echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
