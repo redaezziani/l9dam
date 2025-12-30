@@ -6,12 +6,30 @@ on:
   workflow_dispatch:
 
 jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    name: Security Audit
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Audit dependencies
+        run: |
+          npm audit --audit-level=moderate
+          npm audit signatures
+
   build:
+    needs: security-check
     runs-on: ubuntu-latest
     name: Build and Push Docker Image
     permissions:
       contents: read
       packages: write
+      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,17 +44,43 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          push: false
+          load: true
+          tags: ghcr.io/${{ github.repository }}:${{ github.sha }}
           build-args: |
             NEXT_PUBLIC_STRAPI_URL=${{ secrets.NEXT_PUBLIC_STRAPI_URL }}
             NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
+          no-cache: true
+
+      - name: Scan for vulnerabilities
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ghcr.io/${{ github.repository }}:${{ github.sha }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Scan for malware
+        run: |
+          docker create --name scan ghcr.io/${{ github.repository }}:${{ github.sha }}
+          if docker export scan | tar -tf - | grep -E "systemd-worker|\.config\.json|xmrig|miner"; then
+            echo "🚨 MALWARE DETECTED!"
+            docker rm scan
+            exit 1
+          fi
+          docker rm scan
+          echo "✅ No malware detected"
+
+      - name: Tag and push clean image
+        run: |
+          docker tag ghcr.io/${{ github.repository }}:${{ github.sha }} ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository }}:latest
 
   deploy:
     needs: build
@@ -58,17 +102,29 @@ jobs:
             echo "NEXT_PUBLIC_STRAPI_API_KEY=${{ secrets.NEXT_PUBLIC_STRAPI_API_KEY }}" >> .env
             echo "NODE_ENV=production" >> .env
 
-            # Login to GHCR and pull latest image
+            # Login to GHCR
             echo "${{ secrets.GH_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            # Pull latest image
             docker pull ghcr.io/${{ github.repository }}:latest
+
+            # Security check before deploying
+            TEMP_CONTAINER=$(docker create ghcr.io/${{ github.repository }}:latest)
+            if docker export $TEMP_CONTAINER | tar -tf - | grep -q "systemd-worker"; then
+              echo "🚨 MALWARE DETECTED IN IMAGE!"
+              docker rm $TEMP_CONTAINER
+              exit 1
+            fi
+            docker rm $TEMP_CONTAINER
 
             # Restart container
             docker compose down
             docker compose up -d app
 
-            # Wait for container to initialize
+            # Wait for container
             sleep 15
 
+            # Verify deployment
             if docker ps | grep l9dam | grep -q "Up"; then
               echo "✅ Deployment successful"
               docker image prune -f
@@ -85,10 +141,11 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ✅ Deployment successful
+            ✅ L9DAM Deployment Successful
             Repository: ${{ github.repository }}
             Commit: ${{ github.event.head_commit.message }}
             Author: ${{ github.event.head_commit.author.name }}
+            SHA: ${{ github.sha }}
 
       - name: Notify failure
         if: failure()
@@ -97,7 +154,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ❌ Deployment failed
+            ❌ L9DAM Deployment Failed
             Repository: ${{ github.repository }}
             Commit: ${{ github.event.head_commit.message }}
             Check logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
