@@ -19,7 +19,7 @@ jobs:
 
       - name: Audit dependencies
         run: |
-          npm audit --audit-level=moderate
+          npm audit --audit-level=high
           npm audit signatures
 
   build:
