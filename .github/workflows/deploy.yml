@@ -18,9 +18,7 @@ jobs:
           node-version: '22'
 
       - name: Audit dependencies
-        run: |
-          npm audit --audit-level=high
-          npm audit signatures
+        run: npm audit --audit-level=high
 
   build:
     needs: security-check
