@@ -28,8 +28,8 @@ const Navigation = () => {
             <Link
               key={href}
               href={href}
-              className={`hover:underline ${
-                pathname === href ? 'underline text-primary' : ''
+              className={`hover:underline text-xs ${
+                pathname === href ? 'underline  text-primary' : ''
               }`}
             >
               {label}

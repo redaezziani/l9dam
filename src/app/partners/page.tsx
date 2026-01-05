@@ -96,9 +96,9 @@ export default function PartnersPage() {
         </div>
 
         {loading ? (
-          <p className="text-gray-500">Loading partners...</p>
+          <p className="text-gray-500">{t('loading')}</p>
         ) : partners.length === 0 ? (
-          <p className="text-gray-500">No partners found.</p>
+          <p className="text-gray-500">{t('noPartnersFound')}</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {partners.map((partner) => (

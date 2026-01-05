@@ -24,61 +24,60 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full pb-24 relative z-9999 border-t-2 border-[#4a403a]/20">
-      <div className="max-w-360 mx-auto px-4 py-6">
-        <nav className="flex flex-wrap justify-center gap-4 mb-6">
+    <footer className="w-full pb-24 relative z-9999 border-t border-[#4a403a]/10">
+      <div className="max-w-360 mx-auto px-6 py-8">
+        {/* Navigation Links */}
+        <nav className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-8">
           <Link
             href="/"
-            className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
+            className="text-[#4a403a]/80 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {tHeader('navLinks.home')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
           <Link
             href="/store"
-            className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
+            className="text-[#4a403a]/80 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {tHeader('navLinks.store')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
           <Link
             href="/distributors"
-            className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
+            className="text-[#4a403a]/80 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {tHeader('navLinks.distributors')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
           <Link
             href="/about-us"
-            className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
+            className="text-[#4a403a]/80 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {tHeader('navLinks.about')}
           </Link>
         </nav>
 
         {/* Social Media */}
-        <div className="flex justify-center gap-2 mb-6">
+        <div className="flex justify-center gap-4 mb-8">
           <a
             href="https://www.instagram.com/lqdam_shoes"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.instagram')}
+            className="opacity-80 hover:opacity-100 transition-opacity"
           >
             <img
-              className="w-16 pixelated hover:opacity-80 transition-opacity"
+              className="w-12 pixelated"
               src="/images/footer/new-images/i.png"
               alt="Instagram"
             />
           </a>
-
           <a
             href="https://wa.me/your-whatsapp-number"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.whatsapp')}
+            className="opacity-80 hover:opacity-100 transition-opacity"
           >
             <img
-              className="w-16 pixelated hover:opacity-80 transition-opacity"
+              className="w-12 pixelated"
               src="/images/footer/new-images/w.png"
               alt="WhatsApp"
             />
@@ -88,50 +87,48 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.tiktok')}
+            className="opacity-80 hover:opacity-100 transition-opacity"
           >
             <img
-              className="w-16 pixelated hover:opacity-80 transition-opacity"
+              className="w-12 pixelated"
               src="/images/footer/new-images/t.png"
               alt="TikTok"
             />
           </a>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 text-xs mb-4">
+        {/* Legal Links */}
+        <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-6">
           <Link
             href="/privacy-policy"
-            className="text-[#4a403a] hover:underline"
+            className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {t('legal.privacy')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
           <Link
             href="/terms-of-service"
-            className="text-[#4a403a] hover:underline"
+            className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {t('legal.terms')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
           <Link
             href="/shipping-returns"
-            className="text-[#4a403a] hover:underline"
+            className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors text-xs capitalize"
           >
             {t('legal.shipping')}
           </Link>
-          <span className="text-[#4a403a]">•</span>
-
           <div
             onClick={handleLanguageChange}
-            className="text-[#4a403a] hover:underline cursor-pointer select-none uppercase"
+            className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors cursor-pointer select-none text-xs capitalize"
           >
             {displayLangText}
           </div>
         </div>
 
-        <div className="text-center text-xs text-[#4a403a] border-t border-[#4a403a55] pt-4">
+        {/* Copyright */}
+        <div className="text-center text-xs text-[#4a403a]/60 pt-6 border-t border-[#4a403a]/10">
           <p>
-            © {new Date().getFullYear()} {t('copyright.company')} -{' '}
-            {t('copyright.rights')}
+            © {new Date().getFullYear()} {t('copyright.company')} - {t('copyright.rights')}
           </p>
         </div>
       </div>

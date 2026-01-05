@@ -11,9 +11,10 @@ interface SizeGuideData {
   description: string;
   content: string;
   sizes: Array<{
-    eu: number;
-    us: number | string;
-    foot: string;
+    'Foot Length CM': string;
+    'Lqdam Size': number;
+    'Vans Similar Size': number;
+    'Converse Similar Size': number;
   }>;
   locale: string;
   createdAt: string;
@@ -72,17 +73,19 @@ export default function SizeGuideContent({ sizeGuideData }: SizeGuideContentProp
             <table className="w-full text-sm">
               <thead className="bg-gray-100">
                 <tr>
-                  <th className="p-2 border">{t('eu')}</th>
-                  <th className="p-2 border">{t('us')}</th>
-                  <th className="p-2 border">{t('footLength')}</th>
+                  <th className="p-2 border">{t('footLengthCm')}</th>
+                  <th className="p-2 border">{t('lqdamSize')}</th>
+                  <th className="p-2 border">{t('vansSize')}</th>
+                  <th className="p-2 border">{t('converseSize')}</th>
                 </tr>
               </thead>
               <tbody>
                 {sizes.map((s, index) => (
                   <tr key={index}>
-                    <td className="p-2 border text-center">{s.eu}</td>
-                    <td className="p-2 border text-center">{s.us}</td>
-                    <td className="p-2 border text-center">{s.foot}</td>
+                    <td className="p-2 border text-center">{s['Foot Length CM']}</td>
+                    <td className="p-2 border text-center">{s['Lqdam Size']}</td>
+                    <td className="p-2 border text-center">{s['Vans Similar Size']}</td>
+                    <td className="p-2 border text-center">{s['Converse Similar Size']}</td>
                   </tr>
                 ))}
               </tbody>

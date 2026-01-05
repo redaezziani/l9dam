@@ -11,7 +11,7 @@
         "store": "Store",
         "distributors": "Distributors",
         "about": "Story",
-        "partners": "Distributors",
+        "partners": "Retailers",
         "sizeGuide": "Size Guide",
         "contact": "Contact Us",
         "cart": "Cart"
@@ -164,7 +164,6 @@
     "contactSend": "Send"
   },
   "CartPage": {
-    
     "title": "Cart",
     "emptyCart": "Your cart is empty.",
     "noImage": "No image available",
@@ -239,23 +238,26 @@
   "SizeGuide": {
     "title": "Size Guide",
     "backToStore": "Back to Store",
-    "description": "Find your perfect size using our EU, US, and foot-length conversion chart. Sizes used in the UAE follow the EU system.",
+    "description": "Find your perfect size using our conversion chart comparing Lqdam sizes with Vans and Converse similar sizes.",
     "howToMeasureTitle": "How to Measure Your Foot",
     "m1": "Place your foot flat on a piece of paper.",
     "m2": "Mark the tip of your longest toe and the back of your heel.",
     "m3": "Measure the distance between the two points.",
-    "m4": "Use the chart below to find the closest EU size.",
-    "sizeChart": "EU - US Size Chart",
-    "eu": "EU Size",
-    "us": "US Size",
-    "footLength": "Foot Length",
+    "m4": "Use the chart below to find the closest Lqdam size.",
+    "sizeChart": "Size Comparison Chart",
+    "footLengthCm": "Foot Length (CM)",
+    "lqdamSize": "Lqdam Size",
+    "vansSize": "Vans Similar Size",
+    "converseSize": "Converse Similar Size",
     "note": "Note: Sizing may slightly vary depending on the shoe model."
   },
   "PartnersPage": {
     "title": "Partners",
     "country": "Country",
     "cities": "Cities",
-    "visitWebsite": "Visit Website"
+    "visitWebsite": "Visit Website",
+    "loading": "Loading partners...",
+    "noPartnersFound": "No partners found."
   },
   "PrivacyPolicyPage": {
     "title": "Privacy Policy",
