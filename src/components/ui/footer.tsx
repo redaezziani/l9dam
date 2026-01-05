@@ -49,24 +49,17 @@ const Footer = () => {
           </Link>
           <span className="text-[#4a403a]">•</span>
           <Link
-            href="/about"
-            className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
-          >
-            {tHeader('navLinks.about')}
-          </Link>
-          <span className="text-[#4a403a]">•</span>
-          <Link
             href="/about-us"
             className="text-[#4a403a] hover:underline text-sm uppercase font-medium"
           >
-            {tHeader('navLinks.contact')}
+            {tHeader('navLinks.about')}
           </Link>
         </nav>
 
         {/* Social Media */}
         <div className="flex justify-center gap-2 mb-6">
           <a
-            href="https://instagram.com/lqdam"
+            href="https://www.instagram.com/lqdam_shoes"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.instagram')}
@@ -91,7 +84,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://tiktok.com/@lqdam"
+            href="https://www.tiktok.com/@lqdam_shoes"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.tiktok')}
@@ -113,7 +106,7 @@ const Footer = () => {
           </Link>
           <span className="text-[#4a403a]">•</span>
           <Link
-            href="/terms-conditions"
+            href="/terms-of-service"
             className="text-[#4a403a] hover:underline"
           >
             {t('legal.terms')}
