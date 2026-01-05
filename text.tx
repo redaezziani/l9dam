@@ -1,0 +1,86 @@
+[
+  {
+    "cm": 22,
+    "lqdam_eu": 34,
+    "vans_eu": 35,
+    "converse_eu": 35
+  },
+  {
+    "cm": 22.7,
+    "lqdam_eu": 35,
+    "vans_eu": 36,
+    "converse_eu": 36
+  },
+  {
+    "cm": 23.4,
+    "lqdam_eu": 36,
+    "vans_eu": 37,
+    "converse_eu": 36.5
+  },
+  {
+    "cm": 24,
+    "lqdam_eu": 37,
+    "vans_eu": 38,
+    "converse_eu": 37.5
+  },
+  {
+    "cm": 24.7,
+    "lqdam_eu": 38,
+    "vans_eu": 39,
+    "converse_eu": 39
+  },
+  {
+    "cm": 25.4,
+    "lqdam_eu": 39,
+    "vans_eu": 40,
+    "converse_eu": 39.5
+  },
+  {
+    "cm": 26,
+    "lqdam_eu": 40,
+    "vans_eu": 40.5,
+    "converse_eu": 40
+  },
+  {
+    "cm": 26.7,
+    "lqdam_eu": 41,
+    "vans_eu": 41,
+    "converse_eu": 41.5
+  },
+  {
+    "cm": 27.4,
+    "lqdam_eu": 42,
+    "vans_eu": 42.5,
+    "converse_eu": 42
+  },
+  {
+    "cm": 28,
+    "lqdam_eu": 43,
+    "vans_eu": 43,
+    "converse_eu": 43
+  },
+  {
+    "cm": 28.7,
+    "lqdam_eu": 44,
+    "vans_eu": 44,
+    "converse_eu": 44
+  },
+  {
+    "cm": 29.4,
+    "lqdam_eu": 45,
+    "vans_eu": 45,
+    "converse_eu": 45
+  },
+  {
+    "cm": 30,
+    "lqdam_eu": 46,
+    "vans_eu": 46,
+    "converse_eu": 46
+  },
+  {
+    "cm": 30.7,
+    "lqdam_eu": 47,
+    "vans_eu": 47,
+    "converse_eu": 46.5
+  }
+]
