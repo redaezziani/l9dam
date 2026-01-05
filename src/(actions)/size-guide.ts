@@ -7,9 +7,10 @@ interface SizeGuideData {
   description: string;
   content: string;
   sizes: Array<{
-    eu: number;
-    us: number | string;
-    foot: string;
+    'Foot Length CM': string;
+    'Lqdam Size': number;
+    'Vans Similar Size': number;
+    'Converse Similar Size': number;
   }>;
   locale: string;
   createdAt: string;
