@@ -216,6 +216,7 @@ html:lang(en) h6 {
 
 .prose p {
   text-align: center;
+  font-size: 0.75rem !important;
 }
 
 .prose h1,
@@ -239,7 +240,6 @@ html:lang(en) h6 {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
 }
 
 .prose blockquote {

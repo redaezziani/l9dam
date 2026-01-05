@@ -117,6 +117,12 @@ const Footer = () => {
           >
             {t('legal.shipping')}
           </Link>
+          <Link
+            href="/size-guide"
+            className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors text-xs capitalize"
+          >
+            {tHeader('navLinks.sizeGuide')}
+          </Link>
           <div
             onClick={handleLanguageChange}
             className="text-[#4a403a]/70 hover:text-[#4a403a] transition-colors cursor-pointer select-none text-xs capitalize"
@@ -128,7 +134,8 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center text-xs text-[#4a403a]/60 pt-6 border-t border-[#4a403a]/10">
           <p>
-            © {new Date().getFullYear()} {t('copyright.company')} - {t('copyright.rights')}
+            © {new Date().getFullYear()} {t('copyright.company')} -{' '}
+            {t('copyright.rights')}
           </p>
         </div>
       </div>
