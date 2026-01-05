@@ -16,7 +16,7 @@ interface ShippingReturnsData {
 export async function getShippingReturnsData(locale: string): Promise<ShippingReturnsData | null> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/shipping-returns?locale=${locale}`,
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/shipping-return?locale=${locale}`,
       {
         headers: {
           'Content-Type': 'application/json',
