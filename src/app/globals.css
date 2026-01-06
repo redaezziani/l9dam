@@ -209,6 +209,10 @@ html:lang(en) h6 {
   font-family: var(--font-english-head);
 }
 
+html:lang(en) .prose p {
+  font-size: 0.75rem !important;
+}
+
 /* Custom Typography Styles - Centered Content */
 .prose {
   text-align: center;
@@ -216,7 +220,7 @@ html:lang(en) h6 {
 
 .prose p {
   text-align: center;
-  font-size: 0.75rem !important;
+  
 }
 
 .prose h1,
