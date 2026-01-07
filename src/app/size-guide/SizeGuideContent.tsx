@@ -26,14 +26,16 @@ interface SizeGuideContentProps {
   sizeGuideData: SizeGuideData | null;
 }
 
-export default function SizeGuideContent({ sizeGuideData }: SizeGuideContentProps) {
+export default function SizeGuideContent({
+  sizeGuideData,
+}: SizeGuideContentProps) {
   const t = useTranslations('SizeGuide');
 
   // Fallback to empty array if no data
   const sizes = sizeGuideData?.sizes || [];
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-6 flex flex-col gap-6">
+    <section className="sm:max-w-7xl w-full mx-auto px-4 py-6 flex flex-col gap-6">
       <p className="text-sm">
         <Link href="/store" className="text-blue-600 underline">
           {t('backToStore')}
@@ -41,8 +43,12 @@ export default function SizeGuideContent({ sizeGuideData }: SizeGuideContentProp
         / {sizeGuideData?.title || t('title')}
       </p>
 
-      <h1 className="text-3xl font-bold">{sizeGuideData?.title || t('title')}</h1>
-      <p className="text-gray-600">{sizeGuideData?.description || t('description')}</p>
+      <h1 className="text-3xl font-bold">
+        {sizeGuideData?.title || t('title')}
+      </h1>
+      <p className="text-gray-600">
+        {sizeGuideData?.description || t('description')}
+      </p>
 
       {/* Rich Content from Strapi */}
       {sizeGuideData?.content && (
@@ -82,10 +88,18 @@ export default function SizeGuideContent({ sizeGuideData }: SizeGuideContentProp
               <tbody>
                 {sizes.map((s, index) => (
                   <tr key={index}>
-                    <td className="p-2 border text-center">{s['Foot Length CM']}</td>
-                    <td className="p-2 border text-center">{s['Lqdam Size']}</td>
-                    <td className="p-2 border text-center">{s['Vans Similar Size']}</td>
-                    <td className="p-2 border text-center">{s['Converse Similar Size']}</td>
+                    <td className="p-2 border text-center">
+                      {s['Foot Length CM']}
+                    </td>
+                    <td className="p-2 border text-center">
+                      {s['Lqdam Size']}
+                    </td>
+                    <td className="p-2 border text-center">
+                      {s['Vans Similar Size']}
+                    </td>
+                    <td className="p-2 border text-center">
+                      {s['Converse Similar Size']}
+                    </td>
                   </tr>
                 ))}
               </tbody>

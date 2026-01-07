@@ -11,8 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: aboutUsData?.title || 'About Us',
     description:
-      aboutUsData?.metaDescription ||
-      'Learn more about us and our story.',
+      aboutUsData?.metaDescription || 'Learn more about us and our story.',
   };
 }
 
@@ -22,7 +21,7 @@ export default async function AboutUsPage() {
 
   return (
     <BaseLayout>
-      <section className="w-full text-center md:max-w-360 pb-4 flex flex-col gap-6 px-4">
+      <section className="w-full text-center sm:max-w-7xl pb-4 flex flex-col gap-6 px-4">
         <div className="prose prose-sm max-w-none text-[#4a403a] pt-4 prose-img:rounded-none">
           <ReactMarkdown>{aboutUsData?.content || ''}</ReactMarkdown>
         </div>

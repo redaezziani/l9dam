@@ -92,16 +92,21 @@ const ProductPage = () => {
 
   const selectedImage =
     product.coverImage?.url || product.images?.[0]?.url || '';
-  const minPrice = Math.min(...product.variants.map((v) => v.price));
+  const minPrice =
+    product.variants.length > 0
+      ? Math.min(...product.variants.map((v) => v.price))
+      : 0;
 
   const selectedVariant = product.variants.find(
     (v) => v.color.id === colorId && v.size.id === sizeId,
   );
 
+  const hasVariants = product.variants.length > 0;
   const inStock = selectedVariant ? selectedVariant.stock > 0 : false;
+  const canAddToCart = hasVariants && selectedVariant !== undefined && inStock;
 
   const handleAdd = () => {
-    if (!inStock) return;
+    if (!canAddToCart || !selectedVariant) return;
 
     const selectedSize = sizes.find((s) => s.id === sizeId) ?? null;
     const selectedColor = colors.find((c) => c.id === colorId) ?? null;
@@ -109,9 +114,9 @@ const ProductPage = () => {
     addItem(
       {
         productId: product.id,
-        variantId: selectedVariant ? selectedVariant.id : 0,
+        variantId: selectedVariant.id,
         name: product.name,
-        price: selectedVariant?.price ?? minPrice,
+        price: selectedVariant.price,
         image: selectedImage,
         size: selectedSize,
         color: selectedColor,
@@ -122,7 +127,7 @@ const ProductPage = () => {
 
   return (
     <BaseLayout>
-      <section className="max-w-7xl mx-auto px-4  flex flex-col gap-6">
+      <section className="sm:max-w-7xl mx-auto px-4  flex flex-col gap-6">
         <p className=" flex text-sm gap-1">
           <Link href="/store" className="text-blue-600 ">
             {t('DetailsPage.backToStore')}
@@ -143,7 +148,7 @@ const ProductPage = () => {
             </div>
           )}
 
-          <div className="flex flex-col col-span-2 gap-4">
+          <div className="flex flex-col sm:col-span-2 gap-4">
             <p className="text-2xl font-bold">{product.name}</p>
             <p className="text-gray-700 text-sm">{product.description}</p>
 
@@ -204,27 +209,37 @@ const ProductPage = () => {
               </span>
             </div>
 
-            <div className="flex  gap-4">
-              <button
-                onClick={handleAdd}
-                disabled={!inStock}
-                className={` underline   py-2.5 text-sm ${
-                  inStock ? 'text-blue-600' : 'text-gray-400 cursor-not-allowed'
-                }`}
-              >
-                {t('DetailsPage.addToCart')}
-              </button>
+            {hasVariants ? (
+              <div className="flex  gap-4">
+                <button
+                  onClick={handleAdd}
+                  disabled={!canAddToCart}
+                  className={` underline   py-2.5 text-sm ${
+                    canAddToCart
+                      ? 'text-blue-600'
+                      : 'text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  {t('DetailsPage.addToCart')}
+                </button>
 
-              <button
-                onClick={handleAdd}
-                disabled={!inStock}
-                className={` underline  py-2.5 text-sm ${
-                  inStock ? 'text-black' : 'text-gray-400 cursor-not-allowed'
-                }`}
-              >
-                {t('DetailsPage.buyNow')}
-              </button>
-            </div>
+                <button
+                  onClick={handleAdd}
+                  disabled={!canAddToCart}
+                  className={` underline  py-2.5 text-sm ${
+                    canAddToCart
+                      ? 'text-black'
+                      : 'text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  {t('DetailsPage.buyNow')}
+                </button>
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500">
+                {t('DetailsPage.noVariantsAvailable')}
+              </p>
+            )}
           </div>
         </div>
 

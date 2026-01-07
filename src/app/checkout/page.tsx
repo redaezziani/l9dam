@@ -38,21 +38,10 @@ const CheckoutPage = () => {
     });
   };
 
-  useEffect(() => {
-    setEmail('test@test.com');
-    setAddress({
-      fullName: 'John Doe',
-      street: '123 Main St',
-      city: 'Casablanca',
-      country: 'Morocco',
-      phone: '+212600000000',
-    });
-  }, []);
-
   if (status === 'success') {
     return (
       <BaseLayout>
-        <section className="max-w-4xl mx-auto px-4 py-10">
+        <section className="sm:max-w-7xl mx-auto px-4 py-10">
           <p className="text-3xl font-bold text-green-600 mb-4">
             {t('orderSuccess.title')}
           </p>
@@ -148,10 +137,13 @@ const CheckoutPage = () => {
                   <p className="font-bold">{item.name}</p>
                   <p>
                     {item.quantity} ×{' '}
-                    {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
-                      style: 'currency',
-                      currency: 'AED',
-                    }).format(item.price)}
+                    {new Intl.NumberFormat(
+                      locale === 'en' ? 'en-AE' : 'ar-AE',
+                      {
+                        style: 'currency',
+                        currency: 'AED',
+                      },
+                    ).format(item.price)}
                   </p>
                 </div>
               ))}

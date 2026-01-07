@@ -31,7 +31,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const images = product.images || [];
   const displayImage =
     product.coverImage?.url || images[currentImageIndex]?.url || '';
-  const minPrice = Math.min(...product.variants.map((v) => v.price));
+  const minPrice = product.variants.length > 0
+    ? Math.min(...product.variants.map((v) => v.price))
+    : 0;
+
+  const variant = product.variants.find(
+    (v) => v.color.id === colorId && v.size.id === sizeId,
+  );
+
+  const hasVariants = product.variants.length > 0;
+  const canAddToCart = hasVariants && variant !== undefined && variant.stock > 0;
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -42,18 +51,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   const handleAdd = () => {
-    const variant = product.variants.find(
-      (v) => v.color.id === colorId && v.size.id === sizeId,
-    );
+    if (!canAddToCart || !variant) return;
+
     const selectedSize = sizes.find((s) => s.id === sizeId) ?? null;
     const selectedColor = colors.find((c) => c.id === colorId) ?? null;
 
     addItem(
       {
         productId: product.id,
-        variantId: variant ? variant.id : 0,
+        variantId: variant.id,
         name: product.name,
-        price: variant?.price ?? minPrice,
+        price: variant.price,
         image: displayImage,
         size: selectedSize,
         color: selectedColor,
@@ -166,18 +174,36 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-blue-600 text-xs font-bold">
-            {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
-              style: 'currency',
-              currency: 'AED',
-            }).format(minPrice)}
-          </span>
-          <p
-            className="text-xs underline underline-offset-2 select-none cursor-pointer"
-            onClick={handleAdd}
-          >
-            {t('addToCart')}
-          </p>
+          {hasVariants ? (
+            <>
+              <span className="text-blue-600 text-xs font-bold">
+                {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                  style: 'currency',
+                  currency: 'AED',
+                }).format(minPrice)}
+              </span>
+              <button
+                disabled={!canAddToCart}
+                onClick={handleAdd}
+                className={`text-xs underline underline-offset-2 ${
+                  canAddToCart
+                    ? 'cursor-pointer'
+                    : 'cursor-not-allowed text-gray-400'
+                }`}
+              >
+                {t('addToCart')}
+              </button>
+              {variant && variant.stock === 0 && (
+                <span className="text-xs text-red-600">
+                  {t('outOfStock')}
+                </span>
+              )}
+            </>
+          ) : (
+            <span className="text-xs text-gray-500">
+              {t('noVariantsAvailable')}
+            </span>
+          )}
         </div>
       </div>
     </div>
