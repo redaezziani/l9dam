@@ -90,7 +90,8 @@ const ProductPage = () => {
     new Map(product.variants.map((v) => [v.size.id, v.size])).values(),
   );
 
-  const selectedImage = product.images?.[0]?.url || '';
+  const selectedImage =
+    product.coverImage?.url || product.images?.[0]?.url || '';
   const minPrice = Math.min(...product.variants.map((v) => v.price));
 
   const selectedVariant = product.variants.find(
@@ -129,102 +130,101 @@ const ProductPage = () => {
           <span> / </span>
           {t('DetailsPage.title')}
         </p>
-        <div className="grid w-full  gap-2">
-          <div
-            key={product.images[0].url}
-            className="w-full aspect-3/4 bg-muted flex items-center justify-center relative"
-          >
-            <Image
-              src={product.images[0].url}
-              alt={product.name}
-              fill
-              className="object-cover border border-gray-300"
-              priority
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-4">
-          <p className="text-2xl font-bold">{product.name}</p>
-          <p className="text-gray-700 text-sm">{product.description}</p>
-
-          <div className="flex gap-4 items-center mb-2 flex-wrap">
-            <Select
-              label={t('color')}
-              value={colorId}
-              onChange={setColorId}
-              options={colors}
-              placeholder={t('selectColor')}
-            />
-            <Select
-              label={t('size')}
-              value={sizeId}
-              onChange={setSizeId}
-              options={sizes}
-              placeholder={t('selectSize')}
-            />
-
-            <div className="flex flex-col gap-2">
-              <label className="block text-gray-800 text-sm font-medium">
-                {t('quantity')}
-              </label>
-              <input
-                type="number"
-                min={1}
-                value={qty}
-                onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
-                className="w-14 h-8! border px-2"
+        <div className="grid  sm:gap-6 sm:grid-cols-3  w-full  gap-2">
+          {selectedImage && (
+            <div className="w-full aspect-3/4  bg-muted flex items-center justify-center relative">
+              <Image
+                src={selectedImage}
+                alt={product.name}
+                fill
+                className="object-cover border border-gray-300"
+                priority
               />
             </div>
-          </div>
-          <div className="flex gap-4 items-center mb-2 flex-wrap">
-            <Link
-              href={'/size-guide'}
-              className="text-xs underline underline-offset-4 text-gray-600"
-            >
-              {t('DetailsPage.sizeGuide')}
-            </Link>
+          )}
 
-            {selectedVariant && (
-              <p
-                className={`text-sm  ${
-                  inStock ? 'text-green-700' : 'text-red-600'
+          <div className="flex flex-col col-span-2 gap-4">
+            <p className="text-2xl font-bold">{product.name}</p>
+            <p className="text-gray-700 text-sm">{product.description}</p>
+
+            <div className="flex gap-4 items-center mb-2 flex-wrap">
+              <Select
+                label={t('color')}
+                value={colorId}
+                onChange={setColorId}
+                options={colors}
+                placeholder={t('selectColor')}
+              />
+              <Select
+                label={t('size')}
+                value={sizeId}
+                onChange={setSizeId}
+                options={sizes}
+                placeholder={t('selectSize')}
+              />
+
+              <div className="flex flex-col gap-2">
+                <label className="block text-gray-800 text-sm font-medium">
+                  {t('quantity')}
+                </label>
+                <input
+                  type="number"
+                  min={1}
+                  value={qty}
+                  onChange={(e) => setQty(Math.max(1, Number(e.target.value)))}
+                  className="w-14 h-8! border px-2"
+                />
+              </div>
+            </div>
+            <div className="flex gap-4 items-center mb-2 flex-wrap">
+              <Link
+                href={'/size-guide'}
+                className="text-xs underline underline-offset-4 text-gray-600"
+              >
+                {t('DetailsPage.sizeGuide')}
+              </Link>
+
+              {selectedVariant && (
+                <p
+                  className={`text-sm  ${
+                    inStock ? 'text-green-700' : 'text-red-600'
+                  }`}
+                >
+                  {inStock
+                    ? t('DetailsPage.inStock')
+                    : t('DetailsPage.outOfStock')}
+                </p>
+              )}
+              {`-`}
+              <span className=" text-sm ">
+                {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                  style: 'currency',
+                  currency: 'AED',
+                }).format(minPrice)}
+              </span>
+            </div>
+
+            <div className="flex  gap-4">
+              <button
+                onClick={handleAdd}
+                disabled={!inStock}
+                className={` underline   py-2.5 text-sm ${
+                  inStock ? 'text-blue-600' : 'text-gray-400 cursor-not-allowed'
                 }`}
               >
-                {inStock
-                  ? t('DetailsPage.inStock')
-                  : t('DetailsPage.outOfStock')}
-              </p>
-            )}
-            {`-`}
-            <span className=" text-sm ">
-              {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
-                style: 'currency',
-                currency: 'AED',
-              }).format(minPrice)}
-            </span>
-          </div>
+                {t('DetailsPage.addToCart')}
+              </button>
 
-          <div className="flex  gap-4">
-            <button
-              onClick={handleAdd}
-              disabled={!inStock}
-              className={` underline   py-2.5 text-sm ${
-                inStock ? 'text-blue-600' : 'text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              {t('DetailsPage.addToCart')}
-            </button>
-
-            <button
-              onClick={handleAdd}
-              disabled={!inStock}
-              className={` underline  py-2.5 text-sm ${
-                inStock ? 'text-black' : 'text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              {t('DetailsPage.buyNow')}
-            </button>
+              <button
+                onClick={handleAdd}
+                disabled={!inStock}
+                className={` underline  py-2.5 text-sm ${
+                  inStock ? 'text-black' : 'text-gray-400 cursor-not-allowed'
+                }`}
+              >
+                {t('DetailsPage.buyNow')}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -232,7 +232,10 @@ const ProductPage = () => {
           {t('DetailsPage.productImages')} ({product.images.length})
         </p>
 
-        <section aria-label="product-images" className="grid grid-cols-2 gap-4">
+        <section
+          aria-label="product-images"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-4"
+        >
           {product.images.map((image, index) => (
             <div
               key={image.url}

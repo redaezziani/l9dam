@@ -68,6 +68,7 @@ export interface Product {
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  coverImage: Image | null;
   images: Image[];
   variants: Variant[];
 }
@@ -169,7 +170,8 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
         'pagination[page]': page,
         'pagination[pageSize]': pageSize,
         'populate[variants][populate]': '*',
-        populate: 'images',
+        'populate[images]': true,
+        'populate[coverImage]': true,
         'sort[0]': 'orderIndex:asc',
       };
 
@@ -177,6 +179,14 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
 
       const products: Product[] = res.data.data.map((p: any) => ({
         ...p,
+        coverImage: p.coverImage
+          ? {
+              ...p.coverImage,
+              url: p.coverImage.url.startsWith('http')
+                ? p.coverImage.url
+                : `${process.env.NEXT_PUBLIC_STRAPI_URL}${p.coverImage.url}`,
+            }
+          : null,
         images: (p.images || []).map((img: any) => ({
           ...img,
           url: img.url.startsWith('http')
@@ -205,13 +215,22 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
           locale: store.locale,
           'filters[documentId][$eq]': documentId,
           'populate[variants][populate]': '*',
-          populate: 'images',
+          'populate[images]': true,
+          'populate[coverImage]': true,
         },
       });
 
       const product: Product | null = res.data.data[0]
         ? {
             ...res.data.data[0],
+            coverImage: res.data.data[0].coverImage
+              ? {
+                  ...res.data.data[0].coverImage,
+                  url: res.data.data[0].coverImage.url.startsWith('http')
+                    ? res.data.data[0].coverImage.url
+                    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${res.data.data[0].coverImage.url}`,
+                }
+              : null,
             images: (res.data.data[0].images || []).map((img: any) => ({
               ...img,
               url: img.url.startsWith('http')

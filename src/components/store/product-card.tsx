@@ -29,7 +29,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   const images = product.images || [];
-  const selectedImage = images[currentImageIndex]?.url || '';
+  const displayImage =
+    product.coverImage?.url || images[currentImageIndex]?.url || '';
   const minPrice = Math.min(...product.variants.map((v) => v.price));
 
   const handlePrevImage = () => {
@@ -53,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         variantId: variant ? variant.id : 0,
         name: product.name,
         price: variant?.price ?? minPrice,
-        image: selectedImage,
+        image: displayImage,
         size: selectedSize,
         color: selectedColor,
       },
@@ -64,9 +65,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="flex w-full md:flex-row gap-4 items-start">
       <div className="relative flex bg-muted min-w-20 aspect-[3/4] items-center justify-center group">
-        {selectedImage && (
+        {displayImage && (
           <Image
-            src={selectedImage}
+            src={displayImage}
             alt={product.name}
             width={176}
             height={235}
@@ -75,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
         )}
 
-        {images.length > 1 && (
+        {!product.coverImage && images.length > 1 && (
           <div className="absolute top-2 left-2 flex gap-1 z-10">
             <button
               onClick={handlePrevImage}
@@ -133,7 +134,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </Link>
         </span>
 
-        <p className="text-gray-600 mt-2 text-xs line-clamp-2 mb-2">
+        <p className="text-gray-600 sm:max-w-2xl mt-2 text-xs sm:line-clamp-4 line-clamp-2 mb-2">
           {product.description}
         </p>
 
