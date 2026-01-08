@@ -226,17 +226,22 @@
     "city": "City",
     "country": "Country",
     "phone": "Phone Number",
-
     "paymentMethod": "Payment Method",
     "stripe": "Stripe",
-
     "orderSummary": "Order Summary",
     "quantity": "Quantity",
     "total": "Total",
     "placeOrder": "Place Order",
     "placingOrder": "Placing Order...",
-    "success": "Order placed successfully!",
-    "backToStore": "Back to Store"
+    "backToStore": "Back to Store",
+    "orderSuccess": {
+      "title": "Order Placed Successfully!",
+      "message": "Thank you for your order. We have received your order successfully and will process it soon."
+    },
+    "orderError": {
+      "title": "Error Processing Your Order",
+      "message": "Sorry, an error occurred while processing your order. Please try again or contact support if the problem persists."
+    }
   },
   "SizeGuide": {
     "title": "Size Guide",
