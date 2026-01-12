@@ -19,7 +19,7 @@ const Page = () => {
 
   return (
     <BaseLayout>
-      <section className="w-full relative sm:max-w-7xl px-4 space-y-8">
+      <section className="w-full relative  sm:max-w-5xl px-4 space-y-8">
         <main className="w-full md:max-w-360 pb-4 flex flex-col gap-6">
           <div className="flex items-center">
             <p className=" font-bold text-gray-800">{t('title')}</p>

@@ -46,14 +46,14 @@ const ProductPage = () => {
         new Map(
           product.variants
             .filter((v) => v.color)
-            .map((v) => [v.color.id, v.color])
+            .map((v) => [v.color.id, v.color]),
         ).values(),
       );
       const sizes: Size[] = Array.from(
         new Map(
           product.variants
             .filter((v) => v.size)
-            .map((v) => [v.size.id, v.size])
+            .map((v) => [v.size.id, v.size]),
         ).values(),
       );
 
@@ -93,16 +93,12 @@ const ProductPage = () => {
 
   const colors: Color[] = Array.from(
     new Map(
-      product.variants
-        .filter((v) => v.color)
-        .map((v) => [v.color.id, v.color])
+      product.variants.filter((v) => v.color).map((v) => [v.color.id, v.color]),
     ).values(),
   );
   const sizes: Size[] = Array.from(
     new Map(
-      product.variants
-        .filter((v) => v.size)
-        .map((v) => [v.size.id, v.size])
+      product.variants.filter((v) => v.size).map((v) => [v.size.id, v.size]),
     ).values(),
   );
 
@@ -145,7 +141,7 @@ const ProductPage = () => {
 
   return (
     <BaseLayout>
-      <section className="sm:max-w-7xl mx-auto px-4  flex flex-col gap-6">
+      <section className=" sm:max-w-5xl mx-auto px-4  flex flex-col gap-6">
         <p className=" flex text-sm gap-1">
           <Link href="/store" className="text-blue-600 ">
             {t('DetailsPage.backToStore')}

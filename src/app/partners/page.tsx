@@ -86,7 +86,7 @@ export default function PartnersPage() {
 
   return (
     <BaseLayout>
-      <section className="w-full  sm:max-w-7xl pb-4 flex flex-col gap-6 px-4">
+      <section className="w-full   sm:max-w-5xl pb-4 flex flex-col gap-6 px-4">
         <h1 className="text-3xl text-center font-bold text-[#4a403a] pt-4">
           {partnersPageData?.title || t('title')}
         </h1>

@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <section className="   z-9999 relative    top-0  w-full flex justify-center items-center">
-      <header className="flex   flex-col pt-4 py-1  gap-2 w-full px-4 sm:px-0 sm:max-w-7xl justify-start items-start">
+      <header className="flex   flex-col pt-4 py-1  gap-2 w-full px-4 sm:px-0 sm:max-w-5xl justify-start items-start">
         <Navigation />
         <div className="flex justify-between  w-full">
           <video
@@ -15,7 +15,7 @@ const Header = () => {
             loop
             muted
             playsInline
-            className="w-full sm:h-60  object-cover  "
+            className="w-full sm:h-80  object-cover  "
           >
             <source src="/images/header-img.webm" type="video/webm" />
           </video>

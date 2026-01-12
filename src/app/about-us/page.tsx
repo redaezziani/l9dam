@@ -21,7 +21,7 @@ export default async function AboutUsPage() {
 
   return (
     <BaseLayout>
-      <section className="w-full text-center sm:max-w-7xl pb-4 flex flex-col gap-6 px-4">
+      <section className="w-full text-center sm:max-w-5xl pb-4 flex flex-col gap-6 px-4">
         <div className="prose prose-sm max-w-none text-[#4a403a] pt-4 prose-img:rounded-none">
           <ReactMarkdown>{aboutUsData?.content || ''}</ReactMarkdown>
         </div>

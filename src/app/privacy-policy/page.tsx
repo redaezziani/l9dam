@@ -22,13 +22,14 @@ export default async function PrivacyPolicyPage() {
 
   return (
     <BaseLayout>
-      <section className="w-full text-center sm:max-w-7xl  pb-4 flex flex-col gap-6 px-4">
+      <section className="w-full text-center  sm:max-w-5xl  pb-4 flex flex-col gap-6 px-4">
         <div className="prose prose-sm max-w-none text-[#4a403a] pt-4 prose-img:rounded-none">
           <ReactMarkdown>{privacyPolicyData?.content || ''}</ReactMarkdown>
         </div>
         {privacyPolicyData?.lastUpdated && (
           <div className="text-sm text-gray-500 mt-4">
-            Last Updated: {new Date(privacyPolicyData.lastUpdated).toLocaleDateString(locale)}
+            Last Updated:{' '}
+            {new Date(privacyPolicyData.lastUpdated).toLocaleDateString(locale)}
           </div>
         )}
       </section>

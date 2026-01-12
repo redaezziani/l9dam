@@ -41,7 +41,7 @@ const CheckoutPage = () => {
   if (status === 'success') {
     return (
       <BaseLayout>
-        <section className="sm:max-w-7xl mx-auto px-4 py-10">
+        <section className=" sm:max-w-5xl mx-auto px-4 py-10">
           <p className="text-3xl font-bold text-green-600 mb-4">
             {t('orderSuccess.title')}
           </p>

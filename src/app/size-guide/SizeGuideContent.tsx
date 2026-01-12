@@ -35,7 +35,7 @@ export default function SizeGuideContent({
   const sizes = sizeGuideData?.sizes || [];
 
   return (
-    <section className="sm:max-w-7xl w-full mx-auto px-4 py-6 flex flex-col gap-6">
+    <section className=" sm:max-w-5xl w-full mx-auto px-4 py-6 flex flex-col gap-6">
       <p className="text-sm">
         <Link href="/store" className="text-blue-600 underline">
           {t('backToStore')}
