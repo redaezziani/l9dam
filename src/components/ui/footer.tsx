@@ -41,7 +41,7 @@ const Footer = () => {
             {tHeader('navLinks.store')}
           </Link>
           <Link
-            href="/distributors"
+            href="/partners"
             className={`text-[#4a403a]/80 hover:text-[#4a403a] transition-colors ${locale === 'en' ? 'text-xs' : 'text-sm'} capitalize`}
           >
             {tHeader('navLinks.distributors')}

@@ -43,14 +43,22 @@ const ProductPage = () => {
   useEffect(() => {
     if (product) {
       const colors: Color[] = Array.from(
-        new Map(product.variants.map((v) => [v.color.id, v.color])).values(),
+        new Map(
+          product.variants
+            .filter((v) => v.color)
+            .map((v) => [v.color.id, v.color])
+        ).values(),
       );
       const sizes: Size[] = Array.from(
-        new Map(product.variants.map((v) => [v.size.id, v.size])).values(),
+        new Map(
+          product.variants
+            .filter((v) => v.size)
+            .map((v) => [v.size.id, v.size])
+        ).values(),
       );
 
-      setColorId(colors[0]?.id ?? null);
-      setSizeId(sizes[0]?.id ?? null);
+      setColorId(colors.length > 0 ? colors[0].id : null);
+      setSizeId(sizes.length > 0 ? sizes[0].id : null);
     }
   }, [product]);
 
@@ -84,10 +92,18 @@ const ProductPage = () => {
   }
 
   const colors: Color[] = Array.from(
-    new Map(product.variants.map((v) => [v.color.id, v.color])).values(),
+    new Map(
+      product.variants
+        .filter((v) => v.color)
+        .map((v) => [v.color.id, v.color])
+    ).values(),
   );
   const sizes: Size[] = Array.from(
-    new Map(product.variants.map((v) => [v.size.id, v.size])).values(),
+    new Map(
+      product.variants
+        .filter((v) => v.size)
+        .map((v) => [v.size.id, v.size])
+    ).values(),
   );
 
   const selectedImage =
@@ -97,9 +113,11 @@ const ProductPage = () => {
       ? Math.min(...product.variants.map((v) => v.price))
       : 0;
 
-  const selectedVariant = product.variants.find(
-    (v) => v.color.id === colorId && v.size.id === sizeId,
-  );
+  const selectedVariant = product.variants.find((v) => {
+    const colorMatch = colorId !== null ? v.color?.id === colorId : true;
+    const sizeMatch = sizeId !== null ? v.size?.id === sizeId : true;
+    return colorMatch && sizeMatch;
+  });
 
   const hasVariants = product.variants.length > 0;
   const inStock = selectedVariant ? selectedVariant.stock > 0 : false;

@@ -17,14 +17,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const addItem = useCartStore((s) => s.addItem);
 
   const colors: Color[] = Array.from(
-    new Map(product.variants.map((v) => [v.color.id, v.color])).values(),
+    new Map(
+      product.variants
+        .filter((v) => v.color)
+        .map((v) => [v.color.id, v.color])
+    ).values(),
   );
   const sizes: Size[] = Array.from(
-    new Map(product.variants.map((v) => [v.size.id, v.size])).values(),
+    new Map(
+      product.variants
+        .filter((v) => v.size)
+        .map((v) => [v.size.id, v.size])
+    ).values(),
   );
 
-  const [sizeId, setSizeId] = useState<number | null>(sizes[0]?.id ?? null);
-  const [colorId, setColorId] = useState<number | null>(colors[0]?.id ?? null);
+  const [sizeId, setSizeId] = useState<number | null>(
+    sizes.length > 0 ? sizes[0].id : null
+  );
+  const [colorId, setColorId] = useState<number | null>(
+    colors.length > 0 ? colors[0].id : null
+  );
   const [qty, setQty] = useState<number>(1);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
@@ -35,9 +47,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     ? Math.min(...product.variants.map((v) => v.price))
     : 0;
 
-  const variant = product.variants.find(
-    (v) => v.color.id === colorId && v.size.id === sizeId,
-  );
+  const variant = product.variants.find((v) => {
+    const colorMatch = colorId !== null ? v.color?.id === colorId : true;
+    const sizeMatch = sizeId !== null ? v.size?.id === sizeId : true;
+    return colorMatch && sizeMatch;
+  });
 
   const hasVariants = product.variants.length > 0;
   const canAddToCart = hasVariants && variant !== undefined && variant.stock > 0;

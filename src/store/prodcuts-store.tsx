@@ -51,6 +51,7 @@ export interface Variant {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  locale: string;
   product: ProductBasic;
   color: Color;
   size: Size;
@@ -170,6 +171,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
         'pagination[page]': page,
         'pagination[pageSize]': pageSize,
         'populate[variants][populate]': '*',
+        'populate[variants][locale]': store.locale,
         'populate[images]': true,
         'populate[coverImage]': true,
         'sort[0]': 'orderIndex:asc',
@@ -215,6 +217,7 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
           locale: store.locale,
           'filters[documentId][$eq]': documentId,
           'populate[variants][populate]': '*',
+          'populate[variants][locale]': store.locale,
           'populate[images]': true,
           'populate[coverImage]': true,
         },
