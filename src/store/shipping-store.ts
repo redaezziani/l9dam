@@ -1,21 +1,7 @@
 import { create } from 'zustand';
-import { api } from '../lib/utils';
+import { getShippings, type Shipping, type PriceRule } from '../(actions)/shipping';
 
-export interface PriceRule {
-  maxItems: number;
-  shippingPrice: number;
-}
-
-export interface Shipping {
-  id: number;
-  documentId: string;
-  region: string;
-  cities: string[];
-  priceRules: PriceRule[];
-  kg?: number;
-  createdAt: string;
-  updatedAt: string;
-}
+export type { PriceRule, Shipping };
 
 interface ShippingState {
   shippings: Shipping[];
@@ -35,12 +21,12 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
   fetchShippings: async () => {
     try {
       set({ loading: true, error: null });
-      const response = await api.get('/api/shippings');
-      set({ shippings: response.data.data || [], loading: false });
+      const shippings = await getShippings();
+      set({ shippings, loading: false });
     } catch (error: any) {
       console.error('Error fetching shippings:', error);
       set({
-        error: error?.response?.data?.error?.message || 'Failed to fetch shipping data',
+        error: error?.message || 'Failed to fetch shipping data',
         loading: false
       });
     }
