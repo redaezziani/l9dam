@@ -1,7 +1,21 @@
 import { create } from 'zustand';
-import { getShippings, type Shipping, type PriceRule } from '../(actions)/shipping';
 
-export type { PriceRule, Shipping };
+export interface PriceRule {
+  maxItems: number;
+  shippingPrice: number;
+}
+
+export interface Shipping {
+  id: number;
+  documentId: string;
+  region: string;
+  cities: string[];
+  priceRules: PriceRule[];
+  kg?: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
 
 interface ShippingState {
   shippings: Shipping[];
@@ -21,13 +35,28 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
   fetchShippings: async () => {
     try {
       set({ loading: true, error: null });
-      const shippings = await getShippings();
-      set({ shippings, loading: false });
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/shippings`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch shipping data');
+      }
+
+      const data = await response.json();
+      set({ shippings: data.data || [], loading: false });
     } catch (error: any) {
       console.error('Error fetching shippings:', error);
       set({
         error: error?.message || 'Failed to fetch shipping data',
-        loading: false
+        loading: false,
       });
     }
   },

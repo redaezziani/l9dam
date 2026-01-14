@@ -33,6 +33,7 @@ const CheckoutPage = () => {
   // Fetch shipping data on mount
   useEffect(() => {
     shipping.fetchShippings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Reset city when region changes
