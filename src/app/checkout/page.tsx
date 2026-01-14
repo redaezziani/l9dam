@@ -5,6 +5,7 @@ import BaseLayout from '@/src/components/layout/base-layout';
 import { useTranslations, useLocale } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import { useOrderStore } from '@/src/store/order-store';
+import { useShippingStore } from '@/src/store/shipping-store';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -13,11 +14,14 @@ const CheckoutPage = () => {
   const locale = useLocale();
   const cart = useCartStore();
   const order = useOrderStore();
+  const shipping = useShippingStore();
   const searchParams = useSearchParams();
 
   const status = searchParams.get('status');
 
   const [email, setEmail] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
   const [address, setAddress] = useState({
     fullName: '',
     street: '',
@@ -26,14 +30,46 @@ const CheckoutPage = () => {
     phone: '',
   });
 
-  const canOrder = cart.items.length > 0 && email.trim().length > 3;
+  // Fetch shipping data on mount
+  useEffect(() => {
+    shipping.fetchShippings();
+  }, []);
+
+  // Reset city when region changes
+  useEffect(() => {
+    setSelectedCity('');
+  }, [selectedRegion]);
+
+  // Get available regions and cities
+  const regions = shipping.getRegions();
+  const cities = selectedRegion
+    ? shipping.getCitiesByRegion(selectedRegion)
+    : [];
+
+  // Calculate shipping price based on item count
+  const itemCount = cart.itemCount();
+  const shippingPrice =
+    selectedRegion && selectedCity
+      ? shipping.calculateShippingPrice(selectedRegion, selectedCity, itemCount)
+      : null;
+
+  const canOrder =
+    cart.items.length > 0 &&
+    email.trim().length > 3 &&
+    selectedRegion &&
+    selectedCity &&
+    shippingPrice !== null;
 
   const handleSubmit = async () => {
     if (!canOrder) return;
 
     await order.placeOrder({
       userEmail: email,
-      shippingAddress: address,
+      shippingAddress: {
+        ...address,
+        region: selectedRegion,
+        city: selectedCity,
+      },
       billingAddress: address,
     });
   };
@@ -86,7 +122,7 @@ const CheckoutPage = () => {
 
   return (
     <BaseLayout>
-      <section className="w-full relative max-w-7xl px-4 space-y-8">
+      <section className="w-full relative max-w-5xl px-4 space-y-8">
         <main className="w-full md:max-w-360 pb-4 grid grid-cols-1 gap-6">
           <p className="text-2xl font-bold text-gray-900">{t('title')}</p>
 
@@ -107,22 +143,65 @@ const CheckoutPage = () => {
               <p className="text-lg font-bold text-gray-900">
                 {t('shippingDetails')}
               </p>
-              {['fullName', 'street', 'city', 'country', 'phone'].map(
-                (field) => (
-                  <div key={field} className="flex flex-col gap-1">
-                    <label className="text-sm font-bold text-gray-900 capitalize">
-                      {t(field)}
-                    </label>
-                    <input
-                      value={(address as any)[field]}
-                      onChange={(e) =>
-                        setAddress({ ...address, [field]: e.target.value })
-                      }
-                      className="border border-gray-800 px-3 py-2"
-                    />
-                  </div>
-                ),
-              )}
+
+              {/* Region Select */}
+              <div className="flex flex-col gap-1">
+                <label className="text-sm font-bold text-gray-900">
+                  {t('region') || 'Region'}
+                </label>
+                <select
+                  value={selectedRegion}
+                  onChange={(e) => setSelectedRegion(e.target.value)}
+                  className="border border-gray-800 px-3 py-2 bg-white"
+                  disabled={shipping.loading}
+                >
+                  <option value="">
+                    {t('selectRegion') || 'Select a region'}
+                  </option>
+                  {regions.map((region) => (
+                    <option key={region} value={region}>
+                      {region}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* City Select */}
+              <div className="flex flex-col gap-1">
+                <label className="text-sm font-bold text-gray-900">
+                  {t('city') || 'City'}
+                </label>
+                <select
+                  value={selectedCity}
+                  onChange={(e) => setSelectedCity(e.target.value)}
+                  className="border border-gray-800 px-3 py-2 bg-white"
+                  disabled={
+                    !selectedRegion || cities.length === 0 || shipping.loading
+                  }
+                >
+                  <option value="">{t('selectCity') || 'Select a city'}</option>
+                  {cities.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {['fullName', 'street', 'country', 'phone'].map((field) => (
+                <div key={field} className="flex flex-col gap-1">
+                  <label className="text-sm font-bold text-gray-900 capitalize">
+                    {t(field)}
+                  </label>
+                  <input
+                    value={(address as any)[field]}
+                    onChange={(e) =>
+                      setAddress({ ...address, [field]: e.target.value })
+                    }
+                    className="border border-gray-800 px-3 py-2"
+                  />
+                </div>
+              ))}
             </div>
 
             <div className="space-y-4 border-t border-gray-800 pt-4">
@@ -149,13 +228,50 @@ const CheckoutPage = () => {
               ))}
 
               <div className="flex justify-between border-t border-gray-800 pt-3">
-                <p className="text-lg font-bold">{t('total')}</p>
-                <p className="text-lg font-bold">
+                <p className="text-base font-semibold">
+                  {t('subtotal') || 'Subtotal'}
+                </p>
+                <p className="text-base font-semibold">
                   {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
                     style: 'currency',
                     currency: 'AED',
                   }).format(cart.total())}
                 </p>
+              </div>
+
+              {/* Shipping Price */}
+              <div className="flex justify-between">
+                <p className="text-base font-semibold">
+                  {t('shipping') || 'Shipping'}
+                </p>
+                <p className="text-base font-semibold">
+                  {shippingPrice !== null ? (
+                    new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                      style: 'currency',
+                      currency: 'AED',
+                    }).format(shippingPrice)
+                  ) : (
+                    <span className="text-gray-500 text-sm">
+                      {t('selectRegionAndCity') || 'Select region & city'}
+                    </span>
+                  )}
+                </p>
+              </div>
+
+              {/* Total with Shipping */}
+              <div className="flex justify-between border-t border-gray-800 pt-3">
+                <p className="text-lg font-bold">{t('total')}</p>
+                <p className="text-lg font-bold">
+                  {new Intl.NumberFormat(locale === 'en' ? 'en-AE' : 'ar-AE', {
+                    style: 'currency',
+                    currency: 'AED',
+                  }).format(cart.total() + (shippingPrice || 0))}
+                </p>
+              </div>
+
+              {/* Item Count Info */}
+              <div className="text-sm text-gray-600">
+                {t('itemsInCart') || 'Items in cart'}: {itemCount}
               </div>
             </div>
 
