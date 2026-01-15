@@ -20,7 +20,7 @@ const CheckoutPage = () => {
   const status = searchParams.get('status');
 
   const [email, setEmail] = useState('');
-  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [address, setAddress] = useState({
     fullName: '',
@@ -36,28 +36,28 @@ const CheckoutPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Reset city when region changes
+  // Reset city when country changes
   useEffect(() => {
     setSelectedCity('');
-  }, [selectedRegion]);
+  }, [selectedCountry]);
 
-  // Get available regions and cities
-  const regions = shipping.getRegions();
-  const cities = selectedRegion
-    ? shipping.getCitiesByRegion(selectedRegion)
+  // Get available countries and cities
+  const countries = shipping.getCountries(locale);
+  const cities = selectedCountry
+    ? shipping.getCitiesByCountry(selectedCountry, locale)
     : [];
 
-  // Calculate shipping price based on item count
-  const itemCount = cart.itemCount();
+  // Calculate shipping price based on total weight
+  const totalWeight = cart.totalWeight();
   const shippingPrice =
-    selectedRegion && selectedCity
-      ? shipping.calculateShippingPrice(selectedRegion, selectedCity, itemCount)
+    selectedCountry && selectedCity
+      ? shipping.calculateShippingPrice(selectedCountry, selectedCity, totalWeight, locale)
       : null;
 
   const canOrder =
     cart.items.length > 0 &&
     email.trim().length > 3 &&
-    selectedRegion &&
+    selectedCountry &&
     selectedCity &&
     shippingPrice !== null;
 
@@ -68,7 +68,7 @@ const CheckoutPage = () => {
       userEmail: email,
       shippingAddress: {
         ...address,
-        region: selectedRegion,
+        country: selectedCountry,
         city: selectedCity,
       },
       billingAddress: address,
@@ -145,23 +145,23 @@ const CheckoutPage = () => {
                 {t('shippingDetails')}
               </p>
 
-              {/* Region Select */}
+              {/* Country Select */}
               <div className="flex flex-col gap-1">
                 <label className="text-sm font-bold text-gray-900">
-                  {t('region') || 'Region'}
+                  {t('country') || 'Country'}
                 </label>
                 <select
-                  value={selectedRegion}
-                  onChange={(e) => setSelectedRegion(e.target.value)}
-                  className="border border-gray-800 px-3 py-2 bg-white"
+                  value={selectedCountry}
+                  onChange={(e) => setSelectedCountry(e.target.value)}
+                  className="border border-gray-800 px-3 py-2"
                   disabled={shipping.loading}
                 >
                   <option value="">
-                    {t('selectRegion') || 'Select a region'}
+                    {t('selectCountry') || 'Select a country'}
                   </option>
-                  {regions.map((region) => (
-                    <option key={region} value={region}>
-                      {region}
+                  {countries.map((country) => (
+                    <option key={country} value={country}>
+                      {country}
                     </option>
                   ))}
                 </select>
@@ -175,9 +175,9 @@ const CheckoutPage = () => {
                 <select
                   value={selectedCity}
                   onChange={(e) => setSelectedCity(e.target.value)}
-                  className="border border-gray-800 px-3 py-2 bg-white"
+                  className="border border-gray-800 px-3 py-2"
                   disabled={
-                    !selectedRegion || cities.length === 0 || shipping.loading
+                    !selectedCountry || cities.length === 0 || shipping.loading
                   }
                 >
                   <option value="">{t('selectCity') || 'Select a city'}</option>
@@ -270,9 +270,10 @@ const CheckoutPage = () => {
                 </p>
               </div>
 
-              {/* Item Count Info */}
-              <div className="text-sm text-gray-600">
-                {t('itemsInCart') || 'Items in cart'}: {itemCount}
+              {/* Item Count and Weight Info */}
+              <div className="text-sm text-gray-600 space-y-1">
+                <div>{t('itemsInCart') || 'Items in cart'}: {cart.itemCount()}</div>
+                <div>{t('totalWeight') || 'Total weight'}: {totalWeight.toFixed(2)} kg</div>
               </div>
             </div>
 

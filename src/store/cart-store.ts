@@ -10,6 +10,7 @@ interface CartItem {
   size?: { id: number; label: string } | null;
   color?: { id: number; label: string; hex?: string } | null;
   quantity: number;
+  weight?: number; // Weight per item in kg
 }
 
 interface CartState {
@@ -24,6 +25,7 @@ interface CartState {
   clear: () => void;
   itemCount: () => number;
   total: () => number;
+  totalWeight: () => number;
 }
 
 export const useCartStore = create<CartState>()(
@@ -75,6 +77,8 @@ export const useCartStore = create<CartState>()(
       itemCount: () => get().items.reduce((s, it) => s + it.quantity, 0),
 
       total: () => get().items.reduce((s, it) => s + it.price * it.quantity, 0),
+
+      totalWeight: () => get().items.reduce((s, it) => s + (it.weight || 0) * it.quantity, 0),
     }),
     {
       name: 'l9dam-cart',
