@@ -189,7 +189,7 @@ const CheckoutPage = () => {
                 </select>
               </div>
 
-              {['fullName', 'street', 'country', 'phone'].map((field) => (
+              {['fullName', 'street', 'phone'].map((field) => (
                 <div key={field} className="flex flex-col gap-1">
                   <label className="text-sm font-bold text-gray-900 capitalize">
                     {t(field)}
