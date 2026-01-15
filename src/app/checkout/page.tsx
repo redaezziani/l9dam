@@ -51,7 +51,12 @@ const CheckoutPage = () => {
   const totalWeight = cart.totalWeight();
   const shippingPrice =
     selectedCountry && selectedCity
-      ? shipping.calculateShippingPrice(selectedCountry, selectedCity, totalWeight, locale)
+      ? shipping.calculateShippingPrice(
+          selectedCountry,
+          selectedCity,
+          totalWeight,
+          locale,
+        )
       : null;
 
   const canOrder =
@@ -78,10 +83,8 @@ const CheckoutPage = () => {
   if (status === 'success') {
     return (
       <BaseLayout>
-        <section className=" sm:max-w-5xl mx-auto px-4 py-10">
-          <p className="text-3xl font-bold text-green-600 mb-4">
-            {t('orderSuccess.title')}
-          </p>
+        <section className=" sm:max-w-5xl w-full mx-auto px-4 py-10">
+          <p className="text-3xl font-bold  mb-4">{t('orderSuccess.title')}</p>
 
           <p className="text-gray-700 text-lg mb-6">
             {t('orderSuccess.message')}
@@ -101,10 +104,8 @@ const CheckoutPage = () => {
   if (status === 'cancel') {
     return (
       <BaseLayout>
-        <section className="max-w-4xl mx-auto px-4 py-10">
-          <p className="text-3xl font-bold text-red-600 mb-4">
-            {t('orderError.title')}
-          </p>
+        <section className="max-w-5xl mx-auto w-full px-4 py-10">
+          <p className="text-3xl font-bold  mb-4">{t('orderError.title')}</p>
 
           <p className="text-gray-700 text-lg mb-6">
             {t('orderError.message')}
@@ -272,8 +273,9 @@ const CheckoutPage = () => {
 
               {/* Item Count and Weight Info */}
               <div className="text-sm text-gray-600 space-y-1">
-                <div>{t('itemsInCart') || 'Items in cart'}: {cart.itemCount()}</div>
-                <div>{t('totalWeight') || 'Total weight'}: {totalWeight.toFixed(2)} kg</div>
+                <div>
+                  {t('itemsInCart') || 'Items in cart'}: {cart.itemCount()}
+                </div>
               </div>
             </div>
 
