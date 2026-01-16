@@ -9,8 +9,42 @@ type Props = {
 };
 
 export const metadata = {
-  title: 'My Awesome Page',
-  description: 'A concise and engaging description of my awesome page content.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com'),
+  title: {
+    default: 'Lqdam - Authentic Kung Fu Shoes',
+    template: '%s | Lqdam'
+  },
+  description: 'Discover authentic kung fu shoes from Lqdam. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition.',
+  keywords: ['kung fu shoes', 'martial arts footwear', 'Lqdam', 'Shaolin shoes', 'athletic shoes', 'comfortable shoes'],
+  authors: [{ name: 'Lqdam' }],
+  creator: 'Lqdam',
+  publisher: 'Lqdam',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    alternateLocale: ['ar_AE'],
+    siteName: 'Lqdam',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@lqdam',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default async function RootLayout({ children }: Props) {

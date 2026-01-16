@@ -8,11 +8,31 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const privacyPolicyData = await getPrivacyPolicyData(locale);
 
+  const title = privacyPolicyData?.title || 'Privacy Policy';
+  const description = privacyPolicyData?.metaDescription || 'Read our privacy policy to learn how we protect your data.';
+
   return {
-    title: privacyPolicyData?.title || 'Privacy Policy',
-    description:
-      privacyPolicyData?.metaDescription ||
-      'Read our privacy policy to learn how we protect your data.',
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+      url: '/privacy-policy',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: '/privacy-policy',
+      languages: {
+        'en': '/privacy-policy',
+        'ar': '/privacy-policy',
+      },
+    },
   };
 }
 

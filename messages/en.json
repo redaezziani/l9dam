@@ -280,5 +280,27 @@
     "title": "Privacy Policy",
     "metaDescription": "Read our privacy policy to understand how we collect, use, and protect your personal information.",
     "lastUpdated": "Last Updated"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+    "goHome": "Go to Home",
+    "goToStore": "Browse Store",
+    "metaTitle": "404 - Page Not Found | Lqdam",
+    "metaDescription": "The page you're looking for doesn't exist. Browse our store or return to the homepage to find what you need."
+  },
+  "SEO": {
+    "cart": {
+      "title": "Shopping Cart | Lqdam",
+      "description": "Review your shopping cart and proceed to checkout. Buy authentic Lqdam kung fu shoes with secure payment."
+    },
+    "store": {
+      "title": "Shop Lqdam Shoes | Authentic Kung Fu Footwear",
+      "description": "Discover our collection of authentic kung fu shoes. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition."
+    },
+    "partners": {
+      "title": "Our Partners & Retailers | Lqdam",
+      "description": "Find Lqdam authorized retailers and partners near you. Shop authentic kung fu shoes from trusted distributors."
+    }
   }
 }

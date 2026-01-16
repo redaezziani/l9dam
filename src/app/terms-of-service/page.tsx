@@ -8,11 +8,31 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const termsOfServiceData = await getTermsOfServiceData(locale);
 
+  const title = termsOfServiceData?.title || 'Terms of Service';
+  const description = termsOfServiceData?.metaDescription || 'Read our terms of service to understand the rules and regulations.';
+
   return {
-    title: termsOfServiceData?.title || 'Terms of Service',
-    description:
-      termsOfServiceData?.metaDescription ||
-      'Read our terms of service to understand the rules and regulations.',
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+      url: '/terms-of-service',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: '/terms-of-service',
+      languages: {
+        'en': '/terms-of-service',
+        'ar': '/terms-of-service',
+      },
+    },
   };
 }
 

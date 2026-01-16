@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  openGraph: {
+    title: 'Checkout | Complete Your Order',
+    description: 'Complete your order securely. Review your cart, enter shipping details, and proceed to payment.',
+    type: 'website',
+  },
+  alternates: {
+    canonical: '/checkout',
+  },
 };
 
 const CheckoutPage = () => {

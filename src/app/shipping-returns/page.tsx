@@ -8,11 +8,31 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const shippingReturnsData = await getShippingReturnsData(locale);
 
+  const title = shippingReturnsData?.title || 'Shipping & Returns';
+  const description = shippingReturnsData?.metaDescription || 'Learn about our shipping and returns policy.';
+
   return {
-    title: shippingReturnsData?.title || 'Shipping & Returns',
-    description:
-      shippingReturnsData?.metaDescription ||
-      'Learn about our shipping and returns policy.',
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+      url: '/shipping-returns',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: '/shipping-returns',
+      languages: {
+        'en': '/shipping-returns',
+        'ar': '/shipping-returns',
+      },
+    },
   };
 }
 

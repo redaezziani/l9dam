@@ -9,11 +9,31 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const homepageData = await getHomepageData(locale);
 
+  const title = homepageData?.title || 'Lqdam - Authentic Kung Fu Shoes';
+  const description = homepageData?.metaDescription || 'Discover authentic kung fu shoes from Lqdam. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition.';
+
   return {
-    title: homepageData?.title || 'My Awesome Page',
-    description:
-      homepageData?.metaDescription ||
-      'A concise and engaging description of my awesome page content.',
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+      url: '/',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en': '/en',
+        'ar': '/ar',
+      },
+    },
   };
 }
 
