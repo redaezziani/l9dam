@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { getShippingData } from '../(actions)/shipping';
 
 export interface LocalizedText {
   en: string;
@@ -43,22 +44,10 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
     try {
       set({ loading: true, error: null });
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/shippings`,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
-          },
-        }
-      );
+      // Use cached server action instead of direct fetch
+      const shippings = await getShippingData();
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch shipping data');
-      }
-
-      const data = await response.json();
-      set({ shippings: data.data || [], loading: false });
+      set({ shippings, loading: false });
     } catch (error: any) {
       console.error('Error fetching shippings:', error);
       set({

@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { api } from '../lib/utils';
+import { getProducts, getProductByDocumentId as getProductByDocIdAction } from '../(actions)/products';
 
 export interface Image {
   id: number;
@@ -166,39 +167,16 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
       set({ isLoading: true });
       const store = get();
 
-      const params: Record<string, any> = {
+      // Use cached server action
+      const { products, pagination } = await getProducts({
         locale: store.locale,
-        'pagination[page]': page,
-        'pagination[pageSize]': pageSize,
-        'populate[variants][populate]': '*',
-        'populate[images]': true,
-        'populate[coverImage]': true,
-        'sort[0]': 'orderIndex:asc',
-      };
-
-      const res = await api.get('/api/products', { params });
-
-      const products: Product[] = res.data.data.map((p: any) => ({
-        ...p,
-        coverImage: p.coverImage
-          ? {
-              ...p.coverImage,
-              url: p.coverImage.url.startsWith('http')
-                ? p.coverImage.url
-                : `${process.env.NEXT_PUBLIC_STRAPI_URL}${p.coverImage.url}`,
-            }
-          : null,
-        images: (p.images || []).map((img: any) => ({
-          ...img,
-          url: img.url.startsWith('http')
-            ? img.url
-            : `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.url}`,
-        })),
-      }));
+        page,
+        pageSize,
+      });
 
       set({
         products,
-        pagination: res.data.meta?.pagination || null,
+        pagination,
         isLoading: false,
       });
     } catch (error) {
@@ -211,35 +189,9 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
     try {
       set({ isLoading: true });
       const store = get();
-      const res = await api.get('/api/products', {
-        params: {
-          locale: store.locale,
-          'filters[documentId][$eq]': documentId,
-          'populate[variants][populate]': '*',
-          'populate[images]': true,
-          'populate[coverImage]': true,
-        },
-      });
 
-      const product: Product | null = res.data.data[0]
-        ? {
-            ...res.data.data[0],
-            coverImage: res.data.data[0].coverImage
-              ? {
-                  ...res.data.data[0].coverImage,
-                  url: res.data.data[0].coverImage.url.startsWith('http')
-                    ? res.data.data[0].coverImage.url
-                    : `${process.env.NEXT_PUBLIC_STRAPI_URL}${res.data.data[0].coverImage.url}`,
-                }
-              : null,
-            images: (res.data.data[0].images || []).map((img: any) => ({
-              ...img,
-              url: img.url.startsWith('http')
-                ? img.url
-                : `${process.env.NEXT_PUBLIC_STRAPI_URL}${img.url}`,
-            })),
-          }
-        : null;
+      // Use cached server action
+      const product = await getProductByDocIdAction(documentId, store.locale);
 
       set({ currentProduct: product, isLoading: false });
     } catch (error) {

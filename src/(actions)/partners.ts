@@ -34,7 +34,7 @@ export async function getPartnersPageData(locale: string): Promise<PartnersPageD
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
         },
-        next: { revalidate: 60 }, // Cache for 1 minute
+        next: { revalidate: 1800 }, // Cache for 30 minutes - partners change occasionally
       }
     );
 
@@ -57,7 +57,7 @@ export async function getPartners(locale: string): Promise<Partner[]> {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
         },
-        next: { revalidate: 60 }, // Cache for 1 minute
+        next: { revalidate: 1800 }, // Cache for 30 minutes - partners change occasionally
       }
     );
 

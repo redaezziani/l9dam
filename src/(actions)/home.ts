@@ -21,7 +21,7 @@ export async function getHomepageData(locale: string): Promise<HomepageData | nu
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
         },
-        next: { revalidate: 60 }, // Cache for 1 minute
+        next: { revalidate: 1800 }, // Cache for 30 minutes - homepage content rarely changes
       }
     );
 

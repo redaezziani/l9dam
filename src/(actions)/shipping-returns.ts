@@ -22,7 +22,7 @@ export async function getShippingReturnsData(locale: string): Promise<ShippingRe
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
         },
-        next: { revalidate: 60 }, // Cache for 1 minute
+        next: { revalidate: 7200 }, // Cache for 2 hours - policy content changes infrequently
       }
     );
 

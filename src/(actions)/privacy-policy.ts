@@ -22,7 +22,7 @@ export async function getPrivacyPolicyData(locale: string): Promise<PrivacyPolic
           'Content-Type': 'application/json',
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
         },
-        next: { revalidate: 60 }, // Cache for 1 minute
+        next: { revalidate: 86400 }, // Cache for 24 hours - legal content changes very rarely
       }
     );
 
