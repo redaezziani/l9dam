@@ -7,9 +7,11 @@ import ReactMarkdown from 'react-markdown';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const aboutUsData = await getAboutUsData(locale);
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const seo = messages.SEO.aboutUs;
 
-  const title = aboutUsData?.title || 'About Us';
-  const description = aboutUsData?.metaDescription || 'Learn more about us and our story.';
+  const title = aboutUsData?.title || seo.title;
+  const description = aboutUsData?.metaDescription || seo.description;
 
   return {
     title,

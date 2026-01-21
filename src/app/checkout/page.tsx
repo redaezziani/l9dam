@@ -1,24 +1,32 @@
 import React, { Suspense } from 'react';
 import BaseLayout from '@/src/components/layout/base-layout';
 import { Metadata } from 'next';
+import { getLocale } from '@/src/i18n/request';
 import CheckoutClient from './checkout-client';
 
-export const metadata: Metadata = {
-  title: 'Checkout | Complete Your Order',
-  description: 'Complete your order securely. Review your cart, enter shipping details, and proceed to payment.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-  openGraph: {
-    title: 'Checkout | Complete Your Order',
-    description: 'Complete your order securely. Review your cart, enter shipping details, and proceed to payment.',
-    type: 'website',
-  },
-  alternates: {
-    canonical: '/checkout',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const seo = messages.SEO.checkout;
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    robots: {
+      index: false,
+      follow: false,
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      type: 'website',
+      locale: locale === 'ar' ? 'ar_AE' : 'en_US',
+    },
+    alternates: {
+      canonical: '/checkout',
+    },
+  };
+}
 
 const CheckoutPage = () => {
   return (

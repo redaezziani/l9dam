@@ -7,9 +7,11 @@ import SizeGuideContent from './SizeGuideContent';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const sizeGuideData = await getSizeGuideData(locale);
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const seo = messages.SEO.sizeGuide;
 
-  const title = sizeGuideData?.title || 'Size Guide';
-  const description = sizeGuideData?.description || 'Find the right size for you.';
+  const title = sizeGuideData?.title || seo.title;
+  const description = sizeGuideData?.description || seo.description;
 
   return {
     title,

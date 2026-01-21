@@ -301,6 +301,30 @@
     "partners": {
       "title": "Our Partners & Retailers | Lqdam",
       "description": "Find Lqdam authorized retailers and partners near you. Shop authentic kung fu shoes from trusted distributors."
+    },
+    "aboutUs": {
+      "title": "Our Story | Lqdam",
+      "description": "Learn about Lqdam's mission to bring back authentic kung fu shoes. Discover how we partner with the original factory to preserve tradition."
+    },
+    "sizeGuide": {
+      "title": "Size Guide | Lqdam",
+      "description": "Find your perfect fit with our comprehensive size guide. Compare Lqdam sizes with Vans and Converse for authentic kung fu shoes."
+    },
+    "checkout": {
+      "title": "Checkout | Lqdam",
+      "description": "Complete your purchase securely. Fast shipping on authentic Lqdam kung fu shoes."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy | Lqdam",
+      "description": "Learn how Lqdam collects, uses, and protects your personal information. Read our privacy policy for complete details."
+    },
+    "termsOfService": {
+      "title": "Terms of Service | Lqdam",
+      "description": "Read Lqdam's terms of service and conditions for using our website and purchasing our products."
+    },
+    "shippingReturns": {
+      "title": "Shipping & Returns | Lqdam",
+      "description": "Learn about our shipping rates, delivery times, and return policy. We offer worldwide shipping on authentic kung fu shoes."
     }
   }
 }

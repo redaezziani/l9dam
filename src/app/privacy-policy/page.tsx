@@ -7,9 +7,11 @@ import ReactMarkdown from 'react-markdown';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const privacyPolicyData = await getPrivacyPolicyData(locale);
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const seo = messages.SEO.privacyPolicy;
 
-  const title = privacyPolicyData?.title || 'Privacy Policy';
-  const description = privacyPolicyData?.metaDescription || 'Read our privacy policy to learn how we protect your data.';
+  const title = privacyPolicyData?.title || seo.title;
+  const description = privacyPolicyData?.metaDescription || seo.description;
 
   return {
     title,
