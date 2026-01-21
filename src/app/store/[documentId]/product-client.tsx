@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
 import {
   useProductsStore,
   Color,
@@ -12,9 +11,11 @@ import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const ProductClient = () => {
-  const { documentId } = useParams();
-  const docId = Array.isArray(documentId) ? documentId[0] : documentId;
+interface ProductClientProps {
+  documentId: string;
+}
+
+const ProductClient = ({ documentId }: ProductClientProps) => {
 
   const t = useTranslations('StorePage');
   const locale = useLocale();
@@ -32,11 +33,11 @@ const ProductClient = () => {
   const [qty, setQty] = useState<number>(1);
 
   useEffect(() => {
-    if (docId) {
+    if (documentId) {
       setLocale(locale);
-      fetchProductByDocumentId(docId);
+      fetchProductByDocumentId(documentId);
     }
-  }, [locale, docId, setLocale, fetchProductByDocumentId]);
+  }, [locale, documentId, setLocale, fetchProductByDocumentId]);
 
   useEffect(() => {
     if (product) {
@@ -158,7 +159,7 @@ const ProductClient = () => {
         )}
 
         <div className="flex flex-col sm:col-span-2 gap-4">
-          <p className="text-2xl font-bold">{product.name}</p>
+          <h1 className="text-2xl font-bold">{product.name}</h1>
           <p className="text-gray-700 text-sm">{product.description}</p>
 
           <div className="flex gap-4 items-center mb-2 flex-wrap">

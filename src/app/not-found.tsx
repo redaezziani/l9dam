@@ -33,7 +33,6 @@ export default async function NotFound() {
     <BaseLayout>
       <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 py-16">
         <div className="text-center max-w-2xl mx-auto">
-          {/* 404 Number */}
           <h1
             className="text-6xl font-bold mb-4"
             style={{ color: '#4a403a' }}
@@ -41,7 +40,6 @@ export default async function NotFound() {
             404
           </h1>
 
-          {/* Title */}
           <h2
             className="text-xl md:text-2xl font-semibold mb-4"
             style={{ color: '#4a403a' }}
@@ -49,7 +47,6 @@ export default async function NotFound() {
             {t.title}
           </h2>
 
-          {/* Description */}
           <p
             className="text-sm md:text-base mb-8 opacity-80"
             style={{ color: '#4a403a' }}
@@ -57,7 +54,6 @@ export default async function NotFound() {
             {t.description}
           </p>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/"

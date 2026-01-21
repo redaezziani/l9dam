@@ -9,13 +9,23 @@ type Props = {
 };
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com',
+  ),
   title: {
     default: 'Lqdam - Authentic Kung Fu Shoes',
-    template: '%s | Lqdam'
+    template: '%s | Lqdam',
   },
-  description: 'Discover authentic kung fu shoes from Lqdam. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition.',
-  keywords: ['kung fu shoes', 'martial arts footwear', 'Lqdam', 'Shaolin shoes', 'athletic shoes', 'comfortable shoes'],
+  description:
+    'Discover authentic kung fu shoes from Lqdam. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition.',
+  keywords: [
+    'kung fu shoes',
+    'martial arts footwear',
+    'Lqdam',
+    'Shaolin shoes',
+    'athletic shoes',
+    'comfortable shoes',
+  ],
   authors: [{ name: 'Lqdam' }],
   creator: 'Lqdam',
   publisher: 'Lqdam',
