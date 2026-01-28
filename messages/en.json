@@ -290,25 +290,29 @@
     "metaDescription": "The page you're looking for doesn't exist. Browse our store or return to the homepage to find what you need."
   },
   "SEO": {
+    "home": {
+      "title": "Lqdam Kung Fu Shoes UAE | Classic Canvas & Rubber",
+      "description": "Classic vulcanized shoes made from cotton canvas and rubber. Lightweight, flexible, and built for martial arts, parkour, calisthenics, skateboarding, and movement."
+    },
     "cart": {
       "title": "Shopping Cart | Lqdam",
       "description": "Review your shopping cart and proceed to checkout. Buy authentic Lqdam kung fu shoes with secure payment."
     },
     "store": {
-      "title": "Shop Lqdam Shoes | Authentic Kung Fu Footwear",
-      "description": "Discover our collection of authentic kung fu shoes. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition."
+      "title": "Shop Lqdam Classic Shoes | 99 AED Canvas & Rubber",
+      "description": "Shop Lqdam Classic Shoes | 99 AED Canvas & Rubber"
     },
     "partners": {
-      "title": "Our Partners & Retailers | Lqdam",
-      "description": "Find Lqdam authorized retailers and partners near you. Shop authentic kung fu shoes from trusted distributors."
+      "title": "Retailers | Where to Shop & Try Lqdam",
+      "description": "Discover authorized Lqdam retailers where you can shop and try our shoes in person. Feel the fit, movement, and simplicity before buying."
     },
     "aboutUs": {
-      "title": "Our Story | Lqdam",
-      "description": "Learn about Lqdam's mission to bring back authentic kung fu shoes. Discover how we partner with the original factory to preserve tradition."
+      "title": "Our Story | Why Lqdam Was Made",
+      "description": "From the streets of Shanghai to the temples of Henan, China, our story began-shaped by tradition, movement, and timeless craft."
     },
     "sizeGuide": {
-      "title": "Size Guide | Lqdam",
-      "description": "Find your perfect fit with our comprehensive size guide. Compare Lqdam sizes with Vans and Converse for authentic kung fu shoes."
+      "title": "Size Guide | Choose Your Right Size & Compare with Vans and Converse",
+      "description": "Learn how to choose your right Lqdam size using foot length and fit tips. Easily compare our sizing with Vans and Converse before you order."
     },
     "checkout": {
       "title": "Checkout | Lqdam",
@@ -324,7 +328,7 @@
     },
     "shippingReturns": {
       "title": "Shipping & Returns | Lqdam",
-      "description": "Learn about our shipping rates, delivery times, and return policy. We offer worldwide shipping on authentic kung fu shoes."
+      "description": "Learn about our shipping rates, delivery times, and return policy."
     }
   }
 }

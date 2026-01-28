@@ -8,9 +8,11 @@ import { getHomepageData } from '../(actions)/home';
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const homepageData = await getHomepageData(locale);
+  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const seo = messages.SEO.home;
 
-  const title = homepageData?.title || 'Lqdam - Authentic Kung Fu Shoes';
-  const description = homepageData?.metaDescription || 'Discover authentic kung fu shoes from Lqdam. Lightweight, durable, and comfortable footwear inspired by Shaolin tradition.';
+  const title = homepageData?.title || seo.title;
+  const description = homepageData?.metaDescription || seo.description;
 
   return {
     title,
