@@ -46,14 +46,14 @@ const CheckoutClient = () => {
     ? shipping.getCitiesByCountry(selectedCountry, locale)
     : [];
 
-  // Calculate shipping price based on total weight
-  const totalWeight = cart.totalWeight();
+  // Calculate shipping price based on total pieces
+  const totalPieces = cart.itemCount();
   const shippingPrice =
     selectedCountry && selectedCity
       ? shipping.calculateShippingPrice(
           selectedCountry,
           selectedCity,
-          totalWeight,
+          totalPieces,
           locale,
         )
       : null;

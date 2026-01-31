@@ -7,8 +7,8 @@ export interface LocalizedText {
 }
 
 export interface PriceRule {
-  minWeight: number;
-  maxWeight: number | null;
+  minPieces: number;
+  maxPieces: number | null;
   price: number;
   currency: string;
 }
@@ -32,7 +32,7 @@ interface ShippingState {
   fetchShippings: () => Promise<void>;
   getCountries: (locale: string) => string[];
   getCitiesByCountry: (country: string, locale: string) => string[];
-  calculateShippingPrice: (country: string, city: string, totalWeight: number, locale: string) => number | null;
+  calculateShippingPrice: (country: string, city: string, totalPieces: number, locale: string) => number | null;
 }
 
 export const useShippingStore = create<ShippingState>((set, get) => ({
@@ -74,7 +74,7 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
     return shipping?.cities.map(city => city[lang]) || [];
   },
 
-  calculateShippingPrice: (country: string, city: string, totalWeight: number, locale: string) => {
+  calculateShippingPrice: (country: string, city: string, totalPieces: number, locale: string) => {
     const { shippings } = get();
     const lang = locale === 'ar' ? 'ar' : 'en';
 
@@ -87,19 +87,19 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
     const cityExists = shipping.cities.some(c => c[lang] === city);
     if (!cityExists) return null;
 
-    // Sort price rules by minWeight in ascending order
-    const sortedRules = [...shipping.priceRules].sort((a, b) => a.minWeight - b.minWeight);
+    // Sort price rules by minPieces in ascending order
+    const sortedRules = [...shipping.priceRules].sort((a, b) => a.minPieces - b.minPieces);
 
-    // Find the applicable price rule based on weight
+    // Find the applicable price rule based on piece count
     for (const rule of sortedRules) {
-      // Check if weight falls within this rule's range
-      if (totalWeight >= rule.minWeight) {
-        // If maxWeight is null, this is the highest tier (no upper limit)
-        if (rule.maxWeight === null) {
+      // Check if piece count falls within this rule's range
+      if (totalPieces >= rule.minPieces) {
+        // If maxPieces is null, this is the highest tier (no upper limit)
+        if (rule.maxPieces === null) {
           return rule.price;
         }
-        // If weight is within the range
-        if (totalWeight < rule.maxWeight) {
+        // If piece count is within the range
+        if (totalPieces < rule.maxPieces) {
           return rule.price;
         }
       }
