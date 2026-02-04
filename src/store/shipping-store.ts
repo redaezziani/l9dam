@@ -60,7 +60,13 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
   getCountries: (locale: string) => {
     const { shippings } = get();
     const lang = locale === 'ar' ? 'ar' : 'en';
-    return Array.from(new Set(shippings.map((s) => s.country[lang])));
+    return Array.from(
+      new Set(
+        shippings
+          .filter((s) => s.country && s.country[lang])
+          .map((s) => s.country[lang])
+      )
+    );
   },
 
   getCitiesByCountry: (country: string, locale: string) => {
@@ -68,10 +74,12 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
     const lang = locale === 'ar' ? 'ar' : 'en';
 
     // Find the shipping configuration where the country matches in the selected language
-    const shipping = shippings.find((s) => s.country[lang] === country);
+    const shipping = shippings.find((s) => s.country && s.country[lang] === country);
 
-    // Return the cities in the selected language
-    return shipping?.cities.map(city => city[lang]) || [];
+    // Return the cities in the selected language, filtering out any null/undefined cities
+    return shipping?.cities
+      .filter((city) => city && city[lang])
+      .map((city) => city[lang]) || [];
   },
 
   calculateShippingPrice: (country: string, city: string, totalPieces: number, locale: string) => {
@@ -79,12 +87,12 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
     const lang = locale === 'ar' ? 'ar' : 'en';
 
     // Find the shipping configuration for the selected country
-    const shipping = shippings.find((s) => s.country[lang] === country);
+    const shipping = shippings.find((s) => s.country && s.country[lang] === country);
 
     if (!shipping) return null;
 
     // Check if the city is in the country's cities list
-    const cityExists = shipping.cities.some(c => c[lang] === city);
+    const cityExists = shipping.cities.some(c => c && c[lang] === city);
     if (!cityExists) return null;
 
     // Sort price rules by minPieces in ascending order

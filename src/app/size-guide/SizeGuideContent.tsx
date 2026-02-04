@@ -75,9 +75,9 @@ export default function SizeGuideContent({
         <div>
           <h2 className="text-xl font-semibold mb-3">{t('sizeChart')}</h2>
 
-          <div className="overflow-x-auto border border-gray-300 rounded">
+          <div className="overflow-x-auto border  rounded">
             <table className="w-full text-sm">
-              <thead className="bg-gray-100">
+              <thead className="">
                 <tr>
                   <th className="p-2 border">{t('footLengthCm')}</th>
                   <th className="p-2 border">{t('lqdamSize')}</th>
