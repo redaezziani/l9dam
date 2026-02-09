@@ -70,7 +70,7 @@ const Footer = () => {
             />
           </a>
           <a
-            href="https://wa.me/your-whatsapp-number"
+            href="https://wa.me/971557951916"
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('social.whatsapp')}
