@@ -291,6 +291,7 @@ const CheckoutClient = () => {
                       setErrors({ ...errors, [field]: '' });
                     }
                   }}
+                  placeholder={field === 'street' ? t('streetPlaceholder') : undefined}
                   className={`border px-3 py-2 ${errors[field] ? 'border-red-500' : 'border-gray-800'}`}
                 />
                 {errors[field] && (
