@@ -55,7 +55,7 @@ jobs:
           no-cache: true
 
       - name: Scan for vulnerabilities
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@0.29.0
         with:
           image-ref: ghcr.io/${{ github.repository }}:${{ github.sha }}
           format: 'sarif'
