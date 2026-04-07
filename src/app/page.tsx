@@ -14,6 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = homepageData?.title || seo.title;
   const description = homepageData?.metaDescription || seo.description;
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com';
+
   return {
     title,
     description,
@@ -23,17 +25,26 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
       url: '/',
+      images: [
+        {
+          url: `${baseUrl}/images/app-logo-black.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Lqdam - Authentic Kung Fu Shoes',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [`${baseUrl}/images/app-logo-black.png`],
     },
     alternates: {
       canonical: '/',
       languages: {
-        'en': '/en',
-        'ar': '/ar',
+        'en': '/',
+        'ar': '/',
       },
     },
   };

@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '../components/ui/header';
 import Footer from '../components/ui/footer';
 import { getLocale } from '../i18n/request';
+import { generateOrganizationSchema, generateWebSiteSchema } from '../lib/seo-utils';
 
 type Props = {
   children: React.ReactNode;
@@ -61,6 +62,10 @@ export default async function RootLayout({ children }: Props) {
   const locale = await getLocale();
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
   const textAlign = locale === 'ar' ? 'right' : 'left';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com';
+
+  const organizationSchema = generateOrganizationSchema(baseUrl);
+  const webSiteSchema = generateWebSiteSchema(baseUrl);
 
   return (
     <html lang={locale} dir={dir}>
@@ -68,6 +73,14 @@ export default async function RootLayout({ children }: Props) {
         className="flex flex-col  bg-[#fdefe5a8]  relative min-h-screen justify-start items-center"
         style={{ textAlign: textAlign as any }}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
         <span className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none bg-[url('https://texturelabs.org/wp-content/uploads/Texturelabs_Paper_126S.jpg')] bg-repeat bg-top bg-size-[1800px_1800px] opacity-15 mix-blend-multiply animate-paperMove"></span>
 
         <NextIntlClientProvider>

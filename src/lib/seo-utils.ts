@@ -41,48 +41,73 @@ export function generateProductSchema(
   locale: string,
   baseUrl: string,
 ): object {
-  const minPrice = product.variants.length > 0
-    ? Math.min(...product.variants.map((v) => v.price))
-    : 0;
+  const prices = product.variants.map((v) => v.price).filter((p) => p > 0);
+  const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+  const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+  const hasMultiplePrices = minPrice !== maxPrice;
 
-  const maxPrice = product.variants.length > 0
-    ? Math.max(...product.variants.map((v) => v.price))
-    : 0;
+  const inStockVariants = product.variants.filter((v) => v.stock > 0);
+  const inStock = inStockVariants.length > 0;
 
-  const inStock = product.variants.some((v) => v.stock > 0);
+  const priceValidUntil = new Date(
+    new Date().setFullYear(new Date().getFullYear() + 1),
+  ).toISOString().split('T')[0];
 
-  const imageUrl = product.coverImage?.url || product.images?.[0]?.url || '';
+  const productUrl = `${baseUrl}/store/${product.documentId}`;
 
-  const schema = {
+  // Build image array — cover first, then remaining images
+  const allImages: string[] = [];
+  if (product.coverImage?.url) allImages.push(product.coverImage.url);
+  for (const img of product.images || []) {
+    if (img.url && img.url !== product.coverImage?.url) allImages.push(img.url);
+  }
+
+  const seller = {
+    '@type': 'Organization',
+    name: 'Lqdam',
+    url: baseUrl,
+  };
+
+  // Use individual Offer per in-stock variant when possible, otherwise AggregateOffer
+  const offers = hasMultiplePrices
+    ? {
+        '@type': 'AggregateOffer',
+        url: productUrl,
+        priceCurrency: 'AED',
+        lowPrice: minPrice,
+        highPrice: maxPrice,
+        offerCount: product.variants.length,
+        availability: inStock
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/OutOfStock',
+        seller,
+      }
+    : {
+        '@type': 'Offer',
+        url: productUrl,
+        priceCurrency: 'AED',
+        price: minPrice,
+        priceValidUntil,
+        availability: inStock
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/OutOfStock',
+        itemCondition: 'https://schema.org/NewCondition',
+        seller,
+      };
+
+  return {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: imageUrl,
-    sku: product.documentId,
+    image: allImages.length > 0 ? allImages : undefined,
+    sku: product.variants[0]?.sku || product.documentId,
     brand: {
       '@type': 'Brand',
       name: 'Lqdam',
     },
-    offers: {
-      '@type': minPrice === maxPrice ? 'Offer' : 'AggregateOffer',
-      url: `${baseUrl}/store/${product.documentId}`,
-      priceCurrency: 'AED',
-      price: minPrice,
-      ...(minPrice !== maxPrice && {
-        lowPrice: minPrice,
-        highPrice: maxPrice,
-      }),
-      availability: inStock
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-      priceValidUntil: new Date(
-        new Date().setFullYear(new Date().getFullYear() + 1)
-      ).toISOString().split('T')[0],
-    },
+    offers,
   };
-
-  return schema;
 }
 
 /**
@@ -113,11 +138,61 @@ export function generateOrganizationSchema(baseUrl: string): object {
     '@type': 'Organization',
     name: 'Lqdam',
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
-    description: 'Authentic kung fu shoes inspired by Shaolin tradition',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/images/app-logo-black.png`,
+    },
+    description: 'Arabic minimalist footwear brand from the UAE. Canvas and rubber barefoot shoes inspired by Shanghai heritage, built for natural movement.',
     sameAs: [
-      // Add your social media URLs here
+      'https://www.instagram.com/lqdam_shoes',
+      'https://www.tiktok.com/@lqdam_shoes',
     ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      availableLanguage: ['English', 'Arabic'],
+      url: 'https://wa.me/971557951916',
+    },
+  };
+}
+
+/**
+ * Generates WebSite structured data (JSON-LD) — enables Google Sitelinks Searchbox
+ */
+export function generateWebSiteSchema(baseUrl: string): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Lqdam',
+    url: baseUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/store?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+/**
+ * Generates FAQ structured data (JSON-LD) for rich results
+ */
+export function generateFAQSchema(
+  items: Array<{ question: string; answer: string }>,
+): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
   };
 }
 

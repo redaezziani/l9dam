@@ -15,6 +15,7 @@ const Header = () => {
             loop
             muted
             playsInline
+            aria-label="Lqdam kung fu shoes showcase"
             className="w-full sm:h-80  object-cover  "
           >
             <source src="/images/header-img.webm" type="video/webm" />
