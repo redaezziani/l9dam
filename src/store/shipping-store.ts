@@ -107,7 +107,7 @@ export const useShippingStore = create<ShippingState>((set, get) => ({
           return rule.price;
         }
         // If piece count is within the range
-        if (totalPieces < rule.maxPieces) {
+        if (totalPieces <= rule.maxPieces) {
           return rule.price;
         }
       }

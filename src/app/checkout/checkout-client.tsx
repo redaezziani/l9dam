@@ -126,7 +126,11 @@ const CheckoutClient = () => {
         country: selectedCountry,
         city: selectedCity,
       },
-      billingAddress: address,
+      billingAddress: {
+        ...address,
+        country: selectedCountry,
+        city: selectedCity,
+      },
     });
   };
 
