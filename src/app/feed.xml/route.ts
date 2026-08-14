@@ -92,12 +92,16 @@ function buildItem(
 
   const availability = variant.stock > 0 ? 'in_stock' : 'out_of_stock';
   const itemId = `${product.documentId}-${variant.documentId}`;
+  const variantLabel = [variant.color?.label, variant.size?.label]
+    .filter(Boolean)
+    .join(' / ');
+  const itemTitle = variantLabel ? `${product.name} — ${variantLabel}` : product.name;
 
   return `
   <item>
     <g:id>${escapeXml(itemId)}</g:id>
     <g:item_group_id>${escapeXml(product.documentId)}</g:item_group_id>
-    <title>${cdata(product.name)}</title>
+    <title>${cdata(itemTitle)}</title>
     <description>${cdata(product.description || product.name)}</description>
     <link>${escapeXml(productUrl)}</link>
     ${image ? `<g:image_link>${escapeXml(image)}</g:image_link>` : ''}
@@ -106,7 +110,6 @@ function buildItem(
     <g:availability>${availability}</g:availability>
     <g:price>${variant.price.toFixed(2)} AED</g:price>
     <g:brand>Lqdam</g:brand>
-    <g:identifier_exists>no</g:identifier_exists>
     <g:mpn>${escapeXml(variant.sku)}</g:mpn>
     <g:product_type>Shoes &gt; Kung Fu Shoes</g:product_type>
     <g:google_product_category>187</g:google_product_category>
