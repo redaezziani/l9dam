@@ -17,6 +17,50 @@ function cdata(value: string): string {
   return `<![CDATA[${value}]]>`;
 }
 
+// Fallback used only if the live Strapi shipping rules can't be fetched.
+const FALLBACK_SHIPPING_PRICE_AED = 12;
+
+interface ShippingPriceRule {
+  minPieces: number;
+  maxPieces: number | null;
+  price: number;
+  currency: string;
+}
+
+interface ShippingRule {
+  priceRules: ShippingPriceRule[];
+}
+
+async function getSingleItemShippingPrice(): Promise<number> {
+  try {
+    const url = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/shippings`;
+    const res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_KEY}`,
+      },
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) return FALLBACK_SHIPPING_PRICE_AED;
+
+    const data = await res.json();
+    const rules: ShippingRule[] = data.data || [];
+
+    // Use the lowest single-item (1 piece) rate across all configured rules.
+    const singleItemPrices = rules
+      .flatMap((rule) => rule.priceRules || [])
+      .filter((rule) => rule.minPieces <= 1 && (rule.maxPieces === null || rule.maxPieces >= 1))
+      .map((rule) => rule.price);
+
+    if (singleItemPrices.length === 0) return FALLBACK_SHIPPING_PRICE_AED;
+
+    return Math.min(...singleItemPrices);
+  } catch {
+    return FALLBACK_SHIPPING_PRICE_AED;
+  }
+}
+
 async function getAllProducts(locale: string): Promise<Product[]> {
   const all: Product[] = [];
   let page = 1;
@@ -38,6 +82,7 @@ function buildItem(
   variant: Variant,
   locale: string,
   baseUrl: string,
+  shippingPriceAed: number,
 ): string {
   const productUrl = `${baseUrl}${localizedPath(`/store/${product.documentId}`, locale)}`;
   const image = product.coverImage?.url || product.images?.[0]?.url || '';
@@ -70,6 +115,7 @@ function buildItem(
     <g:shipping>
       <g:country>AE</g:country>
       <g:service>Standard</g:service>
+      <g:price>${shippingPriceAed.toFixed(2)} AED</g:price>
     </g:shipping>
   </item>`;
 }
@@ -78,12 +124,17 @@ export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com';
   const locale = 'en';
 
-  const products = await getAllProducts(locale);
+  const [products, shippingPriceAed] = await Promise.all([
+    getAllProducts(locale),
+    getSingleItemShippingPrice(),
+  ]);
 
   const items = products
     .flatMap((product) =>
       product.variants.length > 0
-        ? product.variants.map((variant) => buildItem(product, variant, locale, baseUrl))
+        ? product.variants.map((variant) =>
+            buildItem(product, variant, locale, baseUrl, shippingPriceAed),
+          )
         : [],
     )
     .join('');
