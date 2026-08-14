@@ -1,9 +1,9 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from '@/src/i18n/request';
+import { getLocale } from 'next-intl/server';
 import { getProductByDocumentId } from '@/src/(actions)/products';
-import { generateProductMetadata, generateProductSchema, generateBreadcrumbSchema } from '@/src/lib/seo-utils';
+import { generateProductMetadata, generateProductSchema, generateBreadcrumbSchema, localizedPath } from '@/src/lib/seo-utils';
 import BaseLayout from '@/src/components/layout/base-layout';
 import ProductClient from './product-client';
 
@@ -45,9 +45,9 @@ const ProductPage = async ({ params }: Props) => {
   const productSchema = generateProductSchema(product, locale, baseUrl);
   const breadcrumbSchema = generateBreadcrumbSchema(
     [
-      { name: 'Home', url: '/' },
-      { name: 'Store', url: '/store' },
-      { name: product.name, url: `/store/${documentId}` },
+      { name: 'Home', url: localizedPath('/', locale) },
+      { name: 'Store', url: localizedPath('/store', locale) },
+      { name: product.name, url: localizedPath(`/store/${documentId}`, locale) },
     ],
     baseUrl
   );

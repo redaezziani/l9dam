@@ -1,13 +1,14 @@
-import BaseLayout from '../../components/layout/base-layout';
-import { getLocale } from '../../i18n/request';
+import BaseLayout from '../../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getPrivacyPolicyData } from '../../(actions)/privacy-policy';
+import { getPrivacyPolicyData } from '../../../(actions)/privacy-policy';
+import { localizedPath } from '../../../lib/seo-utils';
 import ReactMarkdown from 'react-markdown';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const privacyPolicyData = await getPrivacyPolicyData(locale);
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.privacyPolicy;
 
   const title = privacyPolicyData?.title || seo.title;
@@ -21,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/privacy-policy',
+      url: localizedPath('/privacy-policy', locale),
     },
     twitter: {
       card: 'summary',
@@ -29,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: '/privacy-policy',
+      canonical: localizedPath('/privacy-policy', locale),
       languages: {
-        'en': '/privacy-policy',
-        'ar': '/privacy-policy',
+        en: localizedPath('/privacy-policy', 'en'),
+        ar: localizedPath('/privacy-policy', 'ar'),
       },
     },
   };

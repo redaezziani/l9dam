@@ -2,6 +2,15 @@ import { Metadata } from 'next';
 import { Product } from '../store/prodcuts-store';
 
 /**
+ * Builds a locale-prefixed path. Every locale, including the default, is
+ * prefixed (localePrefix: "always"), matching src/i18n/routing.ts.
+ */
+export function localizedPath(path: string, locale: string): string {
+  const normalized = path === '/' ? '' : path;
+  return `/${locale}${normalized}`;
+}
+
+/**
  * Truncates text to a specific length with ellipsis
  */
 export function truncateText(text: string, maxLength: number): string {
@@ -53,7 +62,7 @@ export function generateProductSchema(
     new Date().setFullYear(new Date().getFullYear() + 1),
   ).toISOString().split('T')[0];
 
-  const productUrl = `${baseUrl}/store/${product.documentId}`;
+  const productUrl = `${baseUrl}${localizedPath(`/store/${product.documentId}`, locale)}`;
 
   // Build image array — cover first, then remaining images
   const allImages: string[] = [];
@@ -207,7 +216,8 @@ export function generateProductMetadata(
   const title = generateMetaTitle(product.name);
   const description = generateMetaDescription(product.description);
   const imageUrl = product.coverImage?.url || product.images?.[0]?.url || '';
-  const url = `/store/${product.documentId}`;
+  const path = `/store/${product.documentId}`;
+  const url = localizedPath(path, locale);
 
   return {
     title,
@@ -238,8 +248,8 @@ export function generateProductMetadata(
     alternates: {
       canonical: url,
       languages: {
-        en: url,
-        ar: url,
+        en: localizedPath(path, 'en'),
+        ar: localizedPath(path, 'ar'),
       },
     },
   };

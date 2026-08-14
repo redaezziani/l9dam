@@ -9,7 +9,7 @@ import {
 } from '@/src/store/prodcuts-store';
 import { useCartStore } from '@/src/store/cart-store';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/src/i18n/navigation';
 import Image from 'next/image';
 
 interface ProductClientProps {

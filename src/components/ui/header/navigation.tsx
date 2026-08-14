@@ -1,7 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/src/i18n/navigation';
 import LangSwitcher from './lang-switcher';
 import { useCartStore } from '@/src/store/cart-store';
 
@@ -42,7 +41,7 @@ const Navigation = () => {
           <div className="relative">
             <img src={'/images/cart.png'} alt="cart" className="w-5 h-5" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-3 bg-primary text-white  text-xs w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-2 -end-3 bg-primary text-white  text-xs w-4 h-4 flex items-center justify-center">
                 {cartCount}
               </span>
             )}

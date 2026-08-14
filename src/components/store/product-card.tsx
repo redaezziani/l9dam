@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Product, Variant, Color, Size } from '@/src/store/prodcuts-store';
 import { useCartStore } from '@/src/store/cart-store';
 import { useLocale, useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/src/i18n/navigation';
 import Image from 'next/image';
 
 interface ProductCardProps {
@@ -99,7 +99,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
 
         {!product.coverImage && images.length > 1 && (
-          <div className="absolute top-2 left-2 flex gap-1 z-10">
+          <div className="absolute top-2 start-2 flex gap-1 z-10">
             <button
               onClick={handlePrevImage}
               className="text-gray-900 hover:text-gray-600"

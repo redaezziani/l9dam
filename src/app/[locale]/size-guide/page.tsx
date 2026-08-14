@@ -1,14 +1,14 @@
-import BaseLayout from '../../components/layout/base-layout';
-import { getLocale } from '../../i18n/request';
+import BaseLayout from '../../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getSizeGuideData } from '../../(actions)/size-guide';
+import { getSizeGuideData } from '../../../(actions)/size-guide';
 import SizeGuideContent from './SizeGuideContent';
-import { generateFAQSchema } from '../../lib/seo-utils';
+import { generateFAQSchema, localizedPath } from '../../../lib/seo-utils';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const sizeGuideData = await getSizeGuideData(locale);
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.sizeGuide;
 
   const title = sizeGuideData?.title || seo.title;
@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/size-guide',
+      url: localizedPath('/size-guide', locale),
     },
     twitter: {
       card: 'summary_large_image',
@@ -30,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: '/size-guide',
+      canonical: localizedPath('/size-guide', locale),
       languages: {
-        'en': '/size-guide',
-        'ar': '/size-guide',
+        en: localizedPath('/size-guide', 'en'),
+        ar: localizedPath('/size-guide', 'ar'),
       },
     },
   };

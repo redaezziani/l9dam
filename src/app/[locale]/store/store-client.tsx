@@ -21,7 +21,7 @@ const StoreClient = () => {
       <main className="w-full md:max-w-360 pb-4 flex flex-col gap-6">
         <div className="flex items-center">
           <h1 className=" font-bold text-gray-800">{t('title')}</h1>
-          <p className="ml-2 text-sm text-gray-600">
+          <p className="ms-2 text-sm text-gray-600">
             ({products.length} {t('productsCount')})
           </p>
         </div>

@@ -1,13 +1,14 @@
-import BaseLayout from '../../components/layout/base-layout';
-import { getLocale } from '../../i18n/request';
+import BaseLayout from '../../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getTermsOfServiceData } from '../../(actions)/terms-of-service';
+import { getTermsOfServiceData } from '../../../(actions)/terms-of-service';
+import { localizedPath } from '../../../lib/seo-utils';
 import ReactMarkdown from 'react-markdown';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const termsOfServiceData = await getTermsOfServiceData(locale);
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.termsOfService;
 
   const title = termsOfServiceData?.title || seo.title;
@@ -21,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/terms-of-service',
+      url: localizedPath('/terms-of-service', locale),
     },
     twitter: {
       card: 'summary',
@@ -29,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: '/terms-of-service',
+      canonical: localizedPath('/terms-of-service', locale),
       languages: {
-        'en': '/terms-of-service',
-        'ar': '/terms-of-service',
+        en: localizedPath('/terms-of-service', 'en'),
+        ar: localizedPath('/terms-of-service', 'ar'),
       },
     },
   };

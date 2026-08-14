@@ -1,13 +1,14 @@
-import BaseLayout from '../../components/layout/base-layout';
-import { getLocale } from '../../i18n/request';
+import BaseLayout from '../../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getShippingReturnsData } from '../../(actions)/shipping-returns';
+import { getShippingReturnsData } from '../../../(actions)/shipping-returns';
+import { localizedPath } from '../../../lib/seo-utils';
 import ReactMarkdown from 'react-markdown';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const shippingReturnsData = await getShippingReturnsData(locale);
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.shippingReturns;
 
   const title = shippingReturnsData?.title || seo.title;
@@ -21,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/shipping-returns',
+      url: localizedPath('/shipping-returns', locale),
     },
     twitter: {
       card: 'summary',
@@ -29,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: '/shipping-returns',
+      canonical: localizedPath('/shipping-returns', locale),
       languages: {
-        'en': '/shipping-returns',
-        'ar': '/shipping-returns',
+        en: localizedPath('/shipping-returns', 'en'),
+        ar: localizedPath('/shipping-returns', 'ar'),
       },
     },
   };

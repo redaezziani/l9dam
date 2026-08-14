@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import { getLocale } from '../i18n/request';
-import BaseLayout from '../components/layout/base-layout';
+import { Link } from '@/src/i18n/navigation';
+import { getLocale } from 'next-intl/server';
+import BaseLayout from '../../components/layout/base-layout';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const t = messages.NotFoundPage;
 
   return {
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NotFound() {
   const locale = await getLocale();
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const t = messages.NotFoundPage;
 
   return (

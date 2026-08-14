@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
-import Link from 'next/link';
+import { Link } from '@/src/i18n/navigation';
 import Image from 'next/image';
 
 const CartClient = () => {
@@ -15,7 +15,7 @@ const CartClient = () => {
       <main className="w-full md:max-w-360 pb-4 grid grid-cols-1 gap-6">
         <div className="flex items-center ">
           <p className="text-2xl font-bold text-gray-900">{t('title')}</p>
-          <p className="ml-2 text-gray-700">({items.length})</p>
+          <p className="ms-2 text-gray-700">({items.length})</p>
         </div>
 
         {items.length === 0 ? (
@@ -27,7 +27,7 @@ const CartClient = () => {
                 key={index}
                 className="flex items-center justify-between border border-gray-800 p-4"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center gap-4">
                   <div className="relative w-20 h-20">
                     <Image
                       src={item.image || '/placeholder.png'}
@@ -96,7 +96,7 @@ const CartClient = () => {
 
                   <button
                     onClick={() => removeItem(item.productId, item.variantId)}
-                    className="px-3 h-9 mr-2 py-1 border border-gray-800 text-red-600"
+                    className="px-3 h-9 me-2 py-1 border border-gray-800 text-red-600"
                   >
                     {t('remove')}
                   </button>

@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react';
 import BaseLayout from '@/src/components/layout/base-layout';
 import { Metadata } from 'next';
-import { getLocale } from '@/src/i18n/request';
+import { getLocale } from 'next-intl/server';
+import { localizedPath } from '@/src/lib/seo-utils';
 import CheckoutClient from './checkout-client';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.checkout;
 
   return {
@@ -23,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
     },
     alternates: {
-      canonical: '/checkout',
+      canonical: localizedPath('/checkout', locale),
     },
   };
 }

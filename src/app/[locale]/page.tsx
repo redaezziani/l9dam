@@ -1,14 +1,15 @@
-import HeroSection from '../components/ui/hero-section';
-import BaseLayout from '../components/layout/base-layout';
-import { getLocale } from '../i18n/request';
-import FlipAnimationLink from '../components/ui/flip-animation-link';
+import HeroSection from '../../components/ui/hero-section';
+import BaseLayout from '../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
+import FlipAnimationLink from '../../components/ui/flip-animation-link';
 import { Metadata } from 'next';
-import { getHomepageData } from '../(actions)/home';
+import { getHomepageData } from '../../(actions)/home';
+import { localizedPath } from '../../lib/seo-utils';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const homepageData = await getHomepageData(locale);
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.home;
 
   const title = homepageData?.title || seo.title;
@@ -24,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/',
+      url: localizedPath('/', locale),
       images: [
         {
           url: `${baseUrl}/images/app-logo-black.png`,
@@ -41,10 +42,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [`${baseUrl}/images/app-logo-black.png`],
     },
     alternates: {
-      canonical: '/',
+      canonical: localizedPath('/', locale),
       languages: {
-        'en': '/',
-        'ar': '/',
+        en: localizedPath('/', 'en'),
+        ar: localizedPath('/', 'ar'),
       },
     },
   };

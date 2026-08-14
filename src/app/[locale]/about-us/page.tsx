@@ -1,13 +1,14 @@
-import BaseLayout from '../../components/layout/base-layout';
-import { getLocale } from '../../i18n/request';
+import BaseLayout from '../../../components/layout/base-layout';
+import { getLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getAboutUsData } from '../../(actions)/about-us';
+import { getAboutUsData } from '../../../(actions)/about-us';
+import { localizedPath } from '../../../lib/seo-utils';
 import ReactMarkdown from 'react-markdown';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const aboutUsData = await getAboutUsData(locale);
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.aboutUs;
 
   const title = aboutUsData?.title || seo.title;
@@ -21,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/about-us',
+      url: localizedPath('/about-us', locale),
     },
     twitter: {
       card: 'summary_large_image',
@@ -29,10 +30,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: '/about-us',
+      canonical: localizedPath('/about-us', locale),
       languages: {
-        'en': '/about-us',
-        'ar': '/about-us',
+        en: localizedPath('/about-us', 'en'),
+        ar: localizedPath('/about-us', 'ar'),
       },
     },
   };

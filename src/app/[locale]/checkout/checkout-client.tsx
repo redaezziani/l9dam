@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { useCartStore } from '@/src/store/cart-store';
 import { useOrderStore } from '@/src/store/order-store';
 import { useShippingStore } from '@/src/store/shipping-store';
-import Link from 'next/link';
+import { Link } from '@/src/i18n/navigation';
 import { useSearchParams } from 'next/navigation';
 
 const CheckoutClient = () => {

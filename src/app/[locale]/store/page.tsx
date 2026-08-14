@@ -1,11 +1,12 @@
 import BaseLayout from '@/src/components/layout/base-layout';
 import { Metadata } from 'next';
-import { getLocale } from '@/src/i18n/request';
+import { getLocale } from 'next-intl/server';
+import { localizedPath } from '@/src/lib/seo-utils';
 import StoreClient from './store-client';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const seo = messages.SEO.store;
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com';
@@ -18,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seo.description,
       type: 'website',
       locale: locale === 'ar' ? 'ar_AE' : 'en_US',
-      url: '/store',
+      url: localizedPath('/store', locale),
       images: [
         {
           url: `${baseUrl}/images/app-logo-black.png`,
@@ -35,10 +36,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [`${baseUrl}/images/app-logo-black.png`],
     },
     alternates: {
-      canonical: '/store',
+      canonical: localizedPath('/store', locale),
       languages: {
-        'en': '/store',
-        'ar': '/store',
+        en: localizedPath('/store', 'en'),
+        ar: localizedPath('/store', 'ar'),
       },
     },
   };

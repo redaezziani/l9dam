@@ -1,9 +1,8 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { Link, usePathname, useRouter } from '@/src/i18n/navigation';
 import { startTransition } from 'react';
-import Link from 'next/link';
 
 const Footer = () => {
   const t = useTranslations('Common.Footer');
@@ -12,14 +11,14 @@ const Footer = () => {
 
   const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
 
   const targetLocale = locale === 'en' ? 'ar' : 'en';
   const displayLangText = tLang(targetLocale);
 
   const handleLanguageChange = () => {
-    document.cookie = `NEXT_LOCALE=${targetLocale}; path=/; max-age=31536000`;
     startTransition(() => {
-      router.refresh();
+      router.replace(pathname, { locale: targetLocale });
     });
   };
 
