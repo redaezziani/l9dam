@@ -90,7 +90,7 @@ function buildItem(
     .filter((img) => img.url !== image)
     .slice(0, 10);
 
-  const availability = variant.stock > 0 ? 'in stock' : 'out of stock';
+  const availability = variant.stock > 0 ? 'in_stock' : 'out_of_stock';
   const itemId = `${product.documentId}-${variant.documentId}`;
 
   return `
