@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getLocale } from '@/src/i18n/request';
 import { getProductByDocumentId } from '@/src/(actions)/products';
 import { generateProductMetadata, generateProductSchema, generateBreadcrumbSchema } from '@/src/lib/seo-utils';
@@ -35,35 +36,33 @@ const ProductPage = async ({ params }: Props) => {
   const locale = await getLocale();
   const product = await getProductByDocumentId(documentId, locale);
 
+  if (!product) {
+    notFound();
+  }
+
   // Generate structured data for SEO
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lqdam.com';
-  const productSchema = product ? generateProductSchema(product, locale, baseUrl) : null;
-
-  // Generate breadcrumb schema
-  const breadcrumbSchema = product ? generateBreadcrumbSchema(
+  const productSchema = generateProductSchema(product, locale, baseUrl);
+  const breadcrumbSchema = generateBreadcrumbSchema(
     [
       { name: 'Home', url: '/' },
       { name: 'Store', url: '/store' },
       { name: product.name, url: `/store/${documentId}` },
     ],
     baseUrl
-  ) : null;
+  );
 
   return (
     <BaseLayout>
-      {productSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-        />
-      )}
-      {breadcrumbSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
-      )}
-      <ProductClient documentId={documentId} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ProductClient documentId={documentId} initialProduct={product} />
     </BaseLayout>
   );
 };

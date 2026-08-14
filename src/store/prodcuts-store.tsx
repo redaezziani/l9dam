@@ -99,6 +99,7 @@ export interface ProductsState {
   sortOption: SortOption;
   isLoading: boolean;
   setLocale: (locale: string) => void;
+  setCurrentProduct: (product: Product | null) => void;
   setSearchQuery: (query: string) => void;
   setSortOption: (option: SortOption) => void;
   fetchProducts: (
@@ -157,6 +158,8 @@ export const useProductsStore = create<ProductsState>((set, get) => ({
   isLoading: false,
 
   setLocale: (locale: string) => set({ locale }),
+
+  setCurrentProduct: (product: Product | null) => set({ currentProduct: product }),
 
   setSearchQuery: (query: string) => set({ searchQuery: query }),
 

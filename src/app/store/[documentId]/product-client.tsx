@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   useProductsStore,
   Color,
+  Product,
   Size,
 } from '@/src/store/prodcuts-store';
 import { useCartStore } from '@/src/store/cart-store';
@@ -13,9 +14,10 @@ import Image from 'next/image';
 
 interface ProductClientProps {
   documentId: string;
+  initialProduct: Product;
 }
 
-const ProductClient = ({ documentId }: ProductClientProps) => {
+const ProductClient = ({ documentId, initialProduct }: ProductClientProps) => {
 
   const t = useTranslations('StorePage');
   const locale = useLocale();
@@ -24,20 +26,34 @@ const ProductClient = ({ documentId }: ProductClientProps) => {
     (s) => s.fetchProductByDocumentId,
   );
   const setLocale = useProductsStore((s) => s.setLocale);
-  const product = useProductsStore((s) => s.currentProduct);
+  const storeProduct = useProductsStore((s) => s.currentProduct);
   const isLoading = useProductsStore((s) => s.isLoading);
   const addItem = useCartStore((s) => s.addItem);
+
+  // Refetch only when the user switches away from the locale we already
+  // have server-rendered data for.
+  const needsRefetch = locale !== initialProduct.locale;
+
+  // Until a refetch for this exact product/locale has actually happened,
+  // trust the server-fetched initialProduct instead of the (possibly
+  // stale, possibly null) global store — this avoids flashing "not
+  // available" or a previously viewed product on first paint.
+  const product = needsRefetch
+    ? storeProduct && storeProduct.documentId === documentId
+      ? storeProduct
+      : null
+    : initialProduct;
 
   const [sizeId, setSizeId] = useState<number | null>(null);
   const [colorId, setColorId] = useState<number | null>(null);
   const [qty, setQty] = useState<number>(1);
 
   useEffect(() => {
-    if (documentId) {
+    if (documentId && needsRefetch) {
       setLocale(locale);
       fetchProductByDocumentId(documentId);
     }
-  }, [locale, documentId, setLocale, fetchProductByDocumentId]);
+  }, [locale, documentId, needsRefetch, setLocale, fetchProductByDocumentId]);
 
   useEffect(() => {
     if (product) {
